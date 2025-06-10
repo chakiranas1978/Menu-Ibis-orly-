@@ -598,6 +598,34 @@
       const element = document.getElementById(id);
       if (element) {
         const isVisible = element.style.display === 'block';
+        
+        // Déterminer le nom du plat et les IDs correspondants
+        let platName, suggestionId, allergenId;
+        
+        if (id.startsWith('suggestion-')) {
+          platName = id.replace('suggestion-', '');
+          suggestionId = id;
+          allergenId = `allergen-${platName}`;
+        } else if (id.startsWith('allergen-')) {
+          platName = id.replace('allergen-', '');
+          suggestionId = `suggestion-${platName}`;
+          allergenId = id;
+        }
+        
+        // Fermer l'autre élément s'il est ouvert
+        if (id === suggestionId) {
+          const allergenElement = document.getElementById(allergenId);
+          if (allergenElement && allergenElement.style.display === 'block') {
+            allergenElement.style.display = 'none';
+          }
+        } else if (id === allergenId) {
+          const suggestionElement = document.getElementById(suggestionId);
+          if (suggestionElement && suggestionElement.style.display === 'block') {
+            suggestionElement.style.display = 'none';
+          }
+        }
+        
+        // Toggle l'élément cliqué
         element.style.display = isVisible ? 'none' : 'block';
         
         // Add animation class
