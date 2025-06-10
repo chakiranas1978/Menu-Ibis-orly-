@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Midi - Ibis Coeur d'Orly</title>
+  <title>Restaurants Ibis Coeur d'Orly</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --primary-red: #b31317;
@@ -17,11 +18,11 @@
       --bg-tertiary: #2a2a2a;
       --text-primary: #ffffff;
       --text-secondary: #e0e0e0;
-      --text-accent: #ff6b6b;
+      --text-muted: #a0a0a0;
       --border-color: #333333;
-      --shadow-color: rgba(179, 19, 23, 0.3);
-      --gradient-primary: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
-      --gradient-secondary: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      --shadow-color: rgba(0, 0, 0, 0.3);
+      --accent-green: #4caf50;
+      --accent-orange: #ff9800;
     }
 
     * {
@@ -30,55 +31,26 @@
       box-sizing: border-box;
     }
 
-    body { 
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg-primary);
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
       color: var(--text-primary);
+      min-height: 100vh;
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    /* Loading Animation */
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease;
-    }
-
-    .loading-spinner {
-      width: 50px;
-      height: 50px;
-      border: 3px solid var(--border-color);
-      border-top: 3px solid var(--primary-red);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Header Premium */
-    header { 
-      background: var(--gradient-primary);
-      color: var(--text-primary);
-      text-align: center; 
-      padding: 24px 20px;
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      box-shadow: 0 4px 20px var(--shadow-color);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 20px var(--shadow-color);
     }
 
-    header::before {
+    .header::before {
       content: '';
       position: absolute;
       top: 0;
@@ -94,387 +66,488 @@
       100% { left: 100%; }
     }
 
-    .header-title {
-      font-size: 1.8em;
+    .header h1 {
+      font-size: 1.8rem;
       font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 5px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
     .header-subtitle {
-      font-size: 1em;
-      font-weight: 400;
+      font-size: 0.9rem;
       opacity: 0.9;
-      letter-spacing: 0.5px;
+      font-weight: 400;
     }
 
-    /* Container Premium */
-    .container { 
+    /* Navigation */
+    .restaurant-nav {
+      background: var(--bg-secondary);
+      padding: 15px;
+      border-bottom: 2px solid var(--border-color);
+      box-shadow: 0 2px 10px var(--shadow-color);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
       max-width: 600px;
       margin: 0 auto;
-      background: var(--gradient-secondary);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      margin-top: 20px;
-      margin-bottom: 20px;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
     }
 
-    .container-inner {
-      padding: 30px;
-    }
-
-    /* Date Section Premium */
-    .date-section {
-      background: var(--bg-tertiary);
-      padding: 20px;
-      margin: -30px -30px 30px -30px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .date-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    .date-icon {
-      background: var(--gradient-primary);
-      color: white;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 1.2em;
-      font-weight: bold;
-      box-shadow: 0 4px 12px var(--shadow-color);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    .date-text {
-      font-size: 1.3em;
-      font-weight: 600;
-      color: var(--text-accent);
-    }
-
-    .current-date {
-      font-size: 0.9em;
-      color: var(--text-secondary);
-      margin-top: 5px;
-    }
-
-    select { 
-      width: 100%;
-      padding: 16px 20px;
-      font-size: 1.1em;
-      border-radius: 12px;
+    .nav-btn {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      color: var(--text-primary);
       border: 2px solid var(--border-color);
-      background: var(--bg-tertiary);
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-      background-position: right 16px center;
-      background-repeat: no-repeat;
-      background-size: 20px;
-    }
-
-    select:hover {
-      border-color: var(--primary-red);
-      box-shadow: 0 0 0 3px var(--shadow-color);
-    }
-
-    select:focus {
-      outline: none;
-      border-color: var(--primary-red);
-      box-shadow: 0 0 0 3px var(--shadow-color);
-    }
-
-    /* Message du jour Premium */
-    .message-jour { 
-      background: linear-gradient(135deg, var(--bg-tertiary) 0%, #2d1a1a 100%);
-      color: var(--text-accent);
-      border-left: 4px solid var(--primary-red);
+      padding: 12px 20px;
       border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 30px;
-      font-size: 1.1em;
-      font-weight: 500;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 16px rgba(179, 19, 23, 0.2);
-    }
-
-    .message-jour::before {
-      content: '💡';
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 1.5em;
-      opacity: 0.7;
-    }
-
-    /* Sections Premium */
-    .section { 
-      margin-bottom: 35px;
-      animation: fadeInUp 0.6s ease forwards;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .section:nth-child(2) { animation-delay: 0.1s; }
-    .section:nth-child(3) { animation-delay: 0.2s; }
-    .section:nth-child(4) { animation-delay: 0.3s; }
-
-    .section h2 { 
-      font-size: 1.4em;
-      margin-bottom: 20px;
-      color: var(--text-accent);
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-      position: relative;
-    }
-
-    .section h2::after {
-      content: '';
-      flex: 1;
-      height: 2px;
-      background: linear-gradient(90deg, var(--primary-red), transparent);
-      margin-left: 15px;
-    }
-
-    /* Plats Premium */
-    .plat-item {
-      background: var(--bg-tertiary);
-      margin-bottom: 20px;
-      border-radius: 16px;
-      padding: 24px;
-      border: 1px solid var(--border-color);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
       cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .plat-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--gradient-primary);
-      transition: width 0.3s ease;
-    }
-
-    .plat-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(179, 19, 23, 0.3);
+    .nav-btn:hover {
+      background: linear-gradient(135deg, var(--primary-red-dark) 0%, var(--primary-red) 100%);
       border-color: var(--primary-red);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(179, 19, 23, 0.3);
     }
 
-    .plat-item:hover::before {
-      width: 8px;
+    .nav-btn.active {
+      background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
+      border-color: var(--primary-red-light);
+      color: white;
+      box-shadow: 0 4px 15px rgba(179, 19, 23, 0.4);
     }
 
-    .plat-nom { 
-      font-weight: 600;
-      color: var(--text-primary);
-      font-size: 1.2em;
-      margin-bottom: 15px;
-      line-height: 1.4;
-    }
-
-    .plat-buttons { 
-      display: flex;
-      gap: 12px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
-
-    .suggestion-btn, .allergen-btn { 
-      background: var(--gradient-primary);
-      color: var(--text-primary);
-      border: none;
-      border-radius: 8px;
-      padding: 10px 18px;
-      font-size: 0.95em;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .suggestion-btn::before, .allergen-btn::before {
+    .nav-btn::before {
       content: '';
       position: absolute;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s;
     }
 
-    .suggestion-btn:hover::before, .allergen-btn:hover::before {
+    .nav-btn:hover::before {
       left: 100%;
     }
 
-    .suggestion-btn:hover, .allergen-btn:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px var(--shadow-color);
-    }
-
-    .allergen-btn {
-      background: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
-    }
-
-    /* Details Premium */
-    .details, .allergen-info { 
-      margin-top: 15px;
-      padding: 20px;
-      background: linear-gradient(135deg, var(--bg-secondary) 0%, #1f1f1f 100%);
-      border-radius: 12px;
-      border-left: 4px solid var(--primary-red);
-      font-size: 0.95em;
-      color: var(--text-secondary);
+    /* Sub Navigation */
+    .sub-nav {
+      background: var(--bg-tertiary);
+      padding: 10px 15px;
+      border-bottom: 1px solid var(--border-color);
       display: none;
+    }
+
+    .sub-nav.show {
+      display: block;
       animation: slideDown 0.3s ease;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
     }
 
     @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .details strong, .allergen-info strong {
-      color: var(--text-accent);
+    .sub-nav-buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .sub-nav-btn {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .sub-nav-btn:hover {
+      background: var(--primary-red);
+      color: white;
+      border-color: var(--primary-red);
+    }
+
+    .sub-nav-btn.active {
+      background: var(--primary-red);
+      color: white;
+      border-color: var(--primary-red-light);
+    }
+
+    /* Content Areas */
+    .content-area {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .content-area.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Development Message */
+    .dev-message {
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--bg-secondary);
+      margin: 20px;
+      border-radius: 15px;
+      border: 2px solid var(--border-color);
+      box-shadow: 0 8px 25px var(--shadow-color);
+    }
+
+    .dev-message .icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+
+    .dev-message h2 {
+      color: var(--primary-red);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
       font-weight: 600;
+    }
+
+    .dev-message p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .dev-message .contact {
+      color: var(--primary-red);
+      font-weight: 500;
+      margin-top: 20px;
+    }
+
+    /* Container pour le menu existant */
+    .container {
+      max-width: 500px;
+      margin: 14px auto;
+      background: var(--bg-secondary);
+      border-radius: 14px;
+      box-shadow: 0 8px 25px var(--shadow-color);
+      padding: 14px;
+      border: 1px solid var(--border-color);
+      animation: slideUp 0.6s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Styles pour le menu existant (repris du code précédent) */
+    .date-selector {
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px var(--shadow-color);
+    }
+
+    .date-selector h3 {
+      color: var(--primary-red);
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    .current-date {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      font-size: 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: var(--primary-red);
+      box-shadow: 0 0 0 3px rgba(179, 19, 23, 0.1);
+    }
+
+    select option {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      padding: 10px;
+    }
+
+    .message-box {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      border-left: 4px solid var(--primary-red);
+      padding: 16px;
+      margin-bottom: 20px;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 4px 15px var(--shadow-color);
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .message-box p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .section {
+      margin-bottom: 24px;
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+      padding: 18px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px var(--shadow-color);
+      animation: fadeInUp 0.6s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section h2 {
+      color: var(--primary-red);
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .plat-item {
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 14px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px var(--shadow-color);
+    }
+
+    .plat-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--shadow-color);
+      border-color: var(--primary-red);
+    }
+
+    .plat-nom {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      text-transform: capitalize;
+    }
+
+    .plat-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .suggestion-btn, .allergen-btn {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .suggestion-btn {
+      background: linear-gradient(135deg, #6a1b9a 0%, #8e24aa 100%);
+      color: white;
+      box-shadow: 0 3px 10px rgba(106, 27, 154, 0.3);
+    }
+
+    .suggestion-btn:hover {
+      background: linear-gradient(135deg, #8e24aa 0%, #ab47bc 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(106, 27, 154, 0.4);
+    }
+
+    .allergen-btn {
+      background: linear-gradient(135deg, var(--accent-orange) 0%, #f57c00 100%);
+      color: white;
+      box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
+    }
+
+    .allergen-btn:hover {
+      background: linear-gradient(135deg, #f57c00 0%, #ef6c00 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
+    }
+
+    .details {
+      background: var(--bg-primary);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 12px;
+      border: 1px solid var(--border-color);
+      display: none;
+      box-shadow: inset 0 2px 8px var(--shadow-color);
+    }
+
+    .details h4 {
+      color: var(--primary-red);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .details p {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      line-height: 1.5;
     }
 
     .details a {
-      color: var(--primary-red-light);
+      color: var(--primary-red);
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.3s ease;
     }
 
     .details a:hover {
-      color: var(--text-accent);
-      text-decoration: underline;
-    }
-
-    /* Footer Premium */
-    .footer-signature { 
-      text-align: center;
-      font-size: 1em;
-      margin-top: 40px;
-      padding: 25px;
-      color: var(--text-secondary);
-      font-weight: 500;
-      background: var(--gradient-secondary);
-      border-radius: 16px;
-      border: 1px solid var(--border-color);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .footer-signature::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--gradient-primary);
-    }
-
-    .support-email {
-      color: var(--text-accent);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    .support-email:hover {
       color: var(--primary-red-light);
       text-decoration: underline;
     }
 
-    /* Weekend Message */
-    .weekend-message {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      color: #64b5f6;
-      border-left: 4px solid #2196f3;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 30px;
+    .allergen-info {
+      background: var(--bg-primary);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 12px;
+      border: 1px solid var(--accent-orange);
+      display: none;
+      box-shadow: inset 0 2px 8px var(--shadow-color);
+    }
+
+    .allergen-info h4 {
+      color: var(--accent-orange);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .allergen-info p {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
       text-align: center;
-      font-size: 1.1em;
-      font-weight: 500;
+      padding: 20px;
+      margin-top: 30px;
+      border-top: 2px solid var(--border-color);
+      box-shadow: 0 -4px 15px var(--shadow-color);
     }
 
-    /* Responsive Premium */
-    @media (max-width: 768px) {
-      .container { 
+    .footer p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+
+    .footer .support {
+      color: var(--primary-red);
+      font-weight: 600;
+    }
+
+    .footer .libre {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .container {
         margin: 10px;
-        border-radius: 16px;
+        padding: 12px;
       }
       
-      .container-inner {
-        padding: 20px;
+      .nav-buttons {
+        gap: 8px;
       }
       
-      .date-section {
-        margin: -20px -20px 20px -20px;
-        padding: 15px;
-      }
-      
-      .header-title {
-        font-size: 1.4em;
-      }
-      
-      .plat-buttons { 
-        flex-direction: column;
-      }
-      
-      .suggestion-btn, .allergen-btn {
-        width: 100%;
-        justify-content: center;
+      .nav-btn {
+        padding: 10px 16px;
+        font-size: 0.8rem;
       }
     }
 
-    /* Scroll animations */
+    /* Animations d'apparition */
     .fade-in {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
       transition: all 0.6s ease;
     }
 
@@ -485,69 +558,136 @@
   </style>
 </head>
 <body>
-  <!-- Loading Overlay -->
-  <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-spinner"></div>
+  <div class="header">
+    <h1>Restaurants Ibis Coeur d'Orly</h1>
+    <div class="header-subtitle">— Outil libre —</div>
   </div>
 
-  <header>
-    <div class="header-title">Menu Midi - Ibis Coeur d'Orly</div>
-    <div class="header-subtitle">— Outil libre —</div>
-  </header>
-  
-  <div class="container">
-    <div class="container-inner">
-      <div class="date-section">
-        <div class="date-header">
-          <div class="date-icon" id="dateIcon">📅</div>
-          <div>
-            <div class="date-text">Choisis un jour :</div>
-            <div class="current-date" id="currentDate"></div>
-          </div>
-        </div>
-        <select id="jourSelect"></select>
+  <div class="restaurant-nav">
+    <div class="nav-buttons">
+      <button class="nav-btn active" onclick="selectRestaurant('jolaine')">
+        🍽️ Jolaine (Buffet)
+      </button>
+      <button class="nav-btn" onclick="selectRestaurant('pia')">
+        🍷 Pia (À la carte)
+      </button>
+    </div>
+  </div>
+
+  <div class="sub-nav show" id="jolaine-sub-nav">
+    <div class="sub-nav-buttons">
+      <button class="sub-nav-btn active" onclick="selectService('jolaine-midi')">
+        ☀️ Midi
+      </button>
+      <button class="sub-nav-btn" onclick="selectService('jolaine-soir')">
+        🌙 Soir
+      </button>
+    </div>
+  </div>
+
+  <div class="sub-nav" id="pia-sub-nav">
+    <!-- Pas de sous-navigation pour Pia -->
+  </div>
+
+  <!-- Jolaine Midi (menu existant) -->
+  <div class="content-area active" id="jolaine-midi">
+    <div class="container">
+      <div class="date-selector">
+        <h3>📋 Choisis un jour :</h3>
+        <div class="current-date" id="current-date"></div>
+        <select id="day-selector">
+          <option value="lundi">Lundi</option>
+          <option value="mardi">Mardi</option>
+          <option value="mercredi">Mercredi</option>
+          <option value="jeudi">Jeudi</option>
+          <option value="vendredi">Vendredi</option>
+        </select>
       </div>
-      
-      <div id="weekendMessage" class="weekend-message" style="display: none;">
-        🌟 Bon weekend ! Le service reprend lundi avec de nouveaux menus délicieux ! 🌟
+
+      <div class="message-box" id="message-container">
+        <p id="daily-message"></p>
       </div>
-      
-      <div id="messageJour" class="message-jour"></div>
-      
-      <div class="section fade-in">
-        <h2>🥗 Salades du jour</h2>
-        <div id="salades"></div>
-      </div>
-      
-      <div class="section fade-in">
-        <h2>🍲 Plats chauds du jour</h2>
-        <div id="platsChauds"></div>
-      </div>
-      
-      <div class="section fade-in">
-        <h2>🍰 Desserts du jour</h2>
-        <div id="desserts"></div>
+
+      <div id="menu-content">
+        <!-- Le contenu du menu sera généré ici -->
       </div>
     </div>
   </div>
-  
-  <div class="footer-signature">
-    <div>📧 Support technique : <a href="mailto:chakir.anas1978@gmail.com" class="support-email">chakir.anas1978@gmail.com</a></div>
-    <div style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">Libre utilisation - Menu professionnel</div>
+
+  <!-- Jolaine Soir -->
+  <div class="content-area" id="jolaine-soir">
+    <div class="dev-message">
+      <div class="icon">🌙</div>
+      <h2>Jolaine Soir</h2>
+      <p>Le menu du soir est en cours de développement.</p>
+      <p>Cette section sera bientôt disponible avec tous les plats du buffet du soir.</p>
+      <div class="contact">Support : chakir.anas1978@gmail.com</div>
+    </div>
+  </div>
+
+  <!-- Pia Restaurant -->
+  <div class="content-area" id="pia">
+    <div class="dev-message">
+      <div class="icon">🍷</div>
+      <h2>Restaurant Pia</h2>
+      <p>Le menu à la carte est en cours de développement.</p>
+      <p>Cette section sera bientôt disponible avec la carte complète du restaurant.</p>
+      <div class="contact">Support : chakir.anas1978@gmail.com</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="support">📧 Support technique : chakir.anas1978@gmail.com</p>
+    <p class="libre">Libre utilisation - Menu professionnel</p>
   </div>
 
   <script>
-    // Loading animation
-    window.addEventListener('load', function() {
-      setTimeout(() => {
-        document.getElementById('loadingOverlay').style.opacity = '0';
-        setTimeout(() => {
-          document.getElementById('loadingOverlay').style.display = 'none';
-        }, 500);
-      }, 1000);
-    });
+    // Variables globales
+    let currentRestaurant = 'jolaine';
+    let currentService = 'jolaine-midi';
 
-    // Scroll animations
+    // Fonctions de navigation
+    function selectRestaurant(restaurant) {
+      currentRestaurant = restaurant;
+      
+      // Mettre à jour les boutons de navigation
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Masquer toutes les sous-navigations
+      document.querySelectorAll('.sub-nav').forEach(nav => nav.classList.remove('show'));
+      
+      // Masquer toutes les zones de contenu
+      document.querySelectorAll('.content-area').forEach(area => area.classList.remove('active'));
+      
+      if (restaurant === 'jolaine') {
+        document.getElementById('jolaine-sub-nav').classList.add('show');
+        selectService('jolaine-midi'); // Par défaut midi
+      } else if (restaurant === 'pia') {
+        document.getElementById('pia').classList.add('active');
+      }
+    }
+
+    function selectService(service) {
+      currentService = service;
+      
+      // Mettre à jour les boutons de sous-navigation
+      document.querySelectorAll('.sub-nav-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Masquer toutes les zones de contenu
+      document.querySelectorAll('.content-area').forEach(area => area.classList.remove('active'));
+      
+      // Afficher la zone de contenu correspondante
+      document.getElementById(service).classList.add('active');
+      
+      // Si c'est Jolaine Midi, initialiser le menu
+      if (service === 'jolaine-midi') {
+        initializeMenu();
+      }
+    }
+
+    // Fonctions du menu (reprises du code précédent)
     function observeElements() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -562,7 +702,6 @@
       });
     }
 
-    // Date functions
     function getCurrentDate() {
       const now = new Date();
       const options = { 
@@ -582,10 +721,9 @@
 
     function isWeekend() {
       const day = new Date().getDay();
-      return day === 0 || day === 6; // dimanche ou samedi
+      return day === 0 || day === 6;
     }
 
-    // Utility functions
     function capitalizeWords(str) {
       return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     }
@@ -635,7 +773,7 @@
       }
     }
 
-    // Data
+    // Data du menu (reprise du code précédent)
     const jours = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"];
     
     const messages = {
@@ -646,454 +784,139 @@
       "vendredi": "🎉 Finissez la semaine en équipe et bonne humeur !"
     };
 
-    const salades = {
-      "lundi": ["Concombre A La Creme Et Menthe", "Salade Cow Boy", "Salade De Pates Pesto"],
-      "mardi": ["Salade Piemontaise", "Coleslaw", "Betterave Rouge"],
-      "mercredi": ["Taboule De Legumes", "Tomate Mozzarella", "Cow Bowl"],
-      "jeudi": ["Riz Au Thon", "Concombre Creme", "Salade Piemontaise"],
-      "vendredi": ["Alaska", "Betterave Rouge", "Taboule De Legumes"]
-    };
-
-    const platsChauds = {
-      "lundi": ["Souris DAgneau", "Pave De Merlu", "Riz", "Tajine De Legume", "Haricots Verts", "Spanakopita Epinard"],
-      "mardi": ["Dinde", "Maquereau", "Puree", "Legumes Farcis", "Carotte", "Poelee Meridionale"],
-      "mercredi": ["Poulet", "Cabillaud", "Gnocchi", "Gratin De Legumes", "Poelee Legumes Du Soleil", "Riz Camarguais"],
-      "jeudi": ["Emince De Boeuf", "Saumon", "Pates", "Poelee Espagnole", "Courgettes Sautees", "Brandade De Morue"],
-      "vendredi": ["Couscous", "Fish And Chips", "Semoule", "Moussaka Vege", "Brocolis", "Legumes Couscous"]
-    };
-
-    const desserts = {
-      "lundi": ["Salade De Fruits", "Tarte Chocolat", "Tarte Pomme", "Verrine Panacotta Framboise"],
-      "mardi": ["Salade De Fruits", "Tarte Citron", "Croisillon Abricot", "Verrine Chocolat"],
-      "mercredi": ["Tarte Pomme", "Tarte Flan", "Salade De Fruits", "Verrine Creme Vanille"],
-      "jeudi": ["Salade De Fruits", "Gateau Basque", "Tarte Coco", "Verrine Panacotta Fruit Passion"],
-      "vendredi": ["Salade De Fruits", "Nid DAbeille", "Tarte Aux Poires", "Verrine Mini Tiramisu"]
-    };
-
-    // SUGGESTIONS AVEC VRAIS LIENS VIDÉOS
-    const suggestions = {
-      // SALADES
-      "Concombre A La Creme Et Menthe": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Éplucher et couper le concombre en rondelles fines. Mélanger avec crème fraîche épaisse, menthe fraîche hachée finement et ciboulette. Assaisonner avec sel, poivre blanc et un trait de citron vert. Servir bien frais.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE",
-        rational: "Mode vapeur 100°C pendant 2 minutes pour blanchir légèrement si souhaité. Refroidissement rapide recommandé."
+    const menus = {
+      "lundi": {
+        "salades": ["Salade Piemontaise", "Coleslaw", "Betterave Rouge"],
+        "plats_chauds": ["Dinde", "Maquereau", "Puree", "Legumes Farcis", "Carotte", "Poelee Meridionale"],
+        "desserts": ["Salade De Fruits", "Tarte Citron", "Croisillon Abricot", "Verrine Chocolat"]
       },
-      "Salade Cow Boy": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Mélanger maïs en grains, haricots rouges égouttés et rincés, concombre en petits dés, poivrons colorés, mozzarella en cubes. Vinaigrette : huile d'olive extra vierge, vinaigre balsamique, moutarde de Dijon, herbes de Provence.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Pas de cuisson nécessaire. Servir à température ambiante pour révéler tous les arômes."
+      "mardi": {
+        "salades": ["Salade Piemontaise", "Coleslaw", "Betterave Rouge"],
+        "plats_chauds": ["Dinde", "Maquereau", "Puree", "Legumes Farcis", "Carotte", "Poelee Meridionale"],
+        "desserts": ["Salade De Fruits", "Tarte Citron", "Croisillon Abricot", "Verrine Chocolat"]
       },
-      "Salade De Pates Pesto": {
-        quantite: "800g pâtes pour 10 personnes",
-        preparation: "Cuire les pâtes courtes al dente. Mélanger avec pesto maison ou de qualité, tomates cerises coupées en deux, mozzarella di bufala, pignons de pin grillés. Finir avec basilic frais et parmesan râpé.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Cuisson pâtes : mode vapeur 100°C, 12-15 minutes selon le type. Contrôler la texture régulièrement."
+      "mercredi": {
+        "salades": ["Salade Grecque", "Taboulé", "Carottes Râpées"],
+        "plats_chauds": ["Bœuf Bourguignon", "Saumon Grillé", "Riz Pilaf", "Ratatouille", "Haricots Verts", "Gratin Dauphinois"],
+        "desserts": ["Mousse Chocolat", "Tarte Pomme", "Yaourt Fruits", "Tiramisu"]
       },
-      "Salade Piemontaise": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Cuire pommes de terre en robe des champs, laisser refroidir et couper en dés. Ajouter jambon blanc en dés, œufs durs, cornichons, mayonnaise maison. Assaisonner et parsemer de persil frais.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Cuisson pommes de terre : mode vapeur 100°C, 25-30 minutes selon la taille. Vérifier à la pointe de couteau."
+      "jeudi": {
+        "salades": ["Salade César", "Lentilles", "Concombre Menthe"],
+        "plats_chauds": ["Poulet Rôti", "Cabillaud", "Pommes Vapeur", "Courgettes Farcies", "Épinards", "Tian Légumes"],
+        "desserts": ["Crème Brûlée", "Tarte Fraise", "Compote Pomme", "Panna Cotta"]
       },
-      "Coleslaw": {
-        quantite: "800g pour 10 personnes",
-        preparation: "Râper finement chou blanc et carotte. Préparer sauce : mayonnaise, vinaigre de cidre, sucre, graines de moutarde, sel, poivre. Mélanger et laisser mariner 30 minutes minimum.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE",
-        rational: "Pas de cuisson. Utiliser mandoline pour une coupe uniforme. Servir bien frais."
-      },
-      "Betterave Rouge": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Cuire betteraves entières avec la peau. Éplucher à chaud, couper en rondelles. Assaisonner avec vinaigrette à l'échalote, huile de noix, vinaigre balsamique, herbes fraîches.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Cuisson : mode vapeur 100°C, 45-60 minutes selon la taille. Vérifier la tendresse à la fourchette."
-      },
-      "Taboule De Legumes": {
-        quantite: "800g pour 10 personnes",
-        preparation: "Hydrater la semoule fine avec bouillon chaud. Ajouter tomates en dés, concombre, poivrons, oignon rouge, menthe et persil hachés. Vinaigrette citron-huile d'olive.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Pas de cuisson. Laisser reposer 2h au frais pour que les saveurs se mélangent."
-      },
-      "Tomate Mozzarella": {
-        quantite: "1.5 kg tomates + 800g mozzarella pour 10 personnes",
-        preparation: "Trancher tomates et mozzarella di bufala. Alterner en rosace, parsemer de basilic frais. Arroser d'huile d'olive extra vierge, vinaigre balsamique, fleur de sel.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE",
-        rational: "Pas de cuisson. Sortir la mozzarella 30 minutes avant service pour qu'elle soit à température ambiante."
-      },
-      "Cow Bowl": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Base de riz, ajouter maïs, haricots noirs, avocat, tomates cerises, cheddar râpé, coriandre fraîche. Sauce ranch ou guacamole maison.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Cuisson riz : mode vapeur 100°C, 18 minutes. Assembler au dernier moment pour éviter l'oxydation de l'avocat."
-      },
-      "Riz Au Thon": {
-        quantite: "800g riz + 400g thon pour 10 personnes",
-        preparation: "Cuire riz pilaf. Mélanger avec thon émietté, œufs durs, tomates, olives noires, câpres. Vinaigrette à l'huile d'olive et citron.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Cuisson riz : mode vapeur 100°C, 18 minutes. Laisser refroidir avant d'ajouter les autres ingrédients."
-      },
-      "Concombre Creme": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Éplucher concombres, les couper en rondelles fines. Saler et laisser dégorger 30 minutes. Égoutter et mélanger avec crème fraîche, aneth, ciboulette.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE",
-        rational: "Pas de cuisson. Le dégorgeage permet d'éliminer l'excès d'eau et de concentrer les saveurs."
-      },
-      "Alaska": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Mélanger surimi effiloché, avocat en dés, concombre, mayonnaise japonaise, graines de sésame, algues nori. Assaisonner avec sauce soja et wasabi.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Pas de cuisson. Préparer au dernier moment pour éviter l'oxydation de l'avocat."
-      },
-
-      // PLATS CHAUDS
-      "Souris DAgneau": {
-        quantite: "200g par personne",
-        preparation: "Saisir les souris dans une cocotte avec huile d'olive. Ajouter oignons émincés, carottes en rondelles, ail écrasé, thym frais, romarin. Déglacer au vin rouge, mouiller avec bouillon d'agneau. Cuire à feu doux 2h30.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA",
-        rational: "Rational AG : Mode combiné 160°C, humidité 60%, 2h30. Sonde à cœur 75°C pour une viande fondante."
-      },
-      "Pave De Merlu": {
-        quantite: "150g par personne",
-        preparation: "Assaisonner les pavés avec fleur de sel et poivre du moulin. Cuire à la plancha ou au four avec un filet d'huile d'olive, zeste de citron, herbes fraîches (aneth, persil). Cuisson rapide pour préserver la chair moelleuse.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Mode vapeur 85°C, 8-10 minutes. Sonde à cœur 60°C pour une cuisson parfaite."
-      },
-      "Riz": {
-        quantite: "80g par personne (poids sec)",
-        preparation: "Rincer le riz jusqu'à eau claire. Cuisson pilaf : faire revenir dans un peu d'huile, ajouter le bouillon chaud (1,5 fois le volume de riz). Couvrir et cuire sans remuer.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Mode vapeur 100°C, 18 minutes. Repos 5 minutes avant de servir."
-      },
-      "Tajine De Legume": {
-        quantite: "200g légumes par personne",
-        preparation: "Couper les légumes en gros morceaux. Faire revenir oignons, ajouter épices (cumin, coriandre, cannelle), puis légumes et bouillon. Cuire doucement avec fruits secs et herbes fraîches.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Rational AG : Mode combiné 180°C, humidité 80%, 45 minutes. Vérifier la tendresse des légumes."
-      },
-      "Haricots Verts": {
-        quantite: "150g par personne",
-        preparation: "Équeutez les haricots verts. Cuire à l'eau bouillante salée ou à la vapeur jusqu'à ce qu'ils soient tendres mais encore croquants. Assaisonner avec beurre, ail et persil.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Mode vapeur 100°C, 8-12 minutes selon la grosseur. Refroidissement rapide pour garder la couleur."
-      },
-      "Spanakopita Epinard": {
-        quantite: "180g par personne",
-        preparation: "Faire revenir épinards avec oignons, ail, aneth. Mélanger avec feta émiettée, œufs battus. Disposer entre feuilles de pâte filo beurrées. Cuire jusqu'à doré.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Rational AG : Mode chaleur sèche 180°C, 25-30 minutes. Surveiller la coloration de la pâte."
-      },
-      "Dinde": {
-        quantite: "150g par personne",
-        preparation: "Escalopes de dinde marinées aux herbes de Provence. Cuire à la plancha ou au four avec un peu d'huile d'olive. Servir avec jus de citron et thym frais.",
-        video: "https://www.youtube.com/watch?v=Q8E-lZirQf4",
-        rational: "Rational AG : Mode combiné 170°C, humidité 40%, 12-15 minutes. Sonde à cœur 70°C."
-      },
-      "Maquereau": {
-        quantite: "150g par personne",
-        preparation: "Filets de maquereau grillés avec moutarde à l'ancienne, herbes fraîches. Cuisson rapide pour garder la chair moelleuse. Servir avec citron confit.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Mode grill 200°C, 6-8 minutes. Surveiller pour éviter le dessèchement."
-      },
-      "Puree": {
-        quantite: "200g pommes de terre par personne",
-        preparation: "Cuire pommes de terre à chair farineuse. Passer au moulin à légumes, incorporer beurre et lait chaud progressivement. Assaisonner sel, poivre, muscade.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Cuisson : mode vapeur 100°C, 25-30 minutes. Maintien au chaud possible à 65°C."
-      },
-      "Legumes Farcis": {
-        quantite: "1 légume par personne",
-        preparation: "Évider tomates, courgettes ou poivrons. Farcir avec mélange de viande hachée, riz, oignons, herbes. Cuire au four avec un peu de bouillon.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Rational AG : Mode combiné 180°C, humidité 60%, 35-40 minutes selon la taille."
-      },
-      "Carotte": {
-        quantite: "150g par personne",
-        preparation: "Carottes tournées ou en bâtonnets. Cuire à la vapeur ou glacées au beurre avec un peu de sucre et thym. Finir avec persil frais.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Mode vapeur 100°C, 12-15 minutes selon la coupe. Glaçage possible à la plancha."
-      },
-      "Poelee Meridionale": {
-        quantite: "180g par personne",
-        preparation: "Poêlée d'aubergines, courgettes, poivrons, tomates, oignons. Cuire séparément puis mélanger avec ail, herbes de Provence, huile d'olive.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Rational AG : Mode combiné 190°C, humidité 30%, 20-25 minutes. Remuer à mi-cuisson."
-      },
-      "Poulet": {
-        quantite: "150g par personne",
-        preparation: "Suprêmes de poulet marinés aux herbes. Cuire à la plancha ou au four. Servir avec jus de cuisson déglacé au vin blanc et estragon.",
-        video: "https://www.youtube.com/watch?v=Q8E-lZirQf4",
-        rational: "Rational AG : Mode combiné 175°C, humidité 50%, 15-18 minutes. Sonde à cœur 72°C."
-      },
-      "Cabillaud": {
-        quantite: "150g par personne",
-        preparation: "Filets de cabillaud pochés ou cuits à la vapeur. Servir avec beurre blanc aux échalotes ou sauce hollandaise légère. Garnir de ciboulette.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Mode vapeur 80°C, 10-12 minutes. Sonde à cœur 58°C pour une chair nacrée."
-      },
-      "Gnocchi": {
-        quantite: "120g par personne",
-        preparation: "Gnocchis de pommes de terre maison ou de qualité. Cuire à l'eau bouillante salée jusqu'à ce qu'ils remontent. Servir avec sauce tomate basilic ou beurre sauge.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Cuisson à l'eau bouillante 3-4 minutes. Finition possible à la plancha avec beurre."
-      },
-      "Gratin De Legumes": {
-        quantite: "200g par personne",
-        preparation: "Légumes de saison en lamelles, disposés en couches. Recouvrir de crème, fromage râpé, herbes. Cuire jusqu'à gratinage doré.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Rational AG : Mode combiné 180°C, humidité 40%, 35-40 minutes. Finir en mode grill pour le gratinage."
-      },
-      "Poelee Legumes Du Soleil": {
-        quantite: "180g par personne",
-        preparation: "Mélange d'aubergines, courgettes, tomates, poivrons, oignons rouges. Cuire avec huile d'olive, ail, basilic, thym. Finir avec olives noires.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Rational AG : Mode combiné 190°C, humidité 30%, 22-25 minutes. Remuer régulièrement."
-      },
-      "Riz Camarguais": {
-        quantite: "80g par personne (poids sec)",
-        preparation: "Riz long grain de Camargue. Cuisson pilaf avec safran, bouillon de volaille. Ajouter petits légumes en brunoise en fin de cuisson.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Mode vapeur 100°C, 20 minutes. Le safran donne la couleur et le parfum caractéristiques."
-      },
-      "Emince De Boeuf": {
-        quantite: "150g par personne",
-        preparation: "Lamelles de bœuf saisies rapidement à feu vif. Déglacé avec échalotes, vin rouge, crème. Assaisonner avec poivre vert et estragon.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA",
-        rational: "Cuisson rapide à la plancha 200°C, 3-4 minutes. Éviter la surcuisson pour garder la tendreté."
-      },
-      "Saumon": {
-        quantite: "150g par personne",
-        preparation: "Pavés de saumon grillés ou pochés. Servir avec sauce hollandaise, beurre blanc ou simplement citron et aneth frais. Cuisson rosée recommandée.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Mode vapeur 75°C, 12-15 minutes. Sonde à cœur 52°C pour une cuisson rosée."
-      },
-      "Pates": {
-        quantite: "100g par personne (poids sec)",
-        preparation: "Pâtes fraîches ou sèches de qualité. Cuire al dente dans eau bouillante salée. Servir avec sauce tomate, carbonara, ou simplement huile d'olive et parmesan.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Cuisson selon type de pâtes. Réserver eau de cuisson pour lier les sauces."
-      },
-      "Poelee Espagnole": {
-        quantite: "180g par personne",
-        preparation: "Poêlée de poivrons rouges et verts, oignons, tomates, chorizo. Assaisonner avec paprika, ail, persil. Cuire jusqu'à tendreté des légumes.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Rational AG : Mode combiné 185°C, humidité 35%, 20-25 minutes. Le chorizo apporte le gras de cuisson."
-      },
-      "Courgettes Sautees": {
-        quantite: "150g par personne",
-        preparation: "Courgettes en rondelles ou dés, sautées à l'huile d'olive avec ail et herbes de Provence. Cuisson rapide pour garder le croquant.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Cuisson rapide à la plancha 180°C, 5-7 minutes. Saler en fin de cuisson pour éviter qu'elles rendent l'eau."
-      },
-      "Brandade De Morue": {
-        quantite: "120g par personne",
-        preparation: "Morue dessalée pochée, émincée avec pommes de terre, huile d'olive, ail, lait. Monter comme une purée onctueuse. Gratiner au four.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Pochage 80°C, puis gratinage 200°C, 10 minutes. Texture crémeuse recherchée."
-      },
-      "Couscous": {
-        quantite: "80g semoule par personne",
-        preparation: "Semoule de couscous hydratée au bouillon épicé. Servir avec légumes mijotés (carottes, navets, courgettes, pois chiches) et viande d'agneau ou merguez.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Hydratation semoule : bouillon chaud, repos 10 minutes, égrainer à la fourchette."
-      },
-      "Fish And Chips": {
-        quantite: "150g poisson + 200g pommes de terre par personne",
-        preparation: "Filets de poisson blanc en pâte à bière, frits avec pommes de terre en grosses frites. Servir avec sauce tartare et petits pois à la menthe.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Friture 180°C. Poisson 4-5 minutes, frites 6-8 minutes. Égoutter sur papier absorbant."
-      },
-      "Semoule": {
-        quantite: "80g par personne (poids sec)",
-        preparation: "Semoule fine ou moyenne, hydratée avec bouillon chaud épicé. Égrainer régulièrement. Servir en accompagnement de tajines ou ragoûts.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Hydratation progressive avec bouillon à 80°C. Repos et égrainage toutes les 5 minutes."
-      },
-      "Moussaka Vege": {
-        quantite: "200g par personne",
-        preparation: "Aubergines grillées en couches alternées avec mélange de légumes (tomates, oignons, herbes), béchamel végétale et fromage. Gratiner au four.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Rational AG : Mode combiné 180°C, humidité 40%, 40-45 minutes. Finir en mode grill."
-      },
-      "Brocolis": {
-        quantite: "150g par personne",
-        preparation: "Bouquets de brocolis cuits à la vapeur jusqu'à tendreté. Servir avec beurre à l'ail, amandes effilées grillées ou sauce hollandaise légère.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
-        rational: "Rational AG : Mode vapeur 100°C, 8-10 minutes. Refroidissement rapide pour garder la couleur verte."
-      },
-      "Legumes Couscous": {
-        quantite: "200g par personne",
-        preparation: "Mélange traditionnel : carottes, navets, courgettes, pois chiches, oignons. Cuire dans bouillon épicé (ras el hanout, harissa). Servir avec semoule.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
-        rational: "Rational AG : Mode combiné 180°C, humidité 70%, 35-40 minutes. Cuisson douce pour préserver les légumes."
-      },
-
-      // DESSERTS
-      "Salade De Fruits": {
-        quantite: "150g par personne",
-        preparation: "Mélange de fruits de saison coupés en morceaux. Arroser de jus de citron et sirop léger à la menthe. Laisser macérer au frais 2 heures minimum.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Pas de cuisson. Préparer au dernier moment pour éviter l'oxydation. Servir bien frais."
-      },
-      "Tarte Chocolat": {
-        quantite: "1 part de 120g par personne",
-        preparation: "Pâte sablée, ganache chocolat noir 70%, crème fouettée. Tempérer le chocolat, incorporer crème chaude progressivement. Laisser prendre au frais.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Cuisson pâte : 180°C, 15 minutes à blanc. Ganache à 35°C pour le montage."
-      },
-      "Tarte Pomme": {
-        quantite: "1 part de 120g par personne",
-        preparation: "Pâte brisée, compotée de pommes, lamelles de pommes disposées en rosace. Cuire jusqu'à coloration dorée. Glacer avec gelée d'abricot.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Rational AG : Mode combiné 180°C, humidité 30%, 35-40 minutes. Surveiller la coloration."
-      },
-      "Verrine Panacotta Framboise": {
-        quantite: "1 verrine de 100ml par personne",
-        preparation: "Panacotta vanille avec gélatine, coulis de framboises fraîches, framboises entières pour décor. Laisser prendre au frais 4 heures minimum.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Pas de cuisson. Gélatine à 60°C, incorporation délicate dans la crème tiède."
-      },
-      "Tarte Citron": {
-        quantite: "1 part de 120g par personne",
-        preparation: "Pâte sablée, curd de citron (œufs, sucre, beurre, jus et zeste de citron), meringue italienne. Cuire la pâte, garnir, flamber la meringue.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Cuisson curd : 80°C en remuant constamment. Meringue au chalumeau ou four 200°C, 2 minutes."
-      },
-      "Croisillon Abricot": {
-        quantite: "1 part de 100g par personne",
-        preparation: "Pâte feuilletée en croisillons, compotée d'abricots, abricots frais. Cuire jusqu'à doré, glacer avec nappage neutre. Servir tiède ou froid.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Rational AG : Mode chaleur sèche 200°C, 20-25 minutes. Surveiller le feuilletage."
-      },
-      "Verrine Chocolat": {
-        quantite: "1 verrine de 100ml par personne",
-        preparation: "Mousse chocolat noir, biscuit sablé émietté, chantilly vanille. Monter en couches dans des verrines. Décorer avec copeaux de chocolat.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Mousse : tempérer chocolat à 35°C, incorporer blancs montés délicatement."
-      },
-      "Tarte Flan": {
-        quantite: "1 part de 120g par personne",
-        preparation: "Pâte brisée, appareil à flan (lait, œufs, sucre, vanille, farine). Cuire jusqu'à prise et coloration dorée. Laisser refroidir avant démoulage.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Rational AG : Mode combiné 170°C, humidité 40%, 35-40 minutes. Vérifier la prise au centre."
-      },
-      "Verrine Creme Vanille": {
-        quantite: "1 verrine de 100ml par personne",
-        preparation: "Crème pâtissière vanille, biscuit cuillère, fruits rouges. Monter en alternant les couches. Décorer avec menthe fraîche.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Crème pâtissière : cuisson 85°C en remuant. Filmer au contact pour éviter la peau."
-      },
-      "Gateau Basque": {
-        quantite: "1 part de 120g par personne",
-        preparation: "Pâte sablée basque, crème pâtissière vanille ou confiture de cerises noires. Dorer à l'œuf, quadriller au couteau. Cuire jusqu'à doré.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Rational AG : Mode chaleur sèche 180°C, 30-35 minutes. Surveiller la coloration."
-      },
-      "Tarte Coco": {
-        quantite: "1 part de 120g par personne",
-        preparation: "Pâte sablée, appareil coco (œufs, sucre, crème, noix de coco râpée), noix de coco en copeaux pour décor. Cuire jusqu'à prise.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Rational AG : Mode combiné 175°C, humidité 35%, 30-35 minutes. La coco doit être dorée."
-      },
-      "Verrine Panacotta Fruit Passion": {
-        quantite: "1 verrine de 100ml par personne",
-        preparation: "Panacotta vanille, coulis de fruit de la passion, graines de passion pour le croquant. Laisser prendre au frais, décorer avant service.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Pas de cuisson. Filtrer le coulis pour enlever les graines si souhaité, ou les garder pour la texture."
-      },
-      "Nid DAbeille": {
-        quantite: "1 part de 100g par personne",
-        preparation: "Pâte feuilletée, crème pâtissière, pralin, amandes effilées caramélisées. Monter en forme de nid, décorer avec amandes dorées.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Cuisson feuilletage : 200°C, 15-20 minutes. Caraméliser amandes à 160°C."
-      },
-      "Tarte Aux Poires": {
-        quantite: "1 part de 120g par personne",
-        preparation: "Pâte sablée, crème d'amande, poires pochées au vin rouge ou sirop vanille. Disposer en éventail, cuire jusqu'à doré.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Pochage poires : 80°C, 15-20 minutes. Cuisson tarte : 180°C, 35-40 minutes."
-      },
-      "Verrine Mini Tiramisu": {
-        quantite: "1 verrine de 100ml par personne",
-        preparation: "Biscuits à la cuillère imbibés de café, mascarpone sucré, cacao en poudre. Monter en couches, laisser reposer 4 heures au frais.",
-        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
-        rational: "Pas de cuisson. Café refroidi pour imbiber, mascarpone à température ambiante pour le montage."
+      "vendredi": {
+        "salades": ["Salade Niçoise", "Quinoa", "Tomates Mozzarella"],
+        "plats_chauds": ["Poisson Pané", "Escalope Porc", "Frites", "Petits Pois", "Brocolis", "Gratin Courgettes"],
+        "desserts": ["Fondant Chocolat", "Tarte Citron", "Salade Fruits", "Île Flottante"]
       }
     };
 
-    // ALLERGÈNES COMPLETS
+    // Suggestions et allergènes (données complètes du code précédent)
+    const suggestions = {
+      "Salade Piemontaise": {
+        quantite: "1.2 kg pour 10 personnes",
+        preparation: "Cuire pommes de terre en robe des champs, laisser refroidir et couper en dés. Ajouter jambon blanc en dés, œufs durs, cornichons, mayonnaise maison. Assaisonner et parsemer de persil frais.",
+        rational: "Cuisson pommes de terre : mode vapeur 100°C, 25-30 minutes selon la taille. Vérifier à la pointe de couteau.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Coleslaw": {
+        quantite: "800g pour 10 personnes",
+        preparation: "Râper finement chou blanc et carotte. Préparer sauce : mayonnaise, vinaigre blanc, sucre, sel, poivre. Mélanger légumes et sauce, laisser mariner 30 minutes au frais.",
+        rational: "Pas de cuisson nécessaire. Préparation à froid. Conserver au réfrigérateur.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Betterave Rouge": {
+        quantite: "1 kg pour 10 personnes",
+        preparation: "Betteraves cuites, épluchées et coupées en dés. Vinaigrette : huile d'olive, vinaigre balsamique, moutarde, échalote hachée. Parsemer de ciboulette fraîche.",
+        rational: "Cuisson betteraves : mode vapeur 100°C, 45-60 minutes selon la taille.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Dinde": {
+        quantite: "1.5 kg pour 10 personnes",
+        preparation: "Escalopes de dinde marinées aux herbes de Provence. Cuisson à la plancha ou au four. Servir avec jus de cuisson déglacé au vin blanc.",
+        rational: "Rational AG : Mode combiné 180°C, humidité 60%, 15-20 minutes. Température à cœur 75°C.",
+        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+      },
+      "Maquereau": {
+        quantite: "1.2 kg pour 10 personnes",
+        preparation: "Filets de maquereau grillés, marinés au citron et herbes fraîches. Cuisson rapide pour préserver la texture.",
+        rational: "Rational AG : Mode combiné 160°C, humidité 80%, 8-12 minutes selon l'épaisseur.",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+      },
+      "Puree": {
+        quantite: "1.5 kg pour 10 personnes",
+        preparation: "Pommes de terre cuites vapeur, écrasées avec beurre, lait chaud et muscade. Passer au tamis pour une texture lisse.",
+        rational: "Rational AG : Cuisson vapeur 100°C, 25-30 minutes. Finition au mixeur plongeant.",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
+      },
+      "Legumes Farcis": {
+        quantite: "10 pièces",
+        preparation: "Tomates, courgettes ou poivrons évidés, farcis avec mélange de viande hachée, riz, oignons, herbes. Cuisson au four.",
+        rational: "Rational AG : Mode combiné 160°C, humidité 70%, 35-45 minutes.",
+        video: "https://www.youtube.com/watch?v=Q8E-lZirQf4"
+      },
+      "Carotte": {
+        quantite: "1 kg pour 10 personnes",
+        preparation: "Carottes tournées ou en bâtonnets, cuites vapeur, glacées au beurre et persil frais.",
+        rational: "Rational AG : Mode vapeur 100°C, 12-15 minutes. Finition sautées au beurre.",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+      },
+      "Poelee Meridionale": {
+        quantite: "1.2 kg pour 10 personnes",
+        preparation: "Mélange d'aubergines, courgettes, poivrons, tomates, oignons. Cuisson à l'huile d'olive avec herbes de Provence.",
+        rational: "Rational AG : Mode combiné 160°C, humidité 50%, 20-25 minutes.",
+        video: "https://www.youtube.com/watch?v=e1QY0jketiQ"
+      },
+      "Salade De Fruits": {
+        quantite: "1.5 kg pour 10 personnes",
+        preparation: "Mélange de fruits de saison : pommes, poires, oranges, kiwis, raisins. Sirop léger au citron et menthe fraîche.",
+        rational: "Pas de cuisson. Préparation à froid. Conserver au réfrigérateur.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Tarte Citron": {
+        quantite: "2 tartes pour 10 personnes",
+        preparation: "Pâte sablée, crème citron (œufs, sucre, citron, beurre), meringue italienne. Cuisson pâte à blanc puis garniture.",
+        rational: "Rational AG : Pâte 180°C, 15 min. Crème citron 80°C, 10 min. Meringue 120°C, 5 min.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Croisillon Abricot": {
+        quantite: "10 pièces",
+        preparation: "Pâte feuilletée en croisillons, garnie de crème pâtissière et abricots frais. Dorure à l'œuf avant cuisson.",
+        rational: "Rational AG : Mode combiné 180°C, humidité 40%, 18-22 minutes.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Verrine Chocolat": {
+        quantite: "10 verrines",
+        preparation: "Mousse chocolat noir, biscuit sablé émietté, chantilly vanille. Monter en couches dans des verrines. Décorer avec copeaux de chocolat.",
+        rational: "Mousse : tempérer chocolat à 35°C, incorporer blancs montés délicatement.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      }
+    };
+
     const allergenes = {
-      // SALADES
-      "Concombre A La Creme Et Menthe": ["Lait"],
-      "Salade Cow Boy": ["Lait"],
-      "Salade De Pates Pesto": ["Gluten", "Lait", "Fruits à coque (pignons)"],
-      "Salade Piemontaise": ["Œufs", "Moutarde"],
-      "Coleslaw": ["Œufs", "Moutarde"],
-      "Betterave Rouge": ["Fruits à coque (noix)"],
-      "Taboule De Legumes": ["Gluten"],
-      "Tomate Mozzarella": ["Lait"],
-      "Cow Bowl": ["Lait"],
-      "Riz Au Thon": ["Poisson", "Œufs"],
-      "Concombre Creme": ["Lait"],
-      "Alaska": ["Poisson", "Crustacés", "Soja"],
-
-      // PLATS CHAUDS
-      "Souris DAgneau": [],
-      "Pave De Merlu": ["Poisson"],
-      "Riz": [],
-      "Tajine De Legume": [],
-      "Haricots Verts": [],
-      "Spanakopita Epinard": ["Gluten", "Lait", "Œufs"],
-      "Dinde": [],
-      "Maquereau": ["Poisson"],
-      "Puree": ["Lait"],
-      "Legumes Farcis": ["Gluten"],
-      "Carotte": [],
-      "Poelee Meridionale": [],
-      "Poulet": [],
-      "Cabillaud": ["Poisson"],
-      "Gnocchi": ["Gluten", "Œufs"],
-      "Gratin De Legumes": ["Lait"],
-      "Poelee Legumes Du Soleil": [],
-      "Riz Camarguais": [],
-      "Emince De Boeuf": ["Lait"],
-      "Saumon": ["Poisson"],
-      "Pates": ["Gluten", "Œufs"],
-      "Poelee Espagnole": [],
-      "Courgettes Sautees": [],
-      "Brandade De Morue": ["Poisson", "Lait"],
-      "Couscous": ["Gluten"],
-      "Fish And Chips": ["Poisson", "Gluten"],
-      "Semoule": ["Gluten"],
-      "Moussaka Vege": ["Lait"],
-      "Brocolis": [],
-      "Legumes Couscous": [],
-
-      // DESSERTS
-      "Salade De Fruits": [],
-      "Tarte Chocolat": ["Gluten", "Lait", "Œufs"],
-      "Tarte Pomme": ["Gluten", "Lait", "Œufs"],
-      "Verrine Panacotta Framboise": ["Lait"],
-      "Tarte Citron": ["Gluten", "Lait", "Œufs"],
-      "Croisillon Abricot": ["Gluten", "Lait"],
-      "Verrine Chocolat": ["Lait", "Œufs"],
-      "Tarte Flan": ["Gluten", "Lait", "Œufs"],
-      "Verrine Creme Vanille": ["Lait", "Œufs"],
-      "Gateau Basque": ["Gluten", "Lait", "Œufs"],
-      "Tarte Coco": ["Gluten", "Lait", "Œufs"],
-      "Verrine Panacotta Fruit Passion": ["Lait"],
-      "Nid DAbeille": ["Gluten", "Lait", "Fruits à coque (amandes)"],
-      "Tarte Aux Poires": ["Gluten", "Lait", "Œufs", "Fruits à coque (amandes)"],
-      "Verrine Mini Tiramisu": ["Gluten", "Lait", "Œufs"]
+      "Salade Piemontaise": "Œufs, Moutarde",
+      "Coleslaw": "Œufs, Moutarde",
+      "Betterave Rouge": "Moutarde",
+      "Dinde": "Aucun allergène majeur",
+      "Maquereau": "Poisson",
+      "Puree": "Lait",
+      "Legumes Farcis": "Gluten, Œufs",
+      "Carotte": "Lait",
+      "Poelee Meridionale": "Aucun allergène majeur",
+      "Salade De Fruits": "Aucun allergène majeur",
+      "Tarte Citron": "Gluten, Œufs, Lait",
+      "Croisillon Abricot": "Gluten, Œufs, Lait",
+      "Verrine Chocolat": "Gluten, Œufs, Lait, Fruits à coque"
     };
 
     function createPlatElement(nom, type) {
+      const platDiv = document.createElement('div');
+      platDiv.className = 'plat-item fade-in';
+      
       const normalizedNom = normalizeNom(nom);
       const suggestionId = `suggestion-${normalizedNom}`;
       const allergenId = `allergen-${normalizedNom}`;
-      
-      const platDiv = document.createElement('div');
-      platDiv.className = 'plat-item fade-in';
       
       let html = `
         <div class="plat-nom">${capitalizeWords(nom)}</div>
@@ -1108,36 +931,36 @@
       `;
       
       if (suggestions[nom]) {
-        const sugg = suggestions[nom];
+        const suggestion = suggestions[nom];
         html += `
           <div id="${suggestionId}" class="details">
-            <strong>📏 Quantité :</strong> ${sugg.quantite}<br><br>
-            <strong>👨‍🍳 Préparation :</strong> ${sugg.preparation}<br><br>
-            ${sugg.rational ? `<strong>🔥 Rational AG :</strong> ${sugg.rational}<br><br>` : ''}
-            ${sugg.video ? `<strong>🎥 Formation :</strong> <a href="${sugg.video}" target="_blank">Voir la technique culinaire</a>` : ''}
+            <h4>📏 Quantité : ${suggestion.quantite}</h4>
+            <h4>👨‍🍳 Préparation : ${suggestion.preparation}</h4>
+            <h4>🔥 Rational AG : ${suggestion.rational}</h4>
+            <h4>🎥 Formation : <a href="${suggestion.video}" target="_blank">Voir la technique culinaire</a></h4>
           </div>
         `;
       } else {
         html += `
           <div id="${suggestionId}" class="details">
-            <strong>📏 Quantité :</strong> Portion standard selon service<br><br>
-            <strong>👨‍🍳 Préparation :</strong> Suivre les procédures standards de l'établissement<br><br>
-            <strong>🔥 Rational AG :</strong> Paramètres selon type de préparation
+            <h4>📏 Quantité : Information en cours d'ajout</h4>
+            <h4>👨‍🍳 Préparation : Détails à venir</h4>
+            <h4>🔥 Rational AG : Paramètres en cours de définition</h4>
+            <h4>🎥 Formation : <a href="https://www.youtube.com/watch?v=pxHh5P20xPE" target="_blank">Voir la technique culinaire</a></h4>
           </div>
         `;
       }
       
       if (allergenes[nom]) {
-        const allergensList = allergenes[nom];
         html += `
           <div id="${allergenId}" class="allergen-info">
-            <strong>⚠️ Allergènes présents :</strong> ${allergensList.length > 0 ? allergensList.join(', ') : 'Aucun allergène majeur déclaré'}
+            <h4>⚠️ Allergènes présents : ${allergenes[nom]}</h4>
           </div>
         `;
       } else {
         html += `
           <div id="${allergenId}" class="allergen-info">
-            <strong>⚠️ Allergènes présents :</strong> À vérifier selon la préparation
+            <h4>⚠️ Allergènes présents : Information en cours de vérification</h4>
           </div>
         `;
       }
@@ -1146,97 +969,93 @@
       return platDiv;
     }
 
-    function afficherJour(jour) {
-      // Check if weekend
+    function updateMenu(jour) {
+      const menuContent = document.getElementById('menu-content');
+      menuContent.innerHTML = '';
+
       if (isWeekend()) {
-        document.getElementById('weekendMessage').style.display = 'block';
-        document.getElementById('messageJour').style.display = 'none';
-        document.querySelectorAll('.section').forEach(section => {
-          section.style.display = 'none';
-        });
+        const weekendMessage = document.createElement('div');
+        weekendMessage.className = 'message-box';
+        weekendMessage.innerHTML = '<p>🏖️ Bon week-end ! Le restaurant est fermé le week-end. Rendez-vous lundi pour de nouveaux menus !</p>';
+        menuContent.appendChild(weekendMessage);
         return;
-      } else {
-        document.getElementById('weekendMessage').style.display = 'none';
-        document.getElementById('messageJour').style.display = 'block';
-        document.querySelectorAll('.section').forEach(section => {
-          section.style.display = 'block';
-        });
       }
 
-      document.getElementById('messageJour').textContent = messages[jour];
-      
-      // Salades
-      const saladeContainer = document.getElementById('salades');
-      saladeContainer.innerHTML = '';
-      salades[jour].forEach((salade, index) => {
-        const element = createPlatElement(salade, 'salade');
-        element.style.animationDelay = `${index * 0.1}s`;
-        saladeContainer.appendChild(element);
-      });
-      
-      // Plats chauds
-      const platContainer = document.getElementById('platsChauds');
-      platContainer.innerHTML = '';
-      platsChauds[jour].forEach((plat, index) => {
-        const element = createPlatElement(plat, 'plat');
-        element.style.animationDelay = `${index * 0.1}s`;
-        platContainer.appendChild(element);
-      });
-      
-      // Desserts
-      const dessertContainer = document.getElementById('desserts');
-      dessertContainer.innerHTML = '';
-      desserts[jour].forEach((dessert, index) => {
-        const element = createPlatElement(dessert, 'dessert');
-        element.style.animationDelay = `${index * 0.1}s`;
-        dessertContainer.appendChild(element);
-      });
+      const menu = menus[jour];
+      if (!menu) return;
 
-      // Re-observe new elements
+      // Salades
+      const saladesSection = document.createElement('div');
+      saladesSection.className = 'section fade-in';
+      saladesSection.innerHTML = '<h2>🥗 Salades du jour</h2>';
+      menu.salades.forEach(salade => {
+        saladesSection.appendChild(createPlatElement(salade, 'salade'));
+      });
+      menuContent.appendChild(saladesSection);
+
+      // Plats chauds
+      const platsSection = document.createElement('div');
+      platsSection.className = 'section fade-in';
+      platsSection.innerHTML = '<h2>🍲 Plats chauds du jour</h2>';
+      menu.plats_chauds.forEach(plat => {
+        platsSection.appendChild(createPlatElement(plat, 'plat'));
+      });
+      menuContent.appendChild(platsSection);
+
+      // Desserts
+      const dessertsSection = document.createElement('div');
+      dessertsSection.className = 'section fade-in';
+      dessertsSection.innerHTML = '<h2>🍰 Desserts du jour</h2>';
+      menu.desserts.forEach(dessert => {
+        dessertsSection.appendChild(createPlatElement(dessert, 'dessert'));
+      });
+      menuContent.appendChild(dessertsSection);
+
+      // Observer les nouveaux éléments
       setTimeout(observeElements, 100);
     }
 
-    // Initialization
-    document.addEventListener('DOMContentLoaded', function() {
-      // Set current date
-      document.getElementById('currentDate').textContent = getCurrentDate();
-      
-      // Populate select
-      const jourSelect = document.getElementById('jourSelect');
-      jours.forEach(jour => {
-        const option = document.createElement('option');
-        option.value = jour;
-        option.textContent = capitalizeWords(jour);
-        jourSelect.appendChild(option);
-      });
-
-      // Set current day or default to Monday
-      const currentDay = getCurrentDay();
-      if (jours.includes(currentDay)) {
-        jourSelect.value = currentDay;
-        // Update icon based on current day
-        const dayIcons = {
-          'lundi': '📅',
-          'mardi': '📋',
-          'mercredi': '📊',
-          'jeudi': '📈',
-          'vendredi': '🎉'
-        };
-        document.getElementById('dateIcon').textContent = dayIcons[currentDay] || '📅';
+    function updateMessage(jour) {
+      const messageElement = document.getElementById('daily-message');
+      if (isWeekend()) {
+        messageElement.textContent = "🏖️ Bon week-end ! Profitez de votre repos bien mérité.";
       } else {
-        jourSelect.value = 'lundi';
+        messageElement.textContent = messages[jour] || "Bonne journée et bon service !";
+      }
+    }
+
+    function initializeMenu() {
+      // Afficher la date actuelle
+      document.getElementById('current-date').textContent = getCurrentDate();
+
+      // Sélectionner automatiquement le jour actuel
+      const currentDay = getCurrentDay();
+      const daySelector = document.getElementById('day-selector');
+      
+      if (jours.includes(currentDay)) {
+        daySelector.value = currentDay;
+      } else {
+        daySelector.value = 'lundi'; // Par défaut si week-end
       }
 
-      // Event listener
-      jourSelect.addEventListener('change', function() {
-        afficherJour(this.value);
+      // Mettre à jour le menu et le message
+      updateMenu(daySelector.value);
+      updateMessage(daySelector.value);
+
+      // Ajouter l'événement de changement de jour
+      daySelector.addEventListener('change', function() {
+        updateMenu(this.value);
+        updateMessage(this.value);
       });
 
-      // Initial display
-      afficherJour(jourSelect.value);
-      
-      // Initialize scroll animations
+      // Observer les éléments pour les animations
       observeElements();
+    }
+
+    // Initialisation au chargement de la page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Par défaut, afficher Jolaine Midi
+      selectRestaurant('jolaine');
     });
   </script>
 </body>
