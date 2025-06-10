@@ -31,3 +31,126 @@
     }
   </style>
 </head>
+<body>
+  <header>
+    Menu Midi - Ibis Coeur d'Orly
+    <span>— Only Serveurs/Cuisiniers</span>
+  </header>
+  <div class="container">
+    <label for="jourSelect">📅 Choisis un jour :</label>
+    <select id="jourSelect"></select>
+    <div id="messageJour" class="message-jour"></div>
+    <div class="section">
+      <h2>🥗 Salades du jour</h2>
+      <div id="salades"></div>
+    </div>
+    <div class="section">
+      <h2>🍲 Plats chauds du jour</h2>
+      <div id="platsChauds"></div>
+    </div>
+    <div class="section">
+      <h2>🍰 Desserts du jour</h2>
+      <div id="desserts"></div>
+    </div>
+  </div>
+  <div class="footer-signature">
+    <span class="anas-logo">🍍</span>
+    <span>anas_TechCook — libre utilisation</span>
+  </div>
+  <script>
+    function capitalizeWords(str) {
+      return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    }
+    function normalizeNom(nom) {
+      return nom.replace(/'/g, "");
+    }
+
+    const jours = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"];
+    const messages = {
+      "lundi": "Bonne semaine à tous ! Un service organisé, c'est la clé.",
+      "mardi": "Communiquez bien pour un service sans stress.",
+      "mercredi": "Soignez la présentation, chaque détail compte.",
+      "jeudi": "Anticipez et entraidez-vous pour gagner du temps.",
+      "vendredi": "Finissez la semaine en équipe et bonne humeur."
+    };
+    const salades = {
+      "lundi": ["Concombre A La Creme Et Menthe", "Salade Cow Boy", "Salade De Pates Pesto"],
+      "mardi": ["Salade Piemontaise", "Coleslaw", "Betterave Rouge"],
+      "mercredi": ["Taboule De Legumes", "Tomate Mozzarella", "Cow Bowl"],
+      "jeudi": ["Riz Au Thon", "Concombre Creme", "Salade Piemontaise"],
+      "vendredi": ["Alaska", "Betterave Rouge", "Taboule De Legumes"]
+    };
+    const platsChauds = {
+      "lundi": ["Souris DAgneau", "Pave De Merlu", "Riz", "Tajine De Legume", "Haricots Verts", "Spanakopita Epinard"],
+      "mardi": ["Dinde", "Maquereau", "Puree", "Legumes Farcis", "Carotte", "Poelee Meridionale"],
+      "mercredi": ["Poulet", "Cabillaud", "Gnocchi", "Gratin De Legumes", "Poelee Legumes Du Soleil", "Riz Camarguais"],
+      "jeudi": ["Emince De Boeuf", "Saumon", "Pates", "Poelee Espagnole", "Courgettes Sautees", "Brandade De Morue"],
+      "vendredi": ["Couscous", "Fish And Chips", "Semoule", "Moussaka Vege", "Brocolis", "Legumes Couscous"]
+    };
+    const desserts = {
+      "lundi": ["Salade De Fruits", "Tarte Chocolat", "Tarte Pomme", "Verrine Panacotta Framboise"],
+      "mardi": ["Salade De Fruits", "Tarte Citron", "Croisillon Abricot", "Verrine Chocolat"],
+      "mercredi": ["Tarte Pomme", "Tarte Flan", "Salade De Fruits", "Verrine Creme Vanille"],
+      "jeudi": ["Salade De Fruits", "Gateau Basque", "Tarte Coco", "Verrine Panacotta Fruit Passion"],
+      "vendredi": ["Salade De Fruits", "Nid DAbeille", "Tarte Aux Poires", "Verrine Mini Tiramisu"]
+    };
+
+    const suggestionsEntrees = {
+      "Concombre A La Creme Et Menthe": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger concombre, crème, menthe, ciboulette. Servir frais.", video: "https://www.youtube.com/watch?v=4YBg07KOzmE" },
+      "Salade Cow Boy": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger maïs, haricot rouge, concombre, poivrons, mozzarella. Servir frais.", video: "https://www.youtube.com/watch?v=UcYHXdIP6UM" }
+    };
+
+    const allergenes = {
+      "Concombre A La Creme Et Menthe": ["Lait"],
+      "Salade Cow Boy": ["Lait"],
+      "Riz": []
+    };
+
+    function afficherJour(jour) {
+      document.getElementById('messageJour').textContent = messages[jour];
+      
+      const saladeContainer = document.getElementById('salades');
+      saladeContainer.innerHTML = '';
+      salades[jour].forEach(salade => {
+        const div = document.createElement('div');
+        div.className = 'ligne-plat';
+        div.innerHTML = '<span class="plat-nom">' + capitalizeWords(salade) + '</span>';
+        saladeContainer.appendChild(div);
+      });
+      
+      const platContainer = document.getElementById('platsChauds');
+      platContainer.innerHTML = '';
+      platsChauds[jour].forEach(plat => {
+        const div = document.createElement('div');
+        div.className = 'ligne-plat';
+        div.innerHTML = '<span class="plat-nom">' + capitalizeWords(plat) + '</span>';
+        platContainer.appendChild(div);
+      });
+      
+      const dessertContainer = document.getElementById('desserts');
+      dessertContainer.innerHTML = '';
+      desserts[jour].forEach(dessert => {
+        const div = document.createElement('div');
+        div.className = 'ligne-plat';
+        div.innerHTML = '<span class="plat-nom">' + capitalizeWords(dessert) + '</span>';
+        dessertContainer.appendChild(div);
+      });
+    }
+
+    const jourSelect = document.getElementById('jourSelect');
+    jours.forEach(jour => {
+      const option = document.createElement('option');
+      option.value = jour;
+      option.textContent = capitalizeWords(jour);
+      jourSelect.appendChild(option);
+    });
+
+    jourSelect.addEventListener('change', function() {
+      afficherJour(this.value);
+    });
+
+    jourSelect.value = 'lundi';
+    afficherJour('lundi');
+  </script>
+</body>
+</html>
