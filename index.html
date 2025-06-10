@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu Midi - Ibis Coeur d'Orly | anas_TechCook</title>
+  <title>Menu Midi - Ibis Coeur d'Orly</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -394,16 +394,11 @@
     /* Footer Premium */
     .footer-signature { 
       text-align: center;
-      font-size: 1.1em;
+      font-size: 1em;
       margin-top: 40px;
-      padding: 30px;
-      color: var(--text-accent);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      letter-spacing: 1px;
+      padding: 25px;
+      color: var(--text-secondary);
+      font-weight: 500;
       background: var(--gradient-secondary);
       border-radius: 16px;
       border: 1px solid var(--border-color);
@@ -421,20 +416,16 @@
       background: var(--gradient-primary);
     }
 
-    .anas-logo { 
-      font-size: 2em;
-      animation: rotate 4s linear infinite;
+    .support-email {
+      color: var(--text-accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .powered-by {
-      font-size: 0.8em;
-      opacity: 0.8;
-      margin-top: 8px;
+    .support-email:hover {
+      color: var(--primary-red-light);
+      text-decoration: underline;
     }
 
     /* Weekend Message */
@@ -541,11 +532,8 @@
   </div>
   
   <div class="footer-signature">
-    <span class="anas-logo">🍍</span>
-    <div>
-      <div>anas_TechCook — Solutions Culinaires Premium</div>
-      <div class="powered-by">Powered by Professional Web Development</div>
-    </div>
+    <div>📧 Support technique : <a href="mailto:chakir.anas1978@gmail.com" class="support-email">chakir.anas1978@gmail.com</a></div>
+    <div style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">Libre utilisation - Menu professionnel</div>
   </div>
 
   <script>
@@ -654,79 +642,79 @@
       "vendredi": ["Salade De Fruits", "Nid DAbeille", "Tarte Aux Poires", "Verrine Mini Tiramisu"]
     };
 
-    // SUGGESTIONS COMPLÈTES POUR TOUS LES PLATS
+    // SUGGESTIONS AVEC VRAIS LIENS VIDÉOS
     const suggestions = {
       // SALADES
       "Concombre A La Creme Et Menthe": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Éplucher et couper le concombre en rondelles fines. Mélanger avec crème fraîche épaisse, menthe fraîche hachée finement et ciboulette. Assaisonner avec sel, poivre blanc et un trait de citron vert. Servir bien frais.",
-        video: "https://www.youtube.com/watch?v=4YBg07KOzmE",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE",
         rational: "Mode vapeur 100°C pendant 2 minutes pour blanchir légèrement si souhaité. Refroidissement rapide recommandé."
       },
       "Salade Cow Boy": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Mélanger maïs en grains, haricots rouges égouttés et rincés, concombre en petits dés, poivrons colorés, mozzarella en cubes. Vinaigrette : huile d'olive extra vierge, vinaigre balsamique, moutarde de Dijon, herbes de Provence.",
-        video: "https://www.youtube.com/watch?v=UcYHXdIP6UM",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Pas de cuisson nécessaire. Servir à température ambiante pour révéler tous les arômes."
       },
       "Salade De Pates Pesto": {
         quantite: "800g pâtes pour 10 personnes",
         preparation: "Cuire les pâtes courtes al dente. Mélanger avec pesto maison ou de qualité, tomates cerises coupées en deux, mozzarella di bufala, pignons de pin grillés. Finir avec basilic frais et parmesan râpé.",
-        video: "https://www.youtube.com/watch?v=pesto123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Cuisson pâtes : mode vapeur 100°C, 12-15 minutes selon le type. Contrôler la texture régulièrement."
       },
       "Salade Piemontaise": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Cuire pommes de terre en robe des champs, laisser refroidir et couper en dés. Ajouter jambon blanc en dés, œufs durs, cornichons, mayonnaise maison. Assaisonner et parsemer de persil frais.",
-        video: "https://www.youtube.com/watch?v=piemontaise456",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Cuisson pommes de terre : mode vapeur 100°C, 25-30 minutes selon la taille. Vérifier à la pointe de couteau."
       },
       "Coleslaw": {
         quantite: "800g pour 10 personnes",
         preparation: "Râper finement chou blanc et carotte. Préparer sauce : mayonnaise, vinaigre de cidre, sucre, graines de moutarde, sel, poivre. Mélanger et laisser mariner 30 minutes minimum.",
-        video: "https://www.youtube.com/watch?v=coleslaw789",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE",
         rational: "Pas de cuisson. Utiliser mandoline pour une coupe uniforme. Servir bien frais."
       },
       "Betterave Rouge": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Cuire betteraves entières avec la peau. Éplucher à chaud, couper en rondelles. Assaisonner avec vinaigrette à l'échalote, huile de noix, vinaigre balsamique, herbes fraîches.",
-        video: "https://www.youtube.com/watch?v=betterave123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Cuisson : mode vapeur 100°C, 45-60 minutes selon la taille. Vérifier la tendresse à la fourchette."
       },
       "Taboule De Legumes": {
         quantite: "800g pour 10 personnes",
         preparation: "Hydrater la semoule fine avec bouillon chaud. Ajouter tomates en dés, concombre, poivrons, oignon rouge, menthe et persil hachés. Vinaigrette citron-huile d'olive.",
-        video: "https://www.youtube.com/watch?v=taboule456",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Pas de cuisson. Laisser reposer 2h au frais pour que les saveurs se mélangent."
       },
       "Tomate Mozzarella": {
         quantite: "1.5 kg tomates + 800g mozzarella pour 10 personnes",
         preparation: "Trancher tomates et mozzarella di bufala. Alterner en rosace, parsemer de basilic frais. Arroser d'huile d'olive extra vierge, vinaigre balsamique, fleur de sel.",
-        video: "https://www.youtube.com/watch?v=caprese789",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE",
         rational: "Pas de cuisson. Sortir la mozzarella 30 minutes avant service pour qu'elle soit à température ambiante."
       },
       "Cow Bowl": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Base de riz, ajouter maïs, haricots noirs, avocat, tomates cerises, cheddar râpé, coriandre fraîche. Sauce ranch ou guacamole maison.",
-        video: "https://www.youtube.com/watch?v=cowbowl123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Cuisson riz : mode vapeur 100°C, 18 minutes. Assembler au dernier moment pour éviter l'oxydation de l'avocat."
       },
       "Riz Au Thon": {
         quantite: "800g riz + 400g thon pour 10 personnes",
         preparation: "Cuire riz pilaf. Mélanger avec thon émietté, œufs durs, tomates, olives noires, câpres. Vinaigrette à l'huile d'olive et citron.",
-        video: "https://www.youtube.com/watch?v=rizthon456",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Cuisson riz : mode vapeur 100°C, 18 minutes. Laisser refroidir avant d'ajouter les autres ingrédients."
       },
       "Concombre Creme": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Éplucher concombres, les couper en rondelles fines. Saler et laisser dégorger 30 minutes. Égoutter et mélanger avec crème fraîche, aneth, ciboulette.",
-        video: "https://www.youtube.com/watch?v=concombrecreme789",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE",
         rational: "Pas de cuisson. Le dégorgeage permet d'éliminer l'excès d'eau et de concentrer les saveurs."
       },
       "Alaska": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Mélanger surimi effiloché, avocat en dés, concombre, mayonnaise japonaise, graines de sésame, algues nori. Assaisonner avec sauce soja et wasabi.",
-        video: "https://www.youtube.com/watch?v=alaska123",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Pas de cuisson. Préparer au dernier moment pour éviter l'oxydation de l'avocat."
       },
 
@@ -734,181 +722,181 @@
       "Souris DAgneau": {
         quantite: "200g par personne",
         preparation: "Saisir les souris dans une cocotte avec huile d'olive. Ajouter oignons émincés, carottes en rondelles, ail écrasé, thym frais, romarin. Déglacer au vin rouge, mouiller avec bouillon d'agneau. Cuire à feu doux 2h30.",
-        video: "https://www.youtube.com/watch?v=agneau456",
+        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA",
         rational: "Rational AG : Mode combiné 160°C, humidité 60%, 2h30. Sonde à cœur 75°C pour une viande fondante."
       },
       "Pave De Merlu": {
         quantite: "150g par personne",
         preparation: "Assaisonner les pavés avec fleur de sel et poivre du moulin. Cuire à la plancha ou au four avec un filet d'huile d'olive, zeste de citron, herbes fraîches (aneth, persil). Cuisson rapide pour préserver la chair moelleuse.",
-        video: "https://www.youtube.com/watch?v=merlu789",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Mode vapeur 85°C, 8-10 minutes. Sonde à cœur 60°C pour une cuisson parfaite."
       },
       "Riz": {
         quantite: "80g par personne (poids sec)",
         preparation: "Rincer le riz jusqu'à eau claire. Cuisson pilaf : faire revenir dans un peu d'huile, ajouter le bouillon chaud (1,5 fois le volume de riz). Couvrir et cuire sans remuer.",
-        video: "https://www.youtube.com/watch?v=riz123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Mode vapeur 100°C, 18 minutes. Repos 5 minutes avant de servir."
       },
       "Tajine De Legume": {
         quantite: "200g légumes par personne",
         preparation: "Couper les légumes en gros morceaux. Faire revenir oignons, ajouter épices (cumin, coriandre, cannelle), puis légumes et bouillon. Cuire doucement avec fruits secs et herbes fraîches.",
-        video: "https://www.youtube.com/watch?v=tajine456",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Rational AG : Mode combiné 180°C, humidité 80%, 45 minutes. Vérifier la tendresse des légumes."
       },
       "Haricots Verts": {
         quantite: "150g par personne",
         preparation: "Équeutez les haricots verts. Cuire à l'eau bouillante salée ou à la vapeur jusqu'à ce qu'ils soient tendres mais encore croquants. Assaisonner avec beurre, ail et persil.",
-        video: "https://www.youtube.com/watch?v=haricotsverts123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Mode vapeur 100°C, 8-12 minutes selon la grosseur. Refroidissement rapide pour garder la couleur."
       },
       "Spanakopita Epinard": {
         quantite: "180g par personne",
         preparation: "Faire revenir épinards avec oignons, ail, aneth. Mélanger avec feta émiettée, œufs battus. Disposer entre feuilles de pâte filo beurrées. Cuire jusqu'à doré.",
-        video: "https://www.youtube.com/watch?v=spanakopita456",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Rational AG : Mode chaleur sèche 180°C, 25-30 minutes. Surveiller la coloration de la pâte."
       },
       "Dinde": {
         quantite: "150g par personne",
         preparation: "Escalopes de dinde marinées aux herbes de Provence. Cuire à la plancha ou au four avec un peu d'huile d'olive. Servir avec jus de citron et thym frais.",
-        video: "https://www.youtube.com/watch?v=dinde789",
+        video: "https://www.youtube.com/watch?v=Q8E-lZirQf4",
         rational: "Rational AG : Mode combiné 170°C, humidité 40%, 12-15 minutes. Sonde à cœur 70°C."
       },
       "Maquereau": {
         quantite: "150g par personne",
         preparation: "Filets de maquereau grillés avec moutarde à l'ancienne, herbes fraîches. Cuisson rapide pour garder la chair moelleuse. Servir avec citron confit.",
-        video: "https://www.youtube.com/watch?v=maquereau123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Mode grill 200°C, 6-8 minutes. Surveiller pour éviter le dessèchement."
       },
       "Puree": {
         quantite: "200g pommes de terre par personne",
         preparation: "Cuire pommes de terre à chair farineuse. Passer au moulin à légumes, incorporer beurre et lait chaud progressivement. Assaisonner sel, poivre, muscade.",
-        video: "https://www.youtube.com/watch?v=puree456",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Cuisson : mode vapeur 100°C, 25-30 minutes. Maintien au chaud possible à 65°C."
       },
       "Legumes Farcis": {
         quantite: "1 légume par personne",
         preparation: "Évider tomates, courgettes ou poivrons. Farcir avec mélange de viande hachée, riz, oignons, herbes. Cuire au four avec un peu de bouillon.",
-        video: "https://www.youtube.com/watch?v=legumesfarcis789",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Rational AG : Mode combiné 180°C, humidité 60%, 35-40 minutes selon la taille."
       },
       "Carotte": {
         quantite: "150g par personne",
         preparation: "Carottes tournées ou en bâtonnets. Cuire à la vapeur ou glacées au beurre avec un peu de sucre et thym. Finir avec persil frais.",
-        video: "https://www.youtube.com/watch?v=carotte123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Mode vapeur 100°C, 12-15 minutes selon la coupe. Glaçage possible à la plancha."
       },
       "Poelee Meridionale": {
         quantite: "180g par personne",
         preparation: "Poêlée d'aubergines, courgettes, poivrons, tomates, oignons. Cuire séparément puis mélanger avec ail, herbes de Provence, huile d'olive.",
-        video: "https://www.youtube.com/watch?v=meridionale456",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Rational AG : Mode combiné 190°C, humidité 30%, 20-25 minutes. Remuer à mi-cuisson."
       },
       "Poulet": {
         quantite: "150g par personne",
         preparation: "Suprêmes de poulet marinés aux herbes. Cuire à la plancha ou au four. Servir avec jus de cuisson déglacé au vin blanc et estragon.",
-        video: "https://www.youtube.com/watch?v=poulet789",
+        video: "https://www.youtube.com/watch?v=Q8E-lZirQf4",
         rational: "Rational AG : Mode combiné 175°C, humidité 50%, 15-18 minutes. Sonde à cœur 72°C."
       },
       "Cabillaud": {
         quantite: "150g par personne",
         preparation: "Filets de cabillaud pochés ou cuits à la vapeur. Servir avec beurre blanc aux échalotes ou sauce hollandaise légère. Garnir de ciboulette.",
-        video: "https://www.youtube.com/watch?v=cabillaud123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Mode vapeur 80°C, 10-12 minutes. Sonde à cœur 58°C pour une chair nacrée."
       },
       "Gnocchi": {
         quantite: "120g par personne",
         preparation: "Gnocchis de pommes de terre maison ou de qualité. Cuire à l'eau bouillante salée jusqu'à ce qu'ils remontent. Servir avec sauce tomate basilic ou beurre sauge.",
-        video: "https://www.youtube.com/watch?v=gnocchi456",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Cuisson à l'eau bouillante 3-4 minutes. Finition possible à la plancha avec beurre."
       },
       "Gratin De Legumes": {
         quantite: "200g par personne",
         preparation: "Légumes de saison en lamelles, disposés en couches. Recouvrir de crème, fromage râpé, herbes. Cuire jusqu'à gratinage doré.",
-        video: "https://www.youtube.com/watch?v=gratin789",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Rational AG : Mode combiné 180°C, humidité 40%, 35-40 minutes. Finir en mode grill pour le gratinage."
       },
       "Poelee Legumes Du Soleil": {
         quantite: "180g par personne",
         preparation: "Mélange d'aubergines, courgettes, tomates, poivrons, oignons rouges. Cuire avec huile d'olive, ail, basilic, thym. Finir avec olives noires.",
-        video: "https://www.youtube.com/watch?v=soleil123",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Rational AG : Mode combiné 190°C, humidité 30%, 22-25 minutes. Remuer régulièrement."
       },
       "Riz Camarguais": {
         quantite: "80g par personne (poids sec)",
         preparation: "Riz long grain de Camargue. Cuisson pilaf avec safran, bouillon de volaille. Ajouter petits légumes en brunoise en fin de cuisson.",
-        video: "https://www.youtube.com/watch?v=camarguais456",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Mode vapeur 100°C, 20 minutes. Le safran donne la couleur et le parfum caractéristiques."
       },
       "Emince De Boeuf": {
         quantite: "150g par personne",
         preparation: "Lamelles de bœuf saisies rapidement à feu vif. Déglacé avec échalotes, vin rouge, crème. Assaisonner avec poivre vert et estragon.",
-        video: "https://www.youtube.com/watch?v=boeuf789",
+        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA",
         rational: "Cuisson rapide à la plancha 200°C, 3-4 minutes. Éviter la surcuisson pour garder la tendreté."
       },
       "Saumon": {
         quantite: "150g par personne",
         preparation: "Pavés de saumon grillés ou pochés. Servir avec sauce hollandaise, beurre blanc ou simplement citron et aneth frais. Cuisson rosée recommandée.",
-        video: "https://www.youtube.com/watch?v=saumon123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Mode vapeur 75°C, 12-15 minutes. Sonde à cœur 52°C pour une cuisson rosée."
       },
       "Pates": {
         quantite: "100g par personne (poids sec)",
         preparation: "Pâtes fraîches ou sèches de qualité. Cuire al dente dans eau bouillante salée. Servir avec sauce tomate, carbonara, ou simplement huile d'olive et parmesan.",
-        video: "https://www.youtube.com/watch?v=pates456",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Cuisson selon type de pâtes. Réserver eau de cuisson pour lier les sauces."
       },
       "Poelee Espagnole": {
         quantite: "180g par personne",
         preparation: "Poêlée de poivrons rouges et verts, oignons, tomates, chorizo. Assaisonner avec paprika, ail, persil. Cuire jusqu'à tendreté des légumes.",
-        video: "https://www.youtube.com/watch?v=espagnole789",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Rational AG : Mode combiné 185°C, humidité 35%, 20-25 minutes. Le chorizo apporte le gras de cuisson."
       },
       "Courgettes Sautees": {
         quantite: "150g par personne",
         preparation: "Courgettes en rondelles ou dés, sautées à l'huile d'olive avec ail et herbes de Provence. Cuisson rapide pour garder le croquant.",
-        video: "https://www.youtube.com/watch?v=courgettes123",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Cuisson rapide à la plancha 180°C, 5-7 minutes. Saler en fin de cuisson pour éviter qu'elles rendent l'eau."
       },
       "Brandade De Morue": {
         quantite: "120g par personne",
         preparation: "Morue dessalée pochée, émincée avec pommes de terre, huile d'olive, ail, lait. Monter comme une purée onctueuse. Gratiner au four.",
-        video: "https://www.youtube.com/watch?v=brandade456",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Pochage 80°C, puis gratinage 200°C, 10 minutes. Texture crémeuse recherchée."
       },
       "Couscous": {
         quantite: "80g semoule par personne",
         preparation: "Semoule de couscous hydratée au bouillon épicé. Servir avec légumes mijotés (carottes, navets, courgettes, pois chiches) et viande d'agneau ou merguez.",
-        video: "https://www.youtube.com/watch?v=couscous789",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Hydratation semoule : bouillon chaud, repos 10 minutes, égrainer à la fourchette."
       },
       "Fish And Chips": {
         quantite: "150g poisson + 200g pommes de terre par personne",
         preparation: "Filets de poisson blanc en pâte à bière, frits avec pommes de terre en grosses frites. Servir avec sauce tartare et petits pois à la menthe.",
-        video: "https://www.youtube.com/watch?v=fishandchips123",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Friture 180°C. Poisson 4-5 minutes, frites 6-8 minutes. Égoutter sur papier absorbant."
       },
       "Semoule": {
         quantite: "80g par personne (poids sec)",
         preparation: "Semoule fine ou moyenne, hydratée avec bouillon chaud épicé. Égrainer régulièrement. Servir en accompagnement de tajines ou ragoûts.",
-        video: "https://www.youtube.com/watch?v=semoule456",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Hydratation progressive avec bouillon à 80°C. Repos et égrainage toutes les 5 minutes."
       },
       "Moussaka Vege": {
         quantite: "200g par personne",
         preparation: "Aubergines grillées en couches alternées avec mélange de légumes (tomates, oignons, herbes), béchamel végétale et fromage. Gratiner au four.",
-        video: "https://www.youtube.com/watch?v=moussakavege789",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Rational AG : Mode combiné 180°C, humidité 40%, 40-45 minutes. Finir en mode grill."
       },
       "Brocolis": {
         quantite: "150g par personne",
         preparation: "Bouquets de brocolis cuits à la vapeur jusqu'à tendreté. Servir avec beurre à l'ail, amandes effilées grillées ou sauce hollandaise légère.",
-        video: "https://www.youtube.com/watch?v=brocolis123",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs",
         rational: "Rational AG : Mode vapeur 100°C, 8-10 minutes. Refroidissement rapide pour garder la couleur verte."
       },
       "Legumes Couscous": {
         quantite: "200g par personne",
         preparation: "Mélange traditionnel : carottes, navets, courgettes, pois chiches, oignons. Cuire dans bouillon épicé (ras el hanout, harissa). Servir avec semoule.",
-        video: "https://www.youtube.com/watch?v=legumescouscous456",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE",
         rational: "Rational AG : Mode combiné 180°C, humidité 70%, 35-40 minutes. Cuisson douce pour préserver les légumes."
       },
 
@@ -916,91 +904,91 @@
       "Salade De Fruits": {
         quantite: "150g par personne",
         preparation: "Mélange de fruits de saison coupés en morceaux. Arroser de jus de citron et sirop léger à la menthe. Laisser macérer au frais 2 heures minimum.",
-        video: "https://www.youtube.com/watch?v=saladefruits123",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Pas de cuisson. Préparer au dernier moment pour éviter l'oxydation. Servir bien frais."
       },
       "Tarte Chocolat": {
         quantite: "1 part de 120g par personne",
         preparation: "Pâte sablée, ganache chocolat noir 70%, crème fouettée. Tempérer le chocolat, incorporer crème chaude progressivement. Laisser prendre au frais.",
-        video: "https://www.youtube.com/watch?v=tartechocolat456",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Cuisson pâte : 180°C, 15 minutes à blanc. Ganache à 35°C pour le montage."
       },
       "Tarte Pomme": {
         quantite: "1 part de 120g par personne",
         preparation: "Pâte brisée, compotée de pommes, lamelles de pommes disposées en rosace. Cuire jusqu'à coloration dorée. Glacer avec gelée d'abricot.",
-        video: "https://www.youtube.com/watch?v=tartepomme789",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Rational AG : Mode combiné 180°C, humidité 30%, 35-40 minutes. Surveiller la coloration."
       },
       "Verrine Panacotta Framboise": {
         quantite: "1 verrine de 100ml par personne",
         preparation: "Panacotta vanille avec gélatine, coulis de framboises fraîches, framboises entières pour décor. Laisser prendre au frais 4 heures minimum.",
-        video: "https://www.youtube.com/watch?v=panacotta123",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Pas de cuisson. Gélatine à 60°C, incorporation délicate dans la crème tiède."
       },
       "Tarte Citron": {
         quantite: "1 part de 120g par personne",
         preparation: "Pâte sablée, curd de citron (œufs, sucre, beurre, jus et zeste de citron), meringue italienne. Cuire la pâte, garnir, flamber la meringue.",
-        video: "https://www.youtube.com/watch?v=tartecitron456",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Cuisson curd : 80°C en remuant constamment. Meringue au chalumeau ou four 200°C, 2 minutes."
       },
       "Croisillon Abricot": {
         quantite: "1 part de 100g par personne",
         preparation: "Pâte feuilletée en croisillons, compotée d'abricots, abricots frais. Cuire jusqu'à doré, glacer avec nappage neutre. Servir tiède ou froid.",
-        video: "https://www.youtube.com/watch?v=croisillon789",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Rational AG : Mode chaleur sèche 200°C, 20-25 minutes. Surveiller le feuilletage."
       },
       "Verrine Chocolat": {
         quantite: "1 verrine de 100ml par personne",
         preparation: "Mousse chocolat noir, biscuit sablé émietté, chantilly vanille. Monter en couches dans des verrines. Décorer avec copeaux de chocolat.",
-        video: "https://www.youtube.com/watch?v=verrinechocolat123",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Mousse : tempérer chocolat à 35°C, incorporer blancs montés délicatement."
       },
       "Tarte Flan": {
         quantite: "1 part de 120g par personne",
         preparation: "Pâte brisée, appareil à flan (lait, œufs, sucre, vanille, farine). Cuire jusqu'à prise et coloration dorée. Laisser refroidir avant démoulage.",
-        video: "https://www.youtube.com/watch?v=tarteflan456",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Rational AG : Mode combiné 170°C, humidité 40%, 35-40 minutes. Vérifier la prise au centre."
       },
       "Verrine Creme Vanille": {
         quantite: "1 verrine de 100ml par personne",
         preparation: "Crème pâtissière vanille, biscuit cuillère, fruits rouges. Monter en alternant les couches. Décorer avec menthe fraîche.",
-        video: "https://www.youtube.com/watch?v=cremevanille789",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Crème pâtissière : cuisson 85°C en remuant. Filmer au contact pour éviter la peau."
       },
       "Gateau Basque": {
         quantite: "1 part de 120g par personne",
         preparation: "Pâte sablée basque, crème pâtissière vanille ou confiture de cerises noires. Dorer à l'œuf, quadriller au couteau. Cuire jusqu'à doré.",
-        video: "https://www.youtube.com/watch?v=gateaubasque123",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Rational AG : Mode chaleur sèche 180°C, 30-35 minutes. Surveiller la coloration."
       },
       "Tarte Coco": {
         quantite: "1 part de 120g par personne",
         preparation: "Pâte sablée, appareil coco (œufs, sucre, crème, noix de coco râpée), noix de coco en copeaux pour décor. Cuire jusqu'à prise.",
-        video: "https://www.youtube.com/watch?v=tartecoco456",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Rational AG : Mode combiné 175°C, humidité 35%, 30-35 minutes. La coco doit être dorée."
       },
       "Verrine Panacotta Fruit Passion": {
         quantite: "1 verrine de 100ml par personne",
         preparation: "Panacotta vanille, coulis de fruit de la passion, graines de passion pour le croquant. Laisser prendre au frais, décorer avant service.",
-        video: "https://www.youtube.com/watch?v=passionpanacotta789",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Pas de cuisson. Filtrer le coulis pour enlever les graines si souhaité, ou les garder pour la texture."
       },
       "Nid DAbeille": {
         quantite: "1 part de 100g par personne",
         preparation: "Pâte feuilletée, crème pâtissière, pralin, amandes effilées caramélisées. Monter en forme de nid, décorer avec amandes dorées.",
-        video: "https://www.youtube.com/watch?v=nidabeille123",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Cuisson feuilletage : 200°C, 15-20 minutes. Caraméliser amandes à 160°C."
       },
       "Tarte Aux Poires": {
         quantite: "1 part de 120g par personne",
         preparation: "Pâte sablée, crème d'amande, poires pochées au vin rouge ou sirop vanille. Disposer en éventail, cuire jusqu'à doré.",
-        video: "https://www.youtube.com/watch?v=tartepoires456",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Pochage poires : 80°C, 15-20 minutes. Cuisson tarte : 180°C, 35-40 minutes."
       },
       "Verrine Mini Tiramisu": {
         quantite: "1 verrine de 100ml par personne",
         preparation: "Biscuits à la cuillère imbibés de café, mascarpone sucré, cacao en poudre. Monter en couches, laisser reposer 4 heures au frais.",
-        video: "https://www.youtube.com/watch?v=tiramisu789",
+        video: "https://www.youtube.com/playlist?list=PLZn3L98ysje06onMqvhBB82szE8sazaXG",
         rational: "Pas de cuisson. Café refroidi pour imbiber, mascarpone à température ambiante pour le montage."
       }
     };
@@ -1225,4 +1213,3 @@
   </script>
 </body>
 </html>
-
