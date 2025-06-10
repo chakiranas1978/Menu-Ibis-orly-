@@ -95,15 +95,126 @@
       "vendredi": ["Salade De Fruits", "Nid DAbeille", "Tarte Aux Poires", "Verrine Mini Tiramisu"]
     };
 
-    const suggestionsEntrees = {
+    // Suggestions avec quantités et vidéos
+    const suggestions = {
       "Concombre A La Creme Et Menthe": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger concombre, crème, menthe, ciboulette. Servir frais.", video: "https://www.youtube.com/watch?v=4YBg07KOzmE" },
-      "Salade Cow Boy": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger maïs, haricot rouge, concombre, poivrons, mozzarella. Servir frais.", video: "https://www.youtube.com/watch?v=UcYHXdIP6UM" }
+      "Salade Cow Boy": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger maïs, haricot rouge, concombre, poivrons, mozzarella. Servir frais.", video: "https://www.youtube.com/watch?v=UcYHXdIP6UM" },
+      "Salade De Pates Pesto": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger pâtes cuites, tomates cerises, pesto, pignons de pin. Servir en saladier.", video: "https://www.dailymotion.com/video/x8rpth1" },
+      "Salade Piemontaise": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger pommes de terre, jambon, œufs durs, cornichons, mayonnaise. Servir frais.", video: "https://www.youtube.com/watch?v=GpxJ4XFy3jM" },
+      "Coleslaw": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger chou blanc, carottes râpées, sauce coleslaw. Servir frais.", video: "https://www.youtube.com/watch?v=m9aycFus0_Q" },
+      "Betterave Rouge": { quantite: "1 kg pour 10 personnes", preparation: "Betteraves cuites coupées en dés ou en rondelles, assaisonnées. Servir frais.", video: "https://www.youtube.com/watch?v=tGeMKa6-Xvk" },
+      "Taboule De Legumes": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger semoule, tomates, concombres, menthe, persil, citron, huile d'olive. Servir frais.", video: "https://www.youtube.com/watch?v=5cilbXCFKZU" },
+      "Tomate Mozzarella": { quantite: "1 kg pour 10 personnes", preparation: "Alterner tranches de tomates et de mozzarella, arroser d'huile d'olive et de basilic frais.", video: "https://www.youtube.com/watch?v=5cilbXCFKZU" },
+      "Cow Bowl": { quantite: "1 kg pour 10 personnes", preparation: "Base de riz ou quinoa, légumes croquants, protéines, sauce. Servir frais.", video: "https://www.youtube.com/watch?v=UcYHXdIP6UM" },
+      "Riz Au Thon": { quantite: "1 kg pour 10 personnes", preparation: "Mélanger riz cuit, thon émietté, maïs, tomates, mayonnaise. Servir frais.", video: "https://www.youtube.com/watch?v=5cilbXCFKZU" },
+      "Concombre Creme": { quantite: "1 kg pour 10 personnes", preparation: "Concombre en dés avec crème fraîche, aneth, sel, poivre. Servir frais.", video: "https://www.youtube.com/watch?v=4YBg07KOzmE" },
+      "Alaska": { quantite: "1 kg pour 10 personnes", preparation: "Salade composée de surimi, crevettes, riz, maïs, mayonnaise. Servir frais.", video: "https://www.youtube.com/watch?v=5cilbXCFKZU" },
+      "Souris DAgneau": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte Rational AG, mode vapeur combinée (140°C, 30% vapeur).", conseil: "Arroser avec la sauce juste avant d'envoyer.", video: "https://www.youtube.com/watch?v=-Vsu0tUJeWY" },
+      "Pave De Merlu": { quantite: "1 kg pour 10 personnes", preparation: "Cuire au four mixte, mode vapeur (90°C, 100% vapeur).", conseil: "Ajouter la sauce au dernier moment.", video: "https://www.youtube.com/watch?v=tHoumFTwALs" },
+      "Riz": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer en bac gastro au four mixte, mode vapeur douce (95°C, 100% vapeur).", conseil: "Ajouter un filet d'huile d'olive.", video: "https://www.youtube.com/watch?v=_ayqNIb6DQE" },
+      "Tajine De Legume": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur combinée (140°C, 30% vapeur).", conseil: "Garnir de coriandre fraîche.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Haricots Verts": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur (95°C, 100% vapeur).", conseil: "Ajouter une noix de beurre et du persil.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Spanakopita Epinard": { quantite: "1 pièce pour 2-3 personnes", preparation: "Réchauffer au four mixte, mode air chaud sec (160°C).", conseil: "Servir chaud, peut être coupé en portions.", video: "https://www.youtube.com/watch?v=_ayqNIb6DQE" },
+      "Dinde": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur combinée (140°C, 30% vapeur).", conseil: "Servir avec une sauce adaptée.", video: "https://www.youtube.com/watch?v=-Vsu0tUJeWY" },
+      "Maquereau": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur (90°C, 100% vapeur).", conseil: "Servir avec une sauce citronnée.", video: "https://www.youtube.com/watch?v=tHoumFTwALs" },
+      "Puree": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer en bac gastro au four mixte, mode vapeur douce (95°C, 100% vapeur).", conseil: "Ajouter un peu de lait ou de crème.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Legumes Farcis": { quantite: "1 pièce par personne", preparation: "Réchauffer au four mixte, mode vapeur combinée (160°C, 20% vapeur).", conseil: "Servir chaud.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Carotte": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur (95°C, 100% vapeur).", conseil: "Ajouter une touche de miel.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Poelee Meridionale": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode air chaud sec (160°C).", conseil: "Garnir de basilic frais.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Poulet": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur combinée (140°C, 30% vapeur).", conseil: "Servir avec une sauce.", video: "https://www.youtube.com/watch?v=-Vsu0tUJeWY" },
+      "Cabillaud": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur (90°C, 100% vapeur).", conseil: "Servir avec une sauce légère.", video: "https://www.youtube.com/watch?v=tHoumFTwALs" },
+      "Gnocchi": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur (95°C, 100% vapeur).", conseil: "Servir avec une sauce tomate.", video: "https://www.youtube.com/watch?v=_ayqNIb6DQE" },
+      "Gratin De Legumes": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur combinée (160°C, 20% vapeur).", conseil: "Gratiner au dernier moment.", video: "https://www.youtube.com/watch?v=_ayqNIb6DQE" },
+      "Poelee Legumes Du Soleil": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode air chaud sec (160°C).", conseil: "Servir chaud ou tiède.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Riz Camarguais": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer en bac gastro au four mixte, mode vapeur douce (95°C, 100% vapeur).", conseil: "Accompagne bien les plats en sauce.", video: "https://www.youtube.com/watch?v=_ayqNIb6DQE" },
+      "Emince De Boeuf": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur combinée (140°C, 30% vapeur).", conseil: "Servir avec une sauce au poivre.", video: "https://www.youtube.com/watch?v=-Vsu0tUJeWY" },
+      "Saumon": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur (90°C, 100% vapeur).", conseil: "Servir avec une sauce à l'aneth.", video: "https://www.youtube.com/watch?v=tHoumFTwALs" },
+      "Pates": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer en bac gastro au four mixte, mode vapeur douce (95°C, 100% vapeur).", conseil: "Servir avec une sauce au choix.", video: "https://www.youtube.com/watch?v=_ayqNIb6DQE" },
+      "Poelee Espagnole": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode air chaud sec (160°C).", conseil: "Garnir de chorizo grillé.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Courgettes Sautees": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur (95°C, 100% vapeur).", conseil: "Assaisonner avec de l'ail et du persil.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Brandade De Morue": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur combinée (160°C, 20% vapeur).", conseil: "Peut être gratinée.", video: "https://www.youtube.com/watch?v=tHoumFTwALs" },
+      "Couscous": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer la semoule et les légumes séparément au four mixte, mode vapeur douce (95°C, 100% vapeur).", conseil: "Servir tous les éléments séparément.", video: "https://www.youtube.com/watch?v=_ayqNIb6DQE" },
+      "Fish And Chips": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode air chaud sec (180°C).", conseil: "Servir avec des sauces.", video: "https://www.youtube.com/watch?v=tHoumFTwALs" },
+      "Semoule": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer en bac gastro au four mixte, mode vapeur douce (95°C, 100% vapeur).", conseil: "Aérer la semoule avant de servir.", video: "https://www.youtube.com/watch?v=_ayqNIb6DQE" },
+      "Moussaka Vege": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur combinée (160°C, 20% vapeur).", conseil: "Peut être préparée à l'avance.", video: "https://www.youtube.com/watch?v=_ayqNIb6DQE" },
+      "Brocolis": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur (95°C, 100% vapeur).", conseil: "Servir avec une sauce hollandaise.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Legumes Couscous": { quantite: "1 kg pour 10 personnes", preparation: "Réchauffer au four mixte, mode vapeur douce (95°C, 100% vapeur).", conseil: "Servir avec la semoule.", video: "https://www.youtube.com/watch?v=D_Q2nubuvng" },
+      "Salade De Fruits": { suggestion: "Présenter dans un grand saladier, ajouter fruits frais et menthe, servir avec une louche.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Tarte Chocolat": { suggestion: "Couper en parts égales, présenter sur assiette avec une pointe de crème chantilly.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Tarte Pomme": { suggestion: "Servir tiède ou à température ambiante, accompagner d'une boule de glace vanille.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Verrine Panacotta Framboise": { suggestion: "Servir frais, décorer avec quelques framboises fraîches et une feuille de menthe.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Tarte Citron": { suggestion: "Couper en parts nettes, saupoudrer légèrement de sucre glace avant de servir.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Croisillon Abricot": { suggestion: "Servir à température ambiante, accompagner d'un coulis d'abricot.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Verrine Chocolat": { suggestion: "Servir frais, décorer avec des copeaux de chocolat et une pointe de crème.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Tarte Flan": { suggestion: "Servir à température ambiante, couper en parts égales avec un couteau bien aiguisé.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Verrine Creme Vanille": { suggestion: "Servir frais, décorer avec un biscuit sablé ou une gaufrette.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Gateau Basque": { suggestion: "Servir à température ambiante, accompagner d'un café ou d'un thé.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Tarte Coco": { suggestion: "Couper en parts, servir frais, décorer avec de la noix de coco râpée.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Verrine Panacotta Fruit Passion": { suggestion: "Servir frais, décorer avec des graines de fruit de la passion.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Nid DAbeille": { suggestion: "Servir à température ambiante, accompagner d'un miel de qualité.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Tarte Aux Poires": { suggestion: "Servir tiède, accompagner d'une crème anglaise ou d'une glace vanille.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" },
+      "Verrine Mini Tiramisu": { suggestion: "Servir frais, saupoudrer de cacao en poudre juste avant le service.", video: "https://www.youtube.com/watch?v=kjMGCuRedZg" }
     };
 
+    // Allergènes
     const allergenes = {
-      "Concombre A La Creme Et Menthe": ["Lait"],
-      "Salade Cow Boy": ["Lait"],
-      "Riz": []
+      "Concombre A La Creme Et Menthe": "Lait, Œufs (mayonnaise)",
+      "Salade Cow Boy": "Lait (mozzarella)",
+      "Salade De Pates Pesto": "Gluten, Lait (parmesan), Fruits à coque (pignons)",
+      "Salade Piemontaise": "Gluten, Œufs, Moutarde",
+      "Coleslaw": "Œufs (mayonnaise), Moutarde",
+      "Betterave Rouge": "Aucun allergène majeur",
+      "Taboule De Legumes": "Gluten (semoule de blé)",
+      "Tomate Mozzarella": "Lait",
+      "Cow Bowl": "Variable selon ingrédients",
+      "Riz Au Thon": "Poisson, Œufs (mayonnaise)",
+      "Concombre Creme": "Lait",
+      "Alaska": "Crustacés, Poisson, Œufs",
+      "Souris DAgneau": "Aucun allergène majeur",
+      "Pave De Merlu": "Poisson",
+      "Riz": "Aucun allergène majeur",
+      "Tajine De Legume": "Aucun allergène majeur",
+      "Haricots Verts": "Aucun allergène majeur",
+      "Spanakopita Epinard": "Gluten, Lait, Œufs",
+      "Dinde": "Aucun allergène majeur",
+      "Maquereau": "Poisson",
+      "Puree": "Lait",
+      "Legumes Farcis": "Variable selon farce",
+      "Carotte": "Aucun allergène majeur",
+      "Poelee Meridionale": "Aucun allergène majeur",
+      "Poulet": "Aucun allergène majeur",
+      "Cabillaud": "Poisson",
+      "Gnocchi": "Gluten, Œufs",
+      "Gratin De Legumes": "Lait",
+      "Poelee Legumes Du Soleil": "Aucun allergène majeur",
+      "Riz Camarguais": "Aucun allergène majeur",
+      "Emince De Boeuf": "Aucun allergène majeur",
+      "Saumon": "Poisson",
+      "Pates": "Gluten",
+      "Poelee Espagnole": "Aucun allergène majeur",
+      "Courgettes Sautees": "Aucun allergène majeur",
+      "Brandade De Morue": "Poisson, Lait",
+      "Couscous": "Gluten (semoule)",
+      "Fish And Chips": "Poisson, Gluten",
+      "Semoule": "Gluten",
+      "Moussaka Vege": "Lait, Œufs",
+      "Brocolis": "Aucun allergène majeur",
+      "Legumes Couscous": "Aucun allergène majeur",
+      "Salade De Fruits": "Aucun allergène majeur",
+      "Tarte Chocolat": "Gluten, Lait, Œufs, Soja",
+      "Tarte Pomme": "Gluten, Lait, Œufs",
+      "Verrine Panacotta Framboise": "Lait",
+      "Tarte Citron": "Gluten, Lait, Œufs",
+      "Croisillon Abricot": "Gluten, Lait, Œufs",
+      "Verrine Chocolat": "Lait, Œufs, Soja",
+      "Tarte Flan": "Gluten, Lait, Œufs",
+      "Verrine Creme Vanille": "Lait, Œufs",
+      "Gateau Basque": "Gluten, Lait, Œufs",
+      "Tarte Coco": "Gluten, Lait, Œufs",
+      "Verrine Panacotta Fruit Passion": "Lait",
+      "Nid DAbeille": "Gluten, Lait, Œufs",
+      "Tarte Aux Poires": "Gluten, Lait, Œufs",
+      "Verrine Mini Tiramisu": "Gluten, Lait, Œufs"
     };
 
     function afficherJour(jour) {
@@ -114,8 +225,35 @@
       salades[jour].forEach(salade => {
         const div = document.createElement('div');
         div.className = 'ligne-plat';
-        div.innerHTML = '<span class="plat-nom">' + capitalizeWords(salade) + '</span>';
+        div.innerHTML = `
+          <span class="plat-nom">${capitalizeWords(salade)}</span>
+          <div class="btns-droite">
+            <button class="suggestion-btn" onclick="toggleDetails('${normalizeNom(salade)}', 'suggestion')">💡</button>
+            <button class="allergen-btn" onclick="toggleDetails('${normalizeNom(salade)}', 'allergen')">⚠️</button>
+          </div>
+        `;
         saladeContainer.appendChild(div);
+        
+        if (suggestions[salade]) {
+          const detailsDiv = document.createElement('div');
+          detailsDiv.id = `${normalizeNom(salade)}-suggestion`;
+          detailsDiv.className = 'details';
+          detailsDiv.innerHTML = `
+            <strong>Quantité:</strong> ${suggestions[salade].quantite}<br>
+            <strong>Préparation:</strong> ${suggestions[salade].preparation}<br>
+            ${suggestions[salade].conseil ? `<strong>Conseil:</strong> ${suggestions[salade].conseil}<br>` : ''}
+            <strong>Vidéo:</strong> <a href="${suggestions[salade].video}" target="_blank">Voir la technique</a>
+          `;
+          saladeContainer.appendChild(detailsDiv);
+        }
+        
+        if (allergenes[salade]) {
+          const allergenDiv = document.createElement('div');
+          allergenDiv.id = `${normalizeNom(salade)}-allergen`;
+          allergenDiv.className = 'details';
+          allergenDiv.innerHTML = `<strong>Allergènes:</strong> ${allergenes[salade]}`;
+          saladeContainer.appendChild(allergenDiv);
+        }
       });
       
       const platContainer = document.getElementById('platsChauds');
@@ -123,8 +261,35 @@
       platsChauds[jour].forEach(plat => {
         const div = document.createElement('div');
         div.className = 'ligne-plat';
-        div.innerHTML = '<span class="plat-nom">' + capitalizeWords(plat) + '</span>';
+        div.innerHTML = `
+          <span class="plat-nom">${capitalizeWords(plat)}</span>
+          <div class="btns-droite">
+            <button class="suggestion-btn" onclick="toggleDetails('${normalizeNom(plat)}', 'suggestion')">💡</button>
+            <button class="allergen-btn" onclick="toggleDetails('${normalizeNom(plat)}', 'allergen')">⚠️</button>
+          </div>
+        `;
         platContainer.appendChild(div);
+        
+        if (suggestions[plat]) {
+          const detailsDiv = document.createElement('div');
+          detailsDiv.id = `${normalizeNom(plat)}-suggestion`;
+          detailsDiv.className = 'details';
+          detailsDiv.innerHTML = `
+            <strong>Quantité:</strong> ${suggestions[plat].quantite}<br>
+            <strong>Préparation:</strong> ${suggestions[plat].preparation}<br>
+            ${suggestions[plat].conseil ? `<strong>Conseil:</strong> ${suggestions[plat].conseil}<br>` : ''}
+            <strong>Vidéo:</strong> <a href="${suggestions[plat].video}" target="_blank">Voir la technique</a>
+          `;
+          platContainer.appendChild(detailsDiv);
+        }
+        
+        if (allergenes[plat]) {
+          const allergenDiv = document.createElement('div');
+          allergenDiv.id = `${normalizeNom(plat)}-allergen`;
+          allergenDiv.className = 'details';
+          allergenDiv.innerHTML = `<strong>Allergènes:</strong> ${allergenes[plat]}`;
+          platContainer.appendChild(allergenDiv);
+        }
       });
       
       const dessertContainer = document.getElementById('desserts');
@@ -132,9 +297,41 @@
       desserts[jour].forEach(dessert => {
         const div = document.createElement('div');
         div.className = 'ligne-plat';
-        div.innerHTML = '<span class="plat-nom">' + capitalizeWords(dessert) + '</span>';
+        div.innerHTML = `
+          <span class="plat-nom">${capitalizeWords(dessert)}</span>
+          <div class="btns-droite">
+            <button class="suggestion-btn" onclick="toggleDetails('${normalizeNom(dessert)}', 'suggestion')">💡</button>
+            <button class="allergen-btn" onclick="toggleDetails('${normalizeNom(dessert)}', 'allergen')">⚠️</button>
+          </div>
+        `;
         dessertContainer.appendChild(div);
+        
+        if (suggestions[dessert]) {
+          const detailsDiv = document.createElement('div');
+          detailsDiv.id = `${normalizeNom(dessert)}-suggestion`;
+          detailsDiv.className = 'details';
+          detailsDiv.innerHTML = `
+            <strong>Suggestion:</strong> ${suggestions[dessert].suggestion}<br>
+            <strong>Vidéo:</strong> <a href="${suggestions[dessert].video}" target="_blank">Voir la technique</a>
+          `;
+          dessertContainer.appendChild(detailsDiv);
+        }
+        
+        if (allergenes[dessert]) {
+          const allergenDiv = document.createElement('div');
+          allergenDiv.id = `${normalizeNom(dessert)}-allergen`;
+          allergenDiv.className = 'details';
+          allergenDiv.innerHTML = `<strong>Allergènes:</strong> ${allergenes[dessert]}`;
+          dessertContainer.appendChild(allergenDiv);
+        }
       });
+    }
+
+    function toggleDetails(nom, type) {
+      const element = document.getElementById(`${nom}-${type}`);
+      if (element) {
+        element.style.display = element.style.display === 'none' ? 'block' : 'none';
+      }
     }
 
     const jourSelect = document.getElementById('jourSelect');
