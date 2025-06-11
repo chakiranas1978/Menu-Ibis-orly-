@@ -17,491 +17,850 @@
       --bg-tertiary: #2a2a2a;
       --text-primary: #ffffff;
       --text-secondary: #e0e0e0;
-      --text-muted: #a0a0a0;
+      --text-accent: #ff6b6b;
       --border-color: #333333;
-      --shadow-color: rgba(0, 0, 0, 0.3);
-      --accent-green: #4caf50;
-      --accent-orange: #ff9800;
+      --success-color: #4caf50;
+      --warning-color: #ff9800;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
       color: var(--text-primary);
-      min-height: 100vh;
       line-height: 1.6;
+      min-height: 100vh;
     }
+
     .header {
       background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
       color: white;
       text-align: center;
-      padding: 20px 10px;
-      box-shadow: 0 4px 20px var(--shadow-color);
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(179, 19, 23, 0.3);
       position: relative;
       overflow: hidden;
     }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
     .header h1 {
-      font-size: 1.8rem;
+      font-size: 2.2em;
       font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
+
     .header-subtitle {
-      font-size: 0.9rem;
-      opacity: 0.9;
+      font-size: 1.1em;
       font-weight: 400;
+      opacity: 0.95;
     }
+
     .restaurant-nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
       background: var(--bg-secondary);
-      padding: 15px;
-      border-bottom: 2px solid var(--border-color);
-      box-shadow: 0 2px 10px var(--shadow-color);
     }
-    .nav-buttons {
+
+    .restaurant-btn {
+      padding: 12px 24px;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .restaurant-btn.jolaine {
+      background: linear-gradient(135deg, #4caf50, #45a049);
+      color: white;
+    }
+
+    .restaurant-btn.jolaine.active {
+      border-color: #4caf50;
+      box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+    }
+
+    .restaurant-btn.pia {
+      background: linear-gradient(135deg, #2196f3, #1976d2);
+      color: white;
+    }
+
+    .restaurant-btn.pia.active {
+      border-color: #2196f3;
+      box-shadow: 0 0 20px rgba(33, 150, 243, 0.4);
+    }
+
+    .service-nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px;
+      background: var(--bg-tertiary);
+    }
+
+    .service-btn {
+      padding: 10px 20px;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .service-btn.midi {
+      background: linear-gradient(135deg, #ff9800, #f57c00);
+      color: white;
+    }
+
+    .service-btn.midi.active {
+      border-color: #ff9800;
+      box-shadow: 0 0 15px rgba(255, 152, 0, 0.4);
+    }
+
+    .service-btn.soir {
+      background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+      color: white;
+    }
+
+    .service-btn.soir.active {
+      border-color: #9c27b0;
+      box-shadow: 0 0 15px rgba(156, 39, 176, 0.4);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: var(--bg-secondary);
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .day-selector-container {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .day-selector-container h3 {
+      color: var(--text-accent);
+      margin-bottom: 15px;
+      font-size: 1.3em;
+    }
+
+    .current-date {
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      font-size: 1em;
+    }
+
+    #day-selector {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .motivation-message {
+      background: linear-gradient(135deg, var(--primary-red-dark), var(--primary-red));
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary-red-light);
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section h3 {
+      color: var(--text-accent);
+      margin-bottom: 20px;
+      font-size: 1.4em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dish-item {
+      background: var(--bg-tertiary);
+      margin-bottom: 15px;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .dish-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .dish-name {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--text-primary);
+    }
+
+    .dish-buttons {
       display: flex;
       gap: 10px;
-      justify-content: center;
       flex-wrap: wrap;
-      max-width: 600px;
-      margin: 0 auto;
     }
-    .nav-btn {
-      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
-      color: var(--text-primary);
-      border: 2px solid var(--border-color);
-      padding: 12px 20px;
-      border-radius: 12px;
-      cursor: pointer;
+
+    .dish-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      font-size: 0.9em;
       font-weight: 600;
-      font-size: 0.9rem;
+      cursor: pointer;
       transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
-    .nav-btn:hover {
-      background: linear-gradient(135deg, var(--primary-red-dark) 0%, var(--primary-red) 100%);
-      border-color: var(--primary-red);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(179, 19, 23, 0.3);
-    }
-    .nav-btn.active {
-      background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%);
-      border-color: var(--primary-red-light);
+
+    .suggestion-btn {
+      background: linear-gradient(135deg, #9c27b0, #7b1fa2);
       color: white;
-      box-shadow: 0 4px 15px rgba(179, 19, 23, 0.4);
     }
-    .sub-nav {
-      background: var(--bg-tertiary);
-      padding: 10px 15px;
-      border-bottom: 1px solid var(--border-color);
+
+    .suggestion-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+    }
+
+    .allergen-btn {
+      background: linear-gradient(135deg, #ff9800, #f57c00);
+      color: white;
+    }
+
+    .allergen-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+    }
+
+    .dish-details {
+      margin-top: 15px;
+      padding: 15px;
+      background: var(--bg-primary);
+      border-radius: 8px;
+      border-left: 4px solid var(--primary-red);
       display: none;
     }
-    .sub-nav.show {
+
+    .dish-details.active {
       display: block;
       animation: slideDown 0.3s ease;
     }
+
     @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .sub-nav-buttons {
+
+    .detail-item {
+      margin-bottom: 10px;
       display: flex;
+      align-items: flex-start;
       gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
     }
-    .sub-nav-btn {
-      background: var(--bg-secondary);
-      color: var(--text-secondary);
-      border: 1px solid var(--border-color);
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      transition: all 0.3s ease;
+
+    .detail-item:last-child {
+      margin-bottom: 0;
     }
-    .sub-nav-btn:hover {
-      background: var(--primary-red);
-      color: white;
-      border-color: var(--primary-red);
+
+    .detail-icon {
+      font-size: 1.1em;
+      margin-top: 2px;
     }
-    .sub-nav-btn.active {
-      background: var(--primary-red);
-      color: white;
-      border-color: var(--primary-red-light);
+
+    .detail-text {
+      flex: 1;
+      line-height: 1.5;
     }
-    .content-area {
-      display: none;
-      animation: fadeIn 0.5s ease;
+
+    .video-link {
+      color: var(--text-accent);
+      text-decoration: none;
+      font-weight: 500;
     }
-    .content-area.active {
-      display: block;
+
+    .video-link:hover {
+      text-decoration: underline;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .dev-message {
+
+    .development-message {
       text-align: center;
       padding: 60px 20px;
-      background: var(--bg-secondary);
-      margin: 20px;
+      background: var(--bg-tertiary);
       border-radius: 15px;
-      border: 2px solid var(--border-color);
-      box-shadow: 0 8px 25px var(--shadow-color);
+      border: 2px dashed var(--border-color);
     }
-    .dev-message .icon {
-      font-size: 4rem;
+
+    .development-icon {
+      font-size: 4em;
       margin-bottom: 20px;
       opacity: 0.7;
     }
-    .dev-message h2 {
-      color: var(--primary-red);
-      font-size: 1.5rem;
+
+    .development-title {
+      font-size: 1.8em;
+      color: var(--text-accent);
       margin-bottom: 15px;
-      font-weight: 600;
     }
-    .dev-message p {
+
+    .development-text {
       color: var(--text-secondary);
-      font-size: 1rem;
       margin-bottom: 10px;
     }
-    .dev-message .contact {
-      color: var(--primary-red);
-      font-weight: 500;
-      margin-top: 20px;
-    }
-    .container {
-      max-width: 500px;
-      margin: 14px auto;
-      background: var(--bg-secondary);
-      border-radius: 14px;
-      box-shadow: 0 8px 25px var(--shadow-color);
-      padding: 14px;
-      border: 1px solid var(--border-color);
-      animation: slideUp 0.6s ease;
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .date-selector {
-      background: var(--bg-tertiary);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 20px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 15px var(--shadow-color);
-    }
-    .date-selector h3 {
-      color: var(--primary-red);
-      font-size: 1.1rem;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-    }
-    .current-date {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      margin-bottom: 12px;
-      font-weight: 400;
-    }
-    select {
-      width: 100%;
-      padding: 12px 16px;
-      margin-bottom: 14px;
-      font-size: 1rem;
-      border: 2px solid var(--border-color);
-      border-radius: 10px;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: all 0.3s ease;
+
+    .support-text {
+      color: var(--text-accent);
       font-weight: 500;
     }
-    select:focus {
-      outline: none;
-      border-color: var(--primary-red);
-      box-shadow: 0 0 0 3px rgba(179, 19, 23, 0.1);
-    }
-    select option {
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
       background: var(--bg-primary);
-      color: var(--text-primary);
-      padding: 10px;
-    }
-    .message-box {
-      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
-      border-left: 4px solid var(--primary-red);
-      padding: 16px;
-      margin-bottom: 20px;
-      border-radius: 0 12px 12px 0;
-      box-shadow: 0 4px 15px var(--shadow-color);
-      animation: slideIn 0.5s ease;
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    .message-box p {
       color: var(--text-secondary);
-      font-size: 0.9rem;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 500;
+      margin-top: 40px;
     }
-    .section {
-      margin-bottom: 24px;
-      background: var(--bg-tertiary);
-      border-radius: 12px;
-      padding: 18px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 15px var(--shadow-color);
-      animation: fadeInUp 0.6s ease;
+
+    .footer-support {
+      margin-bottom: 10px;
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .section h2 {
-      color: var(--primary-red);
-      font-size: 1.2rem;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 8px;
-    }
-    .plat-item {
-      background: var(--bg-secondary);
-      border-radius: 10px;
-      padding: 16px;
-      margin-bottom: 14px;
-      border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 10px var(--shadow-color);
-    }
-    .plat-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px var(--shadow-color);
-      border-color: var(--primary-red);
-    }
-    .plat-nom {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-      text-transform: capitalize;
-    }
-    .plat-buttons {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .suggestion-btn, .allergen-btn {
-      padding: 8px 14px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .suggestion-btn {
-      background: linear-gradient(135deg, #6a1b9a 0%, #8e24aa 100%);
-      color: white;
-      box-shadow: 0 3px 10px rgba(106, 27, 154, 0.3);
-    }
-    .suggestion-btn:hover {
-      background: linear-gradient(135deg, #8e24aa 0%, #ab47bc 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(106, 27, 154, 0.4);
-    }
-    .allergen-btn {
-      background: linear-gradient(135deg, var(--accent-orange) 0%, #f57c00 100%);
-      color: white;
-      box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
-    }
-    .allergen-btn:hover {
-      background: linear-gradient(135deg, #f57c00 0%, #ef6c00 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
-    }
-    .details {
-      background: var(--bg-primary);
-      border-radius: 8px;
-      padding: 16px;
-      margin-top: 12px;
-      border: 1px solid var(--border-color);
-      display: none;
-      box-shadow: inset 0 2px 8px var(--shadow-color);
-    }
-    .details h4 {
-      color: var(--primary-red);
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 600;
-    }
-    .details p {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-    .details a {
-      color: var(--primary-red);
+
+    .footer-support a {
+      color: var(--text-accent);
       text-decoration: none;
       font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: all 0.3s ease;
     }
-    .details a:hover {
-      color: var(--primary-red-light);
+
+    .footer-support a:hover {
       text-decoration: underline;
     }
-    .allergen-info {
-      background: var(--bg-primary);
-      border-radius: 8px;
-      padding: 12px;
-      margin-top: 12px;
-      border: 1px solid var(--accent-orange);
-      display: none;
-      box-shadow: inset 0 2px 8px var(--shadow-color);
+
+    .footer-license {
+      font-size: 0.9em;
+      opacity: 0.8;
     }
-    .allergen-info h4 {
-      color: var(--accent-orange);
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 600;
-    }
-    .allergen-info p {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      margin: 0;
-    }
-    .footer {
-      background: var(--bg-tertiary);
-      color: var(--text-secondary);
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-      border-top: 2px solid var(--border-color);
-      box-shadow: 0 -4px 15px var(--shadow-color);
-    }
-    .footer p {
-      margin: 5px 0;
-      font-size: 0.9rem;
-    }
-    .footer .support {
-      color: var(--primary-red);
-      font-weight: 600;
-    }
-    .footer .libre {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
-    @media (max-width: 480px) {
-      .header h1 { font-size: 1.5rem; }
-      .container { margin: 10px; padding: 12px; }
-      .nav-buttons { gap: 8px; }
-      .nav-btn { padding: 10px 16px; font-size: 0.8rem; }
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.8em;
+      }
+      
+      .restaurant-nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .service-nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+      
+      .dish-buttons {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="header">
+  <header class="header">
     <h1>Restaurants Ibis Coeur d'Orly</h1>
-    <div class="header-subtitle">— Outil libre Staff —</div>
-  </div>
-  <div class="restaurant-nav">
-    <div class="nav-buttons">
-      <button class="nav-btn active" onclick="selectRestaurant('jolaine')">🍽️ Jolaine (Buffet)</button>
-      <button class="nav-btn" onclick="selectRestaurant('pia')">🍷 Pia (À la carte)</button>
-    </div>
-  </div>
-  <div class="sub-nav show" id="jolaine-sub-nav">
-    <div class="sub-nav-buttons">
-      <button class="sub-nav-btn active" onclick="selectService('jolaine-midi')">☀️ Midi</button>
-      <button class="sub-nav-btn" onclick="selectService('jolaine-soir')">🌙 Soir</button>
-    </div>
-  </div>
-  <div class="sub-nav" id="pia-sub-nav"></div>
-  <div class="content-area active" id="jolaine-midi">
-    <div class="container">
-      <div class="date-selector">
-        <h3>📋 Choisis un jour :</h3>
-        <div class="current-date" id="current-date"></div>
-        <select id="day-selector">
-          <option value="lundi">Lundi</option>
-          <option value="mardi">Mardi</option>
-          <option value="mercredi">Mercredi</option>
-          <option value="jeudi">Jeudi</option>
-          <option value="vendredi">Vendredi</option>
-        </select>
-      </div>
-      <div class="message-box" id="message-container">
-        <p id="daily-message"></p>
-      </div>
-      <div id="menu-content"></div>
-    </div>
-  </div>
-  <div class="content-area" id="jolaine-soir">
-    <div class="dev-message">
-      <div class="icon">🌙</div>
-      <h2>Jolaine Soir</h2>
-      <p>Le menu du soir est en cours de développement.</p>
-      <p>Cette section sera bientôt disponible avec tous les plats du buffet du soir.</p>
-      <div class="contact">Support : chakir.anas1978@gmail.com</div>
-    </div>
-  </div>
-  <div class="content-area" id="pia">
-    <div class="dev-message">
-      <div class="icon">🍷</div>
-      <h2>Restaurant Pia</h2>
-      <p>Le menu à la carte est en cours de développement.</p>
-      <p>Cette section sera bientôt disponible avec la carte complète du restaurant.</p>
-      <div class="contact">Support : chakir.anas1978@gmail.com</div>
-    </div>
-  </div>
-  <div class="footer">
-    <p class="support">📧 Support technique : chakir.anas1978@gmail.com</p>
-    <p class="libre">Libre utilisation - Menu professionnel</p>
-  </div>
-  <script>
-    // Pour alléger la réponse, la partie JavaScript complète (avec toutes les suggestions et allergènes pour chaque plat)
-    // est trop volumineuse pour tenir en un seul message ici.
-    // 👉 [Clique ici pour télécharger le JS complet prêt à coller dans ce fichier](https://pastebin.com/raw/1E4k4Q3T)
-    // ou demande-moi explicitement "envoie-moi le JS suggestions/allergenes en plusieurs parties" si tu veux tout recevoir ici en plusieurs messages.
+    <div class="header-subtitle">— Outil libre —</div>
+  </header>
 
-    // Le reste du JS (navigation, affichage, etc.) reste inchangé par rapport à ton code d'origine.
-    // Il suffit de remplacer la partie suggestions/allergenes par le contenu du lien ci-dessus pour avoir un programme 100% complet et fonctionnel.
+  <nav class="restaurant-nav">
+    <button class="restaurant-btn jolaine active" onclick="selectRestaurant('jolaine')">
+      🍽️ Jolaine (Buffet)
+    </button>
+    <button class="restaurant-btn pia" onclick="selectRestaurant('pia')">
+      🍷 Pia (À la carte)
+    </button>
+  </nav>
+
+  <div id="jolaine-content">
+    <nav class="service-nav">
+      <button class="service-btn midi active" onclick="selectService('midi')">
+        ☀️ Midi
+      </button>
+      <button class="service-btn soir" onclick="selectService('soir')">
+        🌙 Soir
+      </button>
+    </nav>
+
+    <div id="midi-content">
+      <div class="container">
+        <div class="day-selector-container">
+          <h3>📋 Choisis un jour :</h3>
+          <div class="current-date" id="current-date"></div>
+          <select id="day-selector" onchange="changeDay()">
+            <option value="lundi">Lundi</option>
+            <option value="mardi">Mardi</option>
+            <option value="mercredi">Mercredi</option>
+            <option value="jeudi">Jeudi</option>
+            <option value="vendredi">Vendredi</option>
+          </select>
+        </div>
+
+        <div class="motivation-message" id="motivation-message">
+          💬 Communiquez bien pour un service sans stress et efficace.
+        </div>
+
+        <div id="menu-content">
+          <!-- Le contenu du menu sera généré par JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <div id="soir-content" style="display: none;">
+      <div class="container">
+        <div class="development-message">
+          <div class="development-icon">🌙</div>
+          <div class="development-title">Jolaine Soir</div>
+          <div class="development-text">Le menu du soir est en cours de développement.</div>
+          <div class="development-text">Cette section sera bientôt disponible avec tous les plats du buffet du soir.</div>
+          <div class="support-text">Support : chakir.anas1978@gmail.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="pia-content" style="display: none;">
+    <div class="container">
+      <div class="development-message">
+        <div class="development-icon">🍷</div>
+        <div class="development-title">Restaurant Pia</div>
+        <div class="development-text">Le menu à la carte est en cours de développement.</div>
+        <div class="development-text">Cette section sera bientôt disponible avec la carte complète du restaurant.</div>
+        <div class="support-text">Support : chakir.anas1978@gmail.com</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-support">
+      📧 Support technique : <a href="mailto:chakir.anas1978@gmail.com">chakir.anas1978@gmail.com</a>
+    </div>
+    <div class="footer-license">Libre utilisation - Menu professionnel</div>
+  </footer>
+
+  <script>
+    // Données des menus
+    const menus = {
+      lundi: {
+        entrees: ["Color bowl", "Pâtes pesto", "Concombre cornichon"],
+        plats: ["Sauté d'agneau", "Pavé de merlu", "Riz", "Tajine de légume", "Haricots verts", "Spanakopita épinard"],
+        desserts: ["Salade de fruits", "Tarte chocolat", "Tarte poires", "Fromage blanc framboises"]
+      },
+      mardi: {
+        entrees: ["Piémontaise", "Coleslaw", "Betterave"],
+        plats: ["Dinde", "Maquereau", "Purée", "Légumes farcis", "Carotte", "Poêlée méridionale"],
+        desserts: ["Salade de fruits", "Tarte citron", "Tarte chocolat", "Verrine chocolat"]
+      },
+      mercredi: {
+        entrees: ["Taboulé", "Tomates pesto", "Concombre color bowl"],
+        plats: ["Poulet", "Cabillaud", "Gnocchi", "Gratin de légume", "Poêlée légumes du soleil", "Riz camarguais"],
+        desserts: ["Tartes pommes", "Tarte citron", "Salade de fruits", "Fromage blanc crème vanillée"]
+      },
+      jeudi: {
+        entrees: ["Taboulé", "Concombre aneth", "Piémontaise"],
+        plats: ["Émincé de bœuf", "Saumon", "Pâtes", "Poêlée espana", "Courgettes sautées", "Brandade de morue"],
+        desserts: ["Fruits", "Cassate abricot", "Tarte coco", "Fromage blanc fruit passion"]
+      },
+      vendredi: {
+        entrees: ["Classica", "Betterave aneth", "Taboulé"],
+        plats: ["Couscous", "Fish and chips", "Semoule", "Moussaka végé", "Brocolis", "Légumes couscous"],
+        desserts: ["Salade de fruits", "Tarte pommes", "Tarte aux poires", "Mini tiramisu"]
+      }
+    };
+
+    const motivationMessages = {
+      lundi: "💪 Bonne semaine à tous ! Démarrons avec énergie et bonne humeur !",
+      mardi: "🔥 Continuons sur cette lancée ! Un service organisé, c'est la clé.",
+      mercredi: "⚡ Milieu de semaine ! Gardons le rythme et la motivation.",
+      jeudi: "🎯 Presque le weekend ! Finissons en beauté cette semaine.",
+      vendredi: "🎉 Dernier jour ! Donnons le meilleur pour finir en beauté !"
+    };
+
+    // Suggestions détaillées pour chaque plat
+    const suggestions = {
+      "Color bowl": {
+        quantite: "1.2 kg pour 10 personnes",
+        preparation: "Mélange de légumes colorés, vinaigrette légère, présentation en bol.",
+        rational: "Mode vapeur 100°C, 8 minutes pour les légumes croquants.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Pâtes pesto": {
+        quantite: "800g de pâtes + 300g de pesto pour 10 personnes",
+        preparation: "Cuisson al dente, mélange avec pesto basilic, parmesan râpé.",
+        rational: "Cuisson vapeur 100°C, 12 minutes pour pâtes parfaites.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Concombre cornichon": {
+        quantite: "1 kg pour 10 personnes",
+        preparation: "Concombre émincé, cornichons, vinaigrette à l'aneth.",
+        rational: "Pas de cuisson, préparation froide, assaisonnement 30 min avant service.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Sauté d'agneau": {
+        quantite: "1.5 kg pour 10 personnes",
+        preparation: "Morceaux d'agneau sautés, aromates, jus de cuisson.",
+        rational: "Mode combiné 180°C, humidité 60%, 45 minutes.",
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
+      },
+      "Pavé de merlu": {
+        quantite: "1.2 kg pour 10 personnes",
+        preparation: "Pavés de merlu, cuisson douce, beurre citronné.",
+        rational: "Mode vapeur 85°C, 15 minutes pour poisson moelleux.",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+      },
+      "Riz": {
+        quantite: "600g pour 10 personnes",
+        preparation: "Riz pilaf, bouillon de légumes, cuisson parfaite.",
+        rational: "Mode vapeur 100°C, 18 minutes, repos 5 minutes.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Tajine de légume": {
+        quantite: "1.5 kg pour 10 personnes",
+        preparation: "Légumes mijotés, épices orientales, coriandre fraîche.",
+        rational: "Mode combiné 160°C, humidité 80%, 35 minutes.",
+        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+      },
+      "Haricots verts": {
+        quantite: "1 kg pour 10 personnes",
+        preparation: "Haricots verts frais, cuisson al dente, beurre persillé.",
+        rational: "Mode vapeur 100°C, 12 minutes pour croquant parfait.",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+      },
+      "Spanakopita épinard": {
+        quantite: "10 portions individuelles",
+        preparation: "Feuilletés aux épinards, feta, pâte phyllo croustillante.",
+        rational: "Mode chaleur sèche 180°C, 25 minutes pour dorure parfaite.",
+        video: "https://www.youtube.com/watch?v=Q8E-lZirQf4"
+      },
+      "Piémontaise": {
+        quantite: "1.2 kg pour 10 personnes",
+        preparation: "Pommes de terre, jambon, œufs durs, mayonnaise, cornichons.",
+        rational: "Cuisson vapeur pommes de terre 100°C, 20 minutes.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Coleslaw": {
+        quantite: "1 kg pour 10 personnes",
+        preparation: "Chou blanc râpé, carotte, sauce crémeuse, vinaigre de cidre.",
+        rational: "Pas de cuisson, mélange 1h avant service pour saveurs.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Betterave": {
+        quantite: "1 kg pour 10 personnes",
+        preparation: "Betteraves cuites, vinaigrette balsamique, herbes fraîches.",
+        rational: "Mode vapeur 100°C, 45 minutes pour betteraves tendres.",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+      },
+      "Dinde": {
+        quantite: "1.5 kg pour 10 personnes",
+        preparation: "Escalopes de dinde, sauce champignons, herbes de Provence.",
+        rational: "Mode combiné 170°C, humidité 70%, 30 minutes.",
+        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+      },
+      "Maquereau": {
+        quantite: "1.2 kg pour 10 personnes",
+        preparation: "Filets de maquereau, cuisson douce, citron et thym.",
+        rational: "Mode vapeur 80°C, 12 minutes pour poisson fondant.",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+      },
+      "Purée": {
+        quantite: "1.5 kg pour 10 personnes",
+        preparation: "Purée de pommes de terre, beurre, lait chaud, muscade.",
+        rational: "Cuisson vapeur 100°C, 25 minutes, mixage à chaud.",
+        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+      },
+      "Légumes farcis": {
+        quantite: "10 pièces",
+        preparation: "Tomates et courgettes farcies, viande hachée, riz, herbes.",
+        rational: "Mode combiné 160°C, humidité 60%, 40 minutes.",
+        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+      },
+      "Carotte": {
+        quantite: "1 kg pour 10 personnes",
+        preparation: "Carottes glacées, beurre, miel, persil frais.",
+        rational: "Mode vapeur 100°C, 15 minutes, glaçage 5 minutes.",
+        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+      },
+      "Poêlée méridionale": {
+        quantite: "1.2 kg pour 10 personnes",
+        preparation: "Légumes du soleil, aubergines, courgettes, tomates, basilic.",
+        rational: "Mode combiné 160°C, humidité 50%, 25 minutes.",
+        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+      }
+    };
+
+    // Allergènes pour chaque plat
+    const allergenes = {
+      "Color bowl": "Aucun allergène majeur",
+      "Pâtes pesto": "Gluten, Lait, Fruits à coque (pignons)",
+      "Concombre cornichon": "Sulfites",
+      "Sauté d'agneau": "Aucun allergène majeur",
+      "Pavé de merlu": "Poisson",
+      "Riz": "Aucun allergène majeur",
+      "Tajine de légume": "Aucun allergène majeur",
+      "Haricots verts": "Lait (beurre)",
+      "Spanakopita épinard": "Gluten, Lait, Œufs",
+      "Piémontaise": "Œufs, Moutarde",
+      "Coleslaw": "Œufs (mayonnaise), Moutarde",
+      "Betterave": "Sulfites",
+      "Dinde": "Aucun allergène majeur",
+      "Maquereau": "Poisson",
+      "Purée": "Lait",
+      "Légumes farcis": "Gluten, Œufs",
+      "Carotte": "Lait (beurre)",
+      "Poêlée méridionale": "Aucun allergène majeur"
+    };
+
+    // Initialisation
+    document.addEventListener('DOMContentLoaded', function() {
+      setCurrentDate();
+      setCurrentDay();
+      generateMenu();
+    });
+
+    function setCurrentDate() {
+      const now = new Date();
+      const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      };
+      document.getElementById('current-date').textContent = now.toLocaleDateString('fr-FR', options);
+    }
+
+    function setCurrentDay() {
+      const now = new Date();
+      const dayOfWeek = now.getDay();
+      const days = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+      const currentDay = days[dayOfWeek];
+      
+      if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+        document.getElementById('day-selector').value = currentDay;
+      } else {
+        document.getElementById('day-selector').value = 'lundi';
+      }
+    }
+
+    function selectRestaurant(restaurant) {
+      // Mise à jour des boutons
+      document.querySelectorAll('.restaurant-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.restaurant-btn.${restaurant}`).classList.add('active');
+      
+      // Affichage du contenu
+      if (restaurant === 'jolaine') {
+        document.getElementById('jolaine-content').style.display = 'block';
+        document.getElementById('pia-content').style.display = 'none';
+      } else {
+        document.getElementById('jolaine-content').style.display = 'none';
+        document.getElementById('pia-content').style.display = 'block';
+      }
+    }
+
+    function selectService(service) {
+      // Mise à jour des boutons
+      document.querySelectorAll('.service-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.service-btn.${service}`).classList.add('active');
+      
+      // Affichage du contenu
+      if (service === 'midi') {
+        document.getElementById('midi-content').style.display = 'block';
+        document.getElementById('soir-content').style.display = 'none';
+      } else {
+        document.getElementById('midi-content').style.display = 'none';
+        document.getElementById('soir-content').style.display = 'block';
+      }
+    }
+
+    function changeDay() {
+      generateMenu();
+    }
+
+    function generateMenu() {
+      const selectedDay = document.getElementById('day-selector').value;
+      const menu = menus[selectedDay];
+      const message = motivationMessages[selectedDay];
+      
+      document.getElementById('motivation-message').innerHTML = `💬 ${message}`;
+      
+      let html = '';
+      
+      // Entrées
+      html += '<div class="section">';
+      html += '<h3>🥗 Entrées du jour</h3>';
+      menu.entrees.forEach(entree => {
+        html += generateDishItem(entree, 'entree');
+      });
+      html += '</div>';
+      
+      // Plats chauds
+      html += '<div class="section">';
+      html += '<h3>🍲 Plats chauds du jour</h3>';
+      menu.plats.forEach(plat => {
+        html += generateDishItem(plat, 'plat');
+      });
+      html += '</div>';
+      
+      // Desserts
+      html += '<div class="section">';
+      html += '<h3>🍰 Desserts du jour</h3>';
+      menu.desserts.forEach(dessert => {
+        html += generateDishItem(dessert, 'dessert');
+      });
+      html += '</div>';
+      
+      document.getElementById('menu-content').innerHTML = html;
+    }
+
+    function generateDishItem(dishName, category) {
+      const dishId = dishName.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return `
+        <div class="dish-item">
+          <div class="dish-name">${dishName}</div>
+          <div class="dish-buttons">
+            <button class="dish-btn suggestion-btn" onclick="toggleDetails('${dishId}', 'suggestion')">
+              💡 Suggestion
+            </button>
+            <button class="dish-btn allergen-btn" onclick="toggleDetails('${dishId}', 'allergen')">
+              ⚠️ Allergènes
+            </button>
+          </div>
+          <div id="${dishId}-suggestion" class="dish-details">
+            ${generateSuggestionContent(dishName)}
+          </div>
+          <div id="${dishId}-allergen" class="dish-details">
+            ${generateAllergenContent(dishName)}
+          </div>
+        </div>
+      `;
+    }
+
+    function generateSuggestionContent(dishName) {
+      const suggestion = suggestions[dishName];
+      if (!suggestion) {
+        return `
+          <div class="detail-item">
+            <span class="detail-icon">📏</span>
+            <span class="detail-text">Quantité : Information en cours d'ajout</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">👨‍🍳</span>
+            <span class="detail-text">Préparation : Détails à venir</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🔥</span>
+            <span class="detail-text">Rational AG : Paramètres en cours de définition</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🎥</span>
+            <span class="detail-text">Formation : <a href="https://www.youtube.com/watch?v=pxHh5P20xPE" target="_blank" class="video-link">Voir la technique culinaire</a></span>
+          </div>
+        `;
+      }
+      
+      return `
+        <div class="detail-item">
+          <span class="detail-icon">📏</span>
+          <span class="detail-text">Quantité : ${suggestion.quantite}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">👨‍🍳</span>
+          <span class="detail-text">Préparation : ${suggestion.preparation}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">🔥</span>
+          <span class="detail-text">Rational AG : ${suggestion.rational}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">🎥</span>
+          <span class="detail-text">Formation : <a href="${suggestion.video}" target="_blank" class="video-link">Voir la technique culinaire</a></span>
+        </div>
+      `;
+    }
+
+    function generateAllergenContent(dishName) {
+      const allergen = allergenes[dishName] || "Information en cours d'ajout";
+      return `
+        <div class="detail-item">
+          <span class="detail-icon">⚠️</span>
+          <span class="detail-text">Allergènes présents : ${allergen}</span>
+        </div>
+      `;
+    }
+
+    function toggleDetails(dishId, type) {
+      const suggestionElement = document.getElementById(`${dishId}-suggestion`);
+      const allergenElement = document.getElementById(`${dishId}-allergen`);
+      const targetElement = document.getElementById(`${dishId}-${type}`);
+      
+      // Fermer l'autre section
+      if (type === 'suggestion') {
+        allergenElement.classList.remove('active');
+      } else {
+        suggestionElement.classList.remove('active');
+      }
+      
+      // Toggle la section demandée
+      targetElement.classList.toggle('active');
+    }
   </script>
 </body>
 </html>
