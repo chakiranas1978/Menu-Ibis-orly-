@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restaurants Ibis Coeur d'Orly </title>
+  <title>Restaurants Ibis Coeur d'Orly</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -74,6 +74,18 @@
       font-size: 1.1em;
       font-weight: 400;
       opacity: 0.95;
+      margin-bottom: 5px;
+    }
+
+    .header-access {
+      font-size: 0.95em;
+      font-weight: 500;
+      opacity: 0.9;
+      background: rgba(255,255,255,0.1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-top: 8px;
     }
 
     .restaurant-nav {
@@ -333,6 +345,16 @@
       text-decoration: underline;
     }
 
+    .chef-warning {
+      background: rgba(255, 152, 0, 0.1);
+      border: 1px solid var(--warning-color);
+      border-radius: 6px;
+      padding: 8px;
+      margin-top: 8px;
+      font-weight: 600;
+      color: var(--warning-color);
+    }
+
     .development-message {
       text-align: center;
       padding: 60px 20px;
@@ -419,7 +441,8 @@
 <body>
   <header class="header">
     <h1>Restaurants Ibis Coeur d'Orly</h1>
-    <div class="header-subtitle">— SOS Staff & Outil Libre —</div>
+    <div class="header-subtitle">— Outil libre —</div>
+    <div class="header-access">👨‍🍳 Réservé cuisiniers serveurs 👩‍🍳</div>
   </header>
 
   <nav class="restaurant-nav">
@@ -535,86 +558,86 @@
       vendredi: "🎉 Dernier jour ! Donnons le meilleur pour finir en beauté !"
     };
 
-    // Suggestions complètes pour TOUS les plats
+    // Suggestions complètes avec liens vidéos spécifiques
     const suggestions = {
       // LUNDI
       "Color bowl": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Mélange de légumes colorés (poivrons, tomates cerises, concombre, radis), vinaigrette légère à l'huile d'olive et citron.",
-        rational: "Mode vapeur 100°C, 8 minutes pour les légumes croquants. Assaisonnement à froid.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        rational: "Pas de cuisson, préparation froide, assaisonnement juste avant service pour fraîcheur.",
+        video: "https://www.youtube.com/watch?v=GIU6wT3meHI"
       },
       "Pâtes pesto": {
         quantite: "800g de pâtes + 300g de pesto pour 10 personnes",
         preparation: "Cuisson al dente, mélange avec pesto basilic maison, parmesan râpé, pignons de pin.",
         rational: "Cuisson vapeur 100°C, 12 minutes pour pâtes parfaites. Mélange à chaud.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=IPIizAbp9ZM"
       },
       "Concombre cornichon": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Concombre émincé finement, cornichons hachés, vinaigrette à l'aneth et yaourt grec.",
         rational: "Pas de cuisson, préparation froide, assaisonnement 30 min avant service pour macération.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=L7BL--wrGOE"
       },
       "Sauté d'agneau": {
         quantite: "1.5 kg pour 10 personnes",
         preparation: "Morceaux d'agneau sautés avec oignons, ail, herbes de Provence, jus de cuisson réduit.",
         rational: "Mode combiné 180°C, humidité 60%, 45 minutes. Saisir d'abord 5 min à 200°C.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=Ebo8O88Fgbw"
       },
       "Pavé de merlu": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Pavés de merlu, cuisson douce, beurre citronné, persil frais, fleur de sel.",
         rational: "Mode vapeur 85°C, 15 minutes pour poisson moelleux. Finition beurre à 60°C.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
       },
       "Riz": {
         quantite: "600g pour 10 personnes",
         preparation: "Riz pilaf, bouillon de légumes, safran, beurre, cuisson parfaite grain par grain.",
         rational: "Mode vapeur 100°C, 18 minutes, repos 5 minutes. Ratio 1:1.5 riz/bouillon.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
       },
       "Tajine de légume": {
         quantite: "1.5 kg pour 10 personnes",
         preparation: "Légumes mijotés (courgettes, aubergines, tomates), épices orientales, coriandre fraîche, olives.",
         rational: "Mode combiné 160°C, humidité 80%, 35 minutes. Cuisson douce pour fondant.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
       },
       "Haricots verts": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Haricots verts frais équeutés, cuisson al dente, beurre persillé, amandes effilées.",
         rational: "Mode vapeur 100°C, 12 minutes pour croquant parfait. Finition beurre 2 min.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
       },
       "Spanakopita épinard": {
         quantite: "10 portions individuelles",
         preparation: "Feuilletés aux épinards frais, feta émiettée, pâte phyllo croustillante, œuf battu pour dorure.",
         rational: "Mode chaleur sèche 180°C, 25 minutes pour dorure parfaite. Préchauffage obligatoire.",
-        video: "https://www.youtube.com/watch?v=Q8E-lZirQf4"
+        video: "https://www.youtube.com/watch?v=XKrJ4Iy3XZE"
       },
       "Salade de fruits": {
         quantite: "1.5 kg pour 10 personnes",
-        preparation: "Fruits de saison (pommes, poires, oranges, kiwis), sirop léger au citron et menthe.",
-        rational: "Pas de cuisson, préparation froide, macération 2h au frais pour saveurs.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        preparation: "Fruits de saison frais, découpe harmonieuse, présentation colorée en verrines individuelles.",
+        rational: "Découpe juste avant service, conservation au frais, éviter oxydation avec citron.",
+        video: "https://www.youtube.com/watch?v=1XsgHhUhcAU"
       },
       "Tarte chocolat": {
-        quantite: "2 tartes pour 10 personnes",
-        preparation: "Pâte sablée, ganache chocolat noir 70%, crème fouettée, copeaux de chocolat.",
-        rational: "Cuisson pâte 180°C, 15 min. Ganache tempérée à 35°C pour brillant.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        quantite: "2 tartes surgelées pour 10 personnes",
+        preparation: "Tarte surgelée, décongélation contrôlée, présentation avec chantilly, copeaux chocolat, coulis.",
+        rational: "Décongélation 2h à température ambiante, présentation soignée avec garnitures fraîches.",
+        video: "https://www.youtube.com/watch?v=8ClRUtRVgqc"
       },
       "Tarte poires": {
-        quantite: "2 tartes pour 10 personnes",
-        preparation: "Pâte brisée, poires pochées au vin blanc, crème d'amande, cannelle.",
-        rational: "Cuisson 170°C, 35 minutes. Poires pochées séparément 20 min à 80°C.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        quantite: "2 tartes surgelées pour 10 personnes",
+        preparation: "Tarte surgelée, décongélation, présentation avec crème anglaise, cannelle, menthe fraîche.",
+        rational: "Décongélation progressive, réchauffage léger 5 min à 160°C si souhaité tiède.",
+        video: "https://www.youtube.com/watch?v=Q0xBwDNyaNY"
       },
       "Fromage blanc framboises": {
         quantite: "1.2 kg pour 10 personnes",
-        preparation: "Fromage blanc 20%, framboises fraîches, coulis de framboises, sucre vanillé.",
-        rational: "Pas de cuisson, assemblage à froid, service immédiat pour fraîcheur.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        preparation: "Fromage blanc 20%, framboises fraîches, coulis de framboises, présentation en verrines.",
+        rational: "Assemblage à froid, présentation individuelle, garniture juste avant service.",
+        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
       },
 
       // MARDI
@@ -622,67 +645,67 @@
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Pommes de terre cuites, jambon blanc dés, œufs durs, mayonnaise maison, cornichons, persil.",
         rational: "Cuisson vapeur pommes de terre 100°C, 20 minutes. Œufs durs 10 min à 100°C.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=IPIizAbp9ZM"
       },
       "Coleslaw": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Chou blanc râpé fin, carotte râpée, sauce crémeuse (mayonnaise, yaourt, vinaigre de cidre).",
         rational: "Pas de cuisson, mélange 1h avant service pour ramollissement et saveurs.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=L7BL--wrGOE"
       },
       "Betterave": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Betteraves cuites, vinaigrette balsamique, herbes fraîches (ciboulette, persil), noix concassées.",
         rational: "Mode vapeur 100°C, 45 minutes pour betteraves tendres. Test à la pointe de couteau.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=GIU6wT3meHI"
       },
       "Dinde": {
         quantite: "1.5 kg pour 10 personnes",
         preparation: "Escalopes de dinde, sauce champignons de Paris, herbes de Provence, crème fraîche.",
         rational: "Mode combiné 170°C, humidité 70%, 30 minutes. Saisir d'abord 3 min à 200°C.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
       },
       "Maquereau": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Filets de maquereau, cuisson douce, citron vert et thym frais, huile d'olive.",
         rational: "Mode vapeur 80°C, 12 minutes pour poisson fondant. Finition citron à froid.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=IuuQsuhhPqA"
       },
       "Purée": {
         quantite: "1.5 kg pour 10 personnes",
         preparation: "Purée de pommes de terre, beurre doux, lait chaud, muscade râpée, sel fin.",
         rational: "Cuisson vapeur 100°C, 25 minutes, mixage à chaud avec lait à 60°C.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
       },
       "Légumes farcis": {
         quantite: "10 pièces",
         preparation: "Tomates et courgettes évidées, farce (viande hachée, riz, oignons, herbes), chapelure.",
         rational: "Mode combiné 160°C, humidité 60%, 40 minutes. Précuisson légumes 10 min.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=XKrJ4Iy3XZE"
       },
       "Carotte": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Carottes tournées, glacées au beurre et miel, persil frais haché, poivre blanc.",
         rational: "Mode vapeur 100°C, 15 minutes, glaçage 5 minutes à 160°C.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
       },
       "Poêlée méridionale": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Légumes du soleil (aubergines, courgettes, tomates, poivrons), basilic, ail, huile d'olive.",
         rational: "Mode combiné 160°C, humidité 50%, 25 minutes. Cuisson séparée par légume.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
       },
       "Tarte citron": {
-        quantite: "2 tartes pour 10 personnes",
-        preparation: "Pâte sablée, crème au citron, meringue italienne, zestes de citron confits.",
-        rational: "Cuisson pâte 180°C, 15 min. Crème citron 85°C, meringue 120°C 5 min.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        quantite: "2 tartes surgelées pour 10 personnes",
+        preparation: "Tarte surgelée, décongélation, présentation avec meringue, zestes citron confits.",
+        rational: "Décongélation 2h, présentation soignée, garnitures fraîches pour effet visuel.",
+        video: "https://www.youtube.com/watch?v=Q0xBwDNyaNY"
       },
       "Verrine chocolat": {
-        quantite: "10 verrines",
-        preparation: "Mousse chocolat noir, biscuit sablé émietté, chantilly vanille, copeaux chocolat.",
+        quantite: "10 verrines individuelles",
+        preparation: "Mousse chocolat maison, biscuit sablé émietté, chantilly vanille, copeaux chocolat.",
         rational: "Mousse : tempérer chocolat à 35°C, incorporer blancs montés délicatement.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
       },
 
       // MERCREDI
@@ -690,67 +713,67 @@
         quantite: "1 kg pour 10 personnes",
         preparation: "Semoule fine, tomates dés, persil plat haché, menthe fraîche, citron, huile d'olive.",
         rational: "Semoule gonflée à l'eau bouillante, repos 30 min, assaisonnement à froid.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=IPIizAbp9ZM"
       },
       "Tomates pesto": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Tomates grappe tranchées, pesto basilic, mozzarella di bufala, roquette, huile d'olive.",
         rational: "Pas de cuisson, assemblage à froid, service immédiat pour fraîcheur.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=L7BL--wrGOE"
       },
       "Concombre color bowl": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Concombre en rubans, radis colorés, vinaigrette au yaourt grec et aneth.",
         rational: "Préparation froide, égouttage concombre 15 min avec sel, rinçage.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=GIU6wT3meHI"
       },
       "Poulet": {
         quantite: "1.5 kg pour 10 personnes",
         preparation: "Suprêmes de poulet, sauce estragon, échalotes confites, fond de volaille réduit.",
         rational: "Mode combiné 165°C, humidité 75%, 25 minutes. Température à cœur 75°C.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
       },
       "Cabillaud": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Dos de cabillaud, beurre blanc, échalotes, vin blanc sec, crème fraîche.",
         rational: "Mode vapeur 82°C, 14 minutes. Beurre blanc monté à 60°C hors feu.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=-h0AOn_Ath4"
       },
       "Gnocchi": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Gnocchis de pommes de terre, sauce tomate basilic, parmesan râpé, huile d'olive.",
         rational: "Cuisson eau bouillante salée, remontée à la surface = cuit. Sauce à part.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
       },
       "Gratin de légume": {
         quantite: "1.5 kg pour 10 personnes",
         preparation: "Courgettes, aubergines en tranches, sauce béchamel, gruyère râpé, chapelure.",
         rational: "Mode combiné 180°C, humidité 40%, 35 minutes. Gratinage final 3 min.",
-        video: "https://www.youtube.com/watch?v=Q8E-lZirQf4"
+        video: "https://www.youtube.com/watch?v=XKrJ4Iy3XZE"
       },
       "Poêlée légumes du soleil": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Courgettes, tomates cerises, poivrons, aubergines, thym, romarin, ail.",
         rational: "Mode combiné 170°C, humidité 45%, 20 minutes. Cuisson échelonnée.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
       },
       "Riz camarguais": {
         quantite: "600g pour 10 personnes",
         preparation: "Riz rouge de Camargue, bouillon de légumes, safran, petits légumes dés.",
         rational: "Mode vapeur 100°C, 22 minutes (riz complet). Repos 5 minutes.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
       },
       "Tartes pommes": {
-        quantite: "2 tartes pour 10 personnes",
-        preparation: "Pâte brisée, pommes Golden émincées, cannelle, sucre roux, beurre.",
-        rational: "Cuisson 180°C, 30 minutes. Pommes précuites 5 min pour éviter détrempe.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        quantite: "2 tartes surgelées pour 10 personnes",
+        preparation: "Tarte surgelée, décongélation, présentation avec cannelle, crème anglaise, pommes fraîches.",
+        rational: "Décongélation 2h, réchauffage léger optionnel, garnitures fraîches pour présentation.",
+        video: "https://www.youtube.com/watch?v=8ClRUtRVgqc"
       },
       "Fromage blanc crème vanillée": {
         quantite: "1.2 kg pour 10 personnes",
-        preparation: "Fromage blanc 20%, crème fouettée vanillée, sucre glace, gousse de vanille.",
-        rational: "Assemblage à froid, incorporation délicate pour texture aérée.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        preparation: "Fromage blanc 20%, crème fouettée vanillée, présentation en verrines avec fruits rouges.",
+        rational: "Assemblage à froid, incorporation délicate pour texture aérée, présentation soignée.",
+        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
       },
 
       // JEUDI
@@ -758,67 +781,67 @@
         quantite: "1 kg pour 10 personnes",
         preparation: "Concombre émincé, aneth frais, yaourt grec, citron, huile d'olive, sel de mer.",
         rational: "Égouttage concombre 20 min, assaisonnement juste avant service.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=L7BL--wrGOE"
       },
       "Émincé de bœuf": {
         quantite: "1.5 kg pour 10 personnes",
         preparation: "Lamelles de bœuf sautées, oignons, champignons, sauce au poivre vert, crème.",
         rational: "Saisir viande 2 min à 220°C, puis mijoter 15 min à 160°C, humidité 60%.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
       },
       "Saumon": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Pavés de saumon, sauce hollandaise, aneth frais, citron, beurre clarifié.",
         rational: "Mode vapeur 78°C, 16 minutes. Hollandaise montée à 65°C au bain-marie.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
       },
       "Pâtes": {
         quantite: "800g pour 10 personnes",
         preparation: "Pâtes fraîches, sauce carbonara, lardons, parmesan, œufs, crème fraîche.",
         rational: "Cuisson pâtes al dente, sauce montée hors feu pour éviter coagulation.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
       },
       "Poêlée espana": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Poivrons rouges et verts, oignons, tomates, chorizo, paprika, huile d'olive.",
         rational: "Mode combiné 170°C, humidité 50%, 25 minutes. Chorizo doré d'abord.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
       },
       "Courgettes sautées": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Courgettes en rondelles, ail, persil, huile d'olive, fleur de sel, poivre.",
         rational: "Sauté rapide 5 min à 180°C pour garder croquant et couleur.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
       },
       "Brandade de morue": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Morue dessalée, pommes de terre, ail, huile d'olive, lait chaud, persil.",
         rational: "Cuisson morue 15 min à 80°C, montage à chaud avec huile tiède.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=IuuQsuhhPqA"
       },
       "Fruits": {
         quantite: "1.5 kg pour 10 personnes",
-        preparation: "Fruits frais de saison variés, découpe harmonieuse, présentation colorée.",
+        preparation: "Fruits frais de saison variés, découpe harmonieuse, présentation colorée en plateaux.",
         rational: "Pas de cuisson, découpe juste avant service, conservation au frais.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=1XsgHhUhcAU"
       },
       "Cassate abricot": {
-        quantite: "10 portions",
-        preparation: "Biscuit génoise, mousse abricot, abricots confits, sirop à l'amaretto.",
-        rational: "Génoise 180°C, 12 min. Mousse montée à froid, glaçage à 35°C.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        quantite: "10 portions individuelles",
+        preparation: "Dessert glacé maison, biscuit génoise, mousse abricot, présentation avec fruits frais.",
+        rational: "Assemblage en portions individuelles, présentation soignée avec garnitures fraîches.",
+        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
       },
       "Tarte coco": {
-        quantite: "2 tartes pour 10 personnes",
-        preparation: "Pâte sablée, crème coco, noix de coco râpée, lait de coco, œufs.",
-        rational: "Cuisson 170°C, 25 minutes. Crème cuite au bain-marie 85°C.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        quantite: "2 tartes surgelées pour 10 personnes",
+        preparation: "Tarte surgelée, décongélation, présentation avec noix de coco fraîche, coulis mangue.",
+        rational: "Décongélation progressive, présentation tropicale avec garnitures exotiques.",
+        video: "https://www.youtube.com/watch?v=Q0xBwDNyaNY"
       },
       "Fromage blanc fruit passion": {
         quantite: "1.2 kg pour 10 personnes",
-        preparation: "Fromage blanc, pulpe de fruit de la passion, miel d'acacia, menthe fraîche.",
-        rational: "Mélange délicat à froid, service immédiat pour acidité optimale.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        preparation: "Fromage blanc, pulpe de fruit de la passion, présentation en verrines avec menthe.",
+        rational: "Mélange délicat à froid, service immédiat pour acidité optimale, présentation exotique.",
+        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
       },
 
       // VENDREDI
@@ -826,131 +849,131 @@
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Salade composée classique : laitue, tomates, concombre, œufs durs, vinaigrette.",
         rational: "Assemblage à froid, assaisonnement au dernier moment pour croquant.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=IPIizAbp9ZM"
       },
       "Betterave aneth": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Betteraves cuites, aneth frais, vinaigrette à l'huile de colza, échalotes.",
         rational: "Cuisson vapeur 45 min à 100°C, assaisonnement tiède pour absorption.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=GIU6wT3meHI"
       },
       "Couscous": {
         quantite: "1.5 kg pour 10 personnes",
         preparation: "Agneau, merguez, légumes (courgettes, navets, carottes), bouillon épicé, semoule.",
         rational: "Mijoté 1h30 à 160°C, humidité 80%. Semoule gonflée vapeur 15 min.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=f4srjQyGPOw"
       },
       "Fish and chips": {
         quantite: "1.2 kg poisson + 1 kg pommes pour 10 personnes",
         preparation: "Filets de cabillaud panés, frites maison, sauce tartare, citron, persil.",
         rational: "Friture 180°C pour poisson, frites 160°C puis 180°C (double cuisson).",
-        video: "https://www.youtube.com/watch?v=Q8E-lZirQf4"
+        video: "https://www.youtube.com/watch?v=IuuQsuhhPqA"
       },
       "Semoule": {
         quantite: "600g pour 10 personnes",
         preparation: "Semoule fine, bouillon de légumes, beurre, raisins secs, amandes effilées.",
         rational: "Gonflage vapeur 15 minutes, brassage délicat, repos 5 minutes.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
       },
       "Moussaka végé": {
         quantite: "1.5 kg pour 10 personnes",
         preparation: "Aubergines, lentilles, sauce tomate, béchamel végétale, fromage végétal.",
         rational: "Cuisson étagée : aubergines grillées, assemblage, four 180°C 40 min.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=XKrJ4Iy3XZE"
       },
       "Brocolis": {
         quantite: "1 kg pour 10 personnes",
         preparation: "Bouquets de brocolis, cuisson vapeur, beurre à l'ail, amandes grillées.",
         rational: "Mode vapeur 100°C, 8 minutes pour couleur vive et croquant.",
-        video: "https://www.youtube.com/watch?v=xmfYaOCUDKs"
+        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
       },
       "Légumes couscous": {
         quantite: "1.2 kg pour 10 personnes",
         preparation: "Courgettes, navets, carottes, pois chiches, bouillon épicé (cumin, coriandre).",
         rational: "Cuisson échelonnée selon dureté, mijoté 45 min à 160°C, humidité 70%.",
-        video: "https://www.youtube.com/watch?v=SpX4Kbt3SJA"
+        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
       },
       "Tarte aux poires": {
-        quantite: "2 tartes pour 10 personnes",
-        preparation: "Pâte brisée, poires Williams, crème d'amande, cannelle, sucre perlé.",
-        rational: "Cuisson 175°C, 30 minutes. Poires pochées séparément pour éviter détrempe.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        quantite: "2 tartes surgelées pour 10 personnes",
+        preparation: "Tarte surgelée, décongélation, présentation avec cannelle, crème anglaise, poires fraîches.",
+        rational: "Décongélation progressive, présentation soignée avec garnitures fraîches pour effet visuel.",
+        video: "https://www.youtube.com/watch?v=8ClRUtRVgqc"
       },
       "Mini tiramisu": {
         quantite: "10 portions individuelles",
-        preparation: "Biscuits à la cuillère, mascarpone, café serré, cacao amer, œufs.",
-        rational: "Assemblage à froid, repos 4h minimum au frais pour imprégnation.",
-        video: "https://www.youtube.com/watch?v=pxHh5P20xPE"
+        preparation: "Tiramisu maison SANS ŒUFS, mascarpone, café serré, cacao amer, biscuits à la cuillère.",
+        rational: "Assemblage à froid, repos 4h minimum au frais pour imprégnation, sans œufs pour sécurité.",
+        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
       }
     };
 
-    // Allergènes complets pour TOUS les plats
+    // Allergènes avec demande d'informations pour plats de viande
     const allergenes = {
       // LUNDI
       "Color bowl": "Aucun allergène majeur",
       "Pâtes pesto": "Gluten, Lait, Fruits à coque (pignons de pin)",
       "Concombre cornichon": "Sulfites (cornichons)",
-      "Sauté d'agneau": "? Cuisinier en service",
-      "Pavé de merlu": "? Cuisinier en service",
+      "Sauté d'agneau": "Aucun allergène majeur - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE",
+      "Pavé de merlu": "Poisson",
       "Riz": "Aucun allergène majeur",
       "Tajine de légume": "Aucun allergène majeur",
-      "Haricots verts": "Aucun allergène majeur",
+      "Haricots verts": "Lait (beurre), Fruits à coque (amandes)",
       "Spanakopita épinard": "Gluten, Lait, Œufs",
       "Salade de fruits": "Aucun allergène majeur",
-      "Tarte chocolat": "Gluten, Lait, Œufs, Soja (lécithine)",
-      "Tarte poires": "Gluten, Lait, Œufs, Fruits à coque (amandes)",
+      "Tarte chocolat": "Gluten, Lait, Œufs, Soja (lécithine) - PRODUIT SURGELÉ",
+      "Tarte poires": "Gluten, Lait, Œufs, Fruits à coque (amandes) - PRODUIT SURGELÉ",
       "Fromage blanc framboises": "Lait",
 
       // MARDI
       "Piémontaise": "Œufs, Moutarde, Sulfites",
       "Coleslaw": "Œufs (mayonnaise), Moutarde",
-      "Betterave": "Aucun allergène majeur",
-      "Dinde": "Lait (crème fraîche)",
+      "Betterave": "Sulfites, Fruits à coque (noix)",
+      "Dinde": "Lait (crème fraîche) - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE",
       "Maquereau": "Poisson",
       "Purée": "Lait",
-      "Légumes farcis": "Gluten (chapelure), Œufs",
+      "Légumes farcis": "Gluten (chapelure), Œufs - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE (viande hachée)",
       "Carotte": "Lait (beurre)",
       "Poêlée méridionale": "Aucun allergène majeur",
-      "Tarte citron": "Gluten, Lait, Œufs",
+      "Tarte citron": "Gluten, Lait, Œufs - PRODUIT SURGELÉ",
       "Verrine chocolat": "Gluten, Lait, Œufs, Soja",
 
       // MERCREDI
       "Taboulé": "Gluten (semoule de blé)",
       "Tomates pesto": "Lait (mozzarella), Fruits à coque (pignons)",
       "Concombre color bowl": "Lait (yaourt grec)",
-      "Poulet": "? Cuisinier en service",
-      "Cabillaud": "Poisson,? Cuisinier en service",
+      "Poulet": "Lait (crème fraîche) - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE",
+      "Cabillaud": "Poisson, Lait (beurre, crème)",
       "Gnocchi": "Gluten, Œufs, Lait",
       "Gratin de légume": "Gluten, Lait",
       "Poêlée légumes du soleil": "Aucun allergène majeur",
       "Riz camarguais": "Aucun allergène majeur",
-      "Tartes pommes": "Gluten, Lait, Œufs",
+      "Tartes pommes": "Gluten, Lait, Œufs - PRODUIT SURGELÉ",
       "Fromage blanc crème vanillée": "Lait",
 
       // JEUDI
       "Concombre aneth": "Lait (yaourt grec)",
-      "Émincé de bœuf": "? Cuisinier en service",
-      "Saumon": "poisson, ? Cuisinier en service",
+      "Émincé de bœuf": "Lait (crème fraîche) - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE",
+      "Saumon": "Poisson, Œufs (hollandaise), Lait",
       "Pâtes": "Gluten, Œufs, Lait",
       "Poêlée espana": "Aucun allergène majeur",
       "Courgettes sautées": "Aucun allergène majeur",
       "Brandade de morue": "Poisson, Lait",
       "Fruits": "Aucun allergène majeur",
       "Cassate abricot": "Gluten, Œufs, Lait, Fruits à coque",
-      "Tarte coco": "Gluten, Œufs, Lait, Fruits à coque (coco)",
+      "Tarte coco": "Gluten, Œufs, Lait, Fruits à coque (coco) - PRODUIT SURGELÉ",
       "Fromage blanc fruit passion": "Lait",
 
       // VENDREDI
       "Classica": "Œufs",
-      "Betterave aneth": "Aucun allergène majeur",
-      "Couscous": "Gluten (semoule),? cuisinier en service pour sauce viande",
+      "Betterave aneth": "Sulfites",
+      "Couscous": "Gluten (semoule) - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE (agneau, merguez)",
       "Fish and chips": "Poisson, Gluten, Œufs (sauce tartare)",
       "Semoule": "Gluten, Lait (beurre), Fruits à coque (amandes)",
       "Moussaka végé": "Gluten, Soja (fromage végétal)",
       "Brocolis": "Lait (beurre), Fruits à coque (amandes)",
       "Légumes couscous": "Aucun allergène majeur",
-      "Tarte aux poires": "Gluten, Lait, Œufs, Fruits à coque",
-      "Mini tiramisu": "Gluten, Œufs, Lait"
+      "Tarte aux poires": "Gluten, Lait, Œufs, Fruits à coque - PRODUIT SURGELÉ",
+      "Mini tiramisu": "Gluten, Lait - SANS ŒUFS (recette maison)"
     };
 
     // Initialisation
@@ -1095,7 +1118,7 @@
           </div>
           <div class="detail-item">
             <span class="detail-icon">🎥</span>
-            <span class="detail-text">Formation : <a href="https://www.youtube.com/watch?v=pxHh5P20xPE" target="_blank" class="video-link">Voir la technique culinaire</a></span>
+            <span class="detail-text">Formation : <a href="https://www.youtube.com/watch?v=_ayqNIb6DQE" target="_blank" class="video-link">Voir la technique culinaire</a></span>
           </div>
         `;
       }
@@ -1122,12 +1145,24 @@
 
     function generateAllergenContent(dishName) {
       const allergen = allergenes[dishName] || "Information en cours d'ajout";
-      return `
+      const hasChefWarning = allergen.includes("DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE");
+      
+      let content = `
         <div class="detail-item">
           <span class="detail-icon">⚠️</span>
           <span class="detail-text">Allergènes présents : ${allergen}</span>
         </div>
       `;
+      
+      if (hasChefWarning) {
+        content += `
+          <div class="chef-warning">
+            👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat
+          </div>
+        `;
+      }
+      
+      return content;
     }
 
     function toggleDetails(dishId, type) {
