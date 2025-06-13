@@ -246,8 +246,15 @@
     .dish-name {
       font-size: 1.2em;
       font-weight: 600;
-      margin-bottom: 15px;
+      margin-bottom: 8px;
       color: var(--text-primary);
+    }
+
+    .dish-description {
+      font-size: 0.9em;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      font-style: italic;
     }
 
     .dish-buttons {
@@ -287,6 +294,16 @@
     .allergen-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+    }
+
+    .photo-btn {
+      background: linear-gradient(135deg, #4caf50, #45a049);
+      color: white;
+    }
+
+    .photo-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
     }
 
     .dish-details {
@@ -335,13 +352,13 @@
       line-height: 1.5;
     }
 
-    .video-link {
+    .photo-link, .video-link {
       color: var(--text-accent);
       text-decoration: none;
       font-weight: 500;
     }
 
-    .video-link:hover {
+    .photo-link:hover, .video-link:hover {
       text-decoration: underline;
     }
 
@@ -446,15 +463,15 @@
   </header>
 
   <nav class="restaurant-nav">
-    <button class="restaurant-btn jolaine active" onclick="selectRestaurant('jolaine')">
+    <button class="restaurant-btn jolaine" onclick="selectRestaurant('jolaine')">
       🍽️ Jolaine (Buffet)
     </button>
-    <button class="restaurant-btn pia" onclick="selectRestaurant('pia')">
+    <button class="restaurant-btn pia active" onclick="selectRestaurant('pia')">
       🍷 Pia (À la carte)
     </button>
   </nav>
 
-  <div id="jolaine-content">
+  <div id="jolaine-content" style="display: none;">
     <nav class="service-nav">
       <button class="service-btn midi active" onclick="selectService('midi')">
         ☀️ Midi
@@ -501,14 +518,1199 @@
     </div>
   </div>
 
-  <div id="pia-content" style="display: none;">
+  <div id="pia-content">
     <div class="container">
-      <div class="development-message">
-        <div class="development-icon">🍷</div>
-        <div class="development-title">Restaurant Pia</div>
-        <div class="development-text">Le menu à la carte est en cours de développement.</div>
-        <div class="development-text">Cette section sera bientôt disponible avec la carte complète du restaurant.</div>
-        <div class="support-text">Support : chakir.anas1978@gmail.com</div>
+      <div class="motivation-message">
+        🍷 <strong>Restaurant Pia - Cuisine italienne raffinée</strong><br>
+        Excellence culinaire et présentation soignée pour une expérience gastronomique unique.
+      </div>
+
+      <div id="pia-menu-content">
+        <!-- Entrées -->
+        <div class="section">
+          <h3>🥗 Entrées</h3>
+          
+          <div class="dish-item">
+            <div class="dish-name">Poivrons marinés à l'huile d'olive</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('poivrons-marines', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('poivrons-marines', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('poivrons-marines', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="poivrons-marines-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Disposer en éventail sur assiette blanche, arroser d'huile d'olive extra vierge, parsemer de fleur de sel et herbes fraîches.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Griller légèrement les poivrons pour révéler les saveurs, peler délicatement, mariner 24h minimum.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🌡️</span>
+                <span class="detail-text">Service : Température ambiante, accompagner de pain grillé à l'ail.</span>
+              </div>
+            </div>
+            <div id="poivrons-marines-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Possible traces de sulfites selon marinade</span>
+              </div>
+            </div>
+            <div id="poivrons-marines-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=poivrons+marinés+présentation+restaurant&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Planche de coppa</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('planche-coppa', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('planche-coppa', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('planche-coppa', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="planche-coppa-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Planche en bois, tranches fines disposées en rosace, accompagner de cornichons, olives, et pain artisanal.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Découpe fine à la machine, température de service 16-18°C pour révéler les arômes.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🍷</span>
+                <span class="detail-text">Accord : Suggérer un vin rouge italien léger ou un rosé de Provence.</span>
+              </div>
+              <div class="chef-warning">
+                👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat
+              </div>
+            </div>
+            <div id="planche-coppa-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Possible traces de lait, fruits à coque</span>
+              </div>
+            </div>
+            <div id="planche-coppa-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=planche+charcuterie+coppa+restaurant+présentation&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Œufs mimosa à la ricotta et sel fumé</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('oeufs-mimosa', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('oeufs-mimosa', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('oeufs-mimosa', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="oeufs-mimosa-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Dressage sur assiette froide, jaunes émiettés en pluie dorée, ricotta en quenelles, finition sel fumé et ciboulette.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Œufs durs parfaits (9 min), ricotta bien égouttée, sel fumé en touches délicates.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">❄️</span>
+                <span class="detail-text">Conservation : Préparer maximum 2h à l'avance, conserver au frais, dresser au dernier moment.</span>
+              </div>
+            </div>
+            <div id="oeufs-mimosa-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Œuf, lait</span>
+              </div>
+            </div>
+            <div id="oeufs-mimosa-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=oeufs+mimosa+ricotta+présentation+gastronomique&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Pita stracciatella</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('pita-stracciatella', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('pita-stracciatella', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('pita-stracciatella', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="pita-stracciatella-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Pita tiède grillée, stracciatella généreuse au centre, huile d'olive verte, poivre noir concassé, roquette fraîche.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Pita grillée juste avant service, stracciatella à température ambiante pour onctuosité optimale.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🌿</span>
+                <span class="detail-text">Garniture : Tomates cerises confites, basilic frais, réduction balsamique en touches artistiques.</span>
+              </div>
+            </div>
+            <div id="pita-stracciatella-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, lait</span>
+              </div>
+            </div>
+            <div id="pita-stracciatella-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=pita+stracciatella+présentation+restaurant&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Pour les intimes : poivrons, coppa, stracciatella</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('pour-intimes', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('pour-intimes', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('pour-intimes', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="pour-intimes-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Planche à partager, disposition harmonieuse des 3 éléments, pain artisanal, huile d'olive premium.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Composition équilibrée, températures de service optimales, accompagnements variés (olives, cornichons).</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🍷</span>
+                <span class="detail-text">Conseil : Plat de partage idéal, suggérer un vin italien pour accompagner l'expérience.</span>
+              </div>
+              <div class="chef-warning">
+                👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat (coppa)
+              </div>
+            </div>
+            <div id="pour-intimes-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait (stracciatella), possible traces de sulfites</span>
+              </div>
+            </div>
+            <div id="pour-intimes-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=planche+antipasti+italiens+restaurant+présentation&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plats chauds -->
+        <div class="section">
+          <h3>🍲 Plats chauds</h3>
+          
+          <div class="dish-item">
+            <div class="dish-name">Escalope de veau milanaise, sauce vierge, pappardelles</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('escalope-veau', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('escalope-veau', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('escalope-veau', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="escalope-veau-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Escalope dorée au centre, pappardelles en nid élégant, sauce vierge en touches colorées, herbes fraîches.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Panure fine et croustillante, cuisson à la poêle 3-4 min par face, pâtes al dente, sauce vierge fraîche.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🌡️</span>
+                <span class="detail-text">Cuisson : Température à cœur 65°C, repos 2 minutes, service immédiat pour conserver le croustillant.</span>
+              </div>
+              <div class="chef-warning">
+                👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat
+              </div>
+            </div>
+            <div id="escalope-veau-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, œuf, lait, possible traces de soja</span>
+              </div>
+            </div>
+            <div id="escalope-veau-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=escalope+milanaise+pappardelles+présentation+restaurant&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Salade Caesar</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('salade-caesar', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('salade-caesar', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('salade-caesar', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="salade-caesar-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Salade romaine croquante, copeaux de parmesan généreux, croûtons dorés, anchois en garniture, sauce onctueuse.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Sauce Caesar maison, salade bien essorée, croûtons à l'ail frais, parmesan râpé minute.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">❄️</span>
+                <span class="detail-text">Service : Assiette froide, assaisonnement au dernier moment, option poulet grillé en supplément.</span>
+              </div>
+            </div>
+            <div id="salade-caesar-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, lait, œuf, moutarde, fruits à coque</span>
+              </div>
+            </div>
+            <div id="salade-caesar-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=salade+caesar+présentation+restaurant+gastronomique&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Dos de cabillaud MSC, sauce vierge, aubergines confites</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('dos-cabillaud', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('dos-cabillaud', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('dos-cabillaud', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="dos-cabillaud-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Dos de cabillaud au centre, aubergines confites en accompagnement coloré, sauce vierge en touches, herbes fraîches.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Cuisson unilatérale peau croustillante, chair nacrée, aubergines confites à l'huile d'olive, sauce vierge fraîche.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🌡️</span>
+                <span class="detail-text">Cuisson : 55-58°C à cœur, repos 1 minute, service immédiat pour préserver la texture.</span>
+              </div>
+            </div>
+            <div id="dos-cabillaud-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Poisson</span>
+              </div>
+            </div>
+            <div id="dos-cabillaud-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=dos+cabillaud+aubergines+confites+présentation+gastronomique&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Risotto arborio aux champignons et parmesan</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('risotto-champignons', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('risotto-champignons', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('risotto-champignons', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="risotto-champignons-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Risotto crémeux en assiette creuse chaude, champignons sautés en garniture, copeaux de parmesan, huile de truffe.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Cuisson lente 18-20 min, bouillon chaud ajouté progressivement, mantecatura finale au parmesan et beurre.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🍄</span>
+                <span class="detail-text">Champignons : Mélange de variétés (cèpes, shiitakés), sautés séparément, incorporés en fin de cuisson.</span>
+              </div>
+            </div>
+            <div id="risotto-champignons-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait, œuf, fruits à coque (noisette possible)</span>
+              </div>
+            </div>
+            <div id="risotto-champignons-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=risotto+champignons+parmesan+présentation+restaurant&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Pappardelles tomate, mozzarella, basilic</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('pappardelles-tomate', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('pappardelles-tomate', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('pappardelles-tomate', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="pappardelles-tomate-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Pâtes en nid élégant, sauce tomate onctueuse, mozzarella di bufala fondante, basilic frais, huile d'olive verte.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Pâtes al dente, sauce tomate San Marzano, mozzarella ajoutée hors feu, basilic ciselé au dernier moment.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🌿</span>
+                <span class="detail-text">Finition : Parmesan râpé, poivre noir du moulin, huile d'olive extra vierge en filet.</span>
+              </div>
+            </div>
+            <div id="pappardelles-tomate-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, lait</span>
+              </div>
+            </div>
+            <div id="pappardelles-tomate-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=pappardelles+tomate+mozzarella+basilic+présentation&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Coquillettes tartufata et jambon rostello</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('coquillettes-tartufata', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('coquillettes-tartufata', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('coquillettes-tartufata', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="coquillettes-tartufata-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Coquillettes en assiette creuse, jambon rostello en lamelles, tartufata généreuse, parmesan râpé, persil plat.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Cuisson al dente, tartufata incorporée à chaud, jambon ajouté en fin, mantecatura légère.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🍄</span>
+                <span class="detail-text">Truffe : Utiliser tartufata de qualité, doser avec parcimonie, finition huile de truffe si disponible.</span>
+              </div>
+              <div class="chef-warning">
+                👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat (jambon)
+              </div>
+            </div>
+            <div id="coquillettes-tartufata-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, lait, possible traces d'œuf</span>
+              </div>
+            </div>
+            <div id="coquillettes-tartufata-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=coquillettes+truffe+jambon+présentation+restaurant&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Onglet de Bœuf sauce Gorgonzola, frites/salade</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('onglet-boeuf', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('onglet-boeuf', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('onglet-boeuf', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="onglet-boeuf-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Onglet tranché en biais, sauce gorgonzola onctueuse, frites dorées ou salade fraîche selon choix client.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Cuisson saisie 2-3 min par face (saignant), repos 3 min, sauce gorgonzola montée à la crème.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🌡️</span>
+                <span class="detail-text">Cuisson : Température à cœur selon demande (52°C saignant, 58°C à point), service immédiat.</span>
+              </div>
+              <div class="chef-warning">
+                👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat
+              </div>
+            </div>
+            <div id="onglet-boeuf-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait</span>
+              </div>
+            </div>
+            <div id="onglet-boeuf-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=onglet+boeuf+sauce+gorgonzola+présentation+restaurant&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Pizza tartufo</div>
+            <div class="dish-description">Crème, jambon rostello, champignons, tartufata</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('pizza-tartufo', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('pizza-tartufo', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('pizza-tartufo', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="pizza-tartufo-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Pizza ronde parfaite, base crème, répartition harmonieuse des garnitures, finition tartufata et roquette fraîche.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Pâte fine, cuisson four 280°C, crème légère, champignons pré-sautés, tartufata en finition.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🔥</span>
+                <span class="detail-text">Cuisson : 8-10 minutes, surveiller la dorure, service immédiat sur planche bois ou assiette chaude.</span>
+              </div>
+              <div class="chef-warning">
+                👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat (jambon)
+              </div>
+            </div>
+            <div id="pizza-tartufo-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, lait</span>
+              </div>
+            </div>
+            <div id="pizza-tartufo-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=pizza+truffe+champignons+jambon+présentation&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Pizza margherita</div>
+            <div class="dish-description">Tomates, mozzarella</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('pizza-margherita', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('pizza-margherita', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('pizza-margherita', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="pizza-margherita-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Pizza classique, sauce tomate uniforme, mozzarella fondante, basilic frais, huile d'olive en filet.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Pâte traditionnelle, sauce tomate San Marzano, mozzarella di bufala, basilic ajouté après cuisson.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🇮🇹</span>
+                <span class="detail-text">Tradition : Respecter les proportions classiques, couleurs du drapeau italien (rouge, blanc, vert).</span>
+              </div>
+            </div>
+            <div id="pizza-margherita-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, lait</span>
+              </div>
+            </div>
+            <div id="pizza-margherita-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=pizza+margherita+authentique+présentation+restaurant&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Pizza Pia</div>
+            <div class="dish-description">Crème, artichauts, roquette, jambon cru</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('pizza-pia', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('pizza-pia', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('pizza-pia', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="pizza-pia-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Pizza signature, base crème, artichauts marinés, jambon cru en lamelles, roquette fraîche en finition.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Cuisson sans jambon cru, ajout après cuisson, roquette fraîche, huile d'olive premium en finition.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🌿</span>
+                <span class="detail-text">Spécialité : Pizza signature du restaurant, présentation soignée, équilibre des saveurs méditerranéennes.</span>
+              </div>
+              <div class="chef-warning">
+                👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat (jambon cru)
+              </div>
+            </div>
+            <div id="pizza-pia-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, lait</span>
+              </div>
+            </div>
+            <div id="pizza-pia-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=pizza+artichauts+jambon+cru+roquette+présentation&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Pizza 4 Formaggi</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('pizza-4formaggi', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('pizza-4formaggi', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('pizza-4formaggi', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="pizza-4formaggi-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Pizza blanche, 4 fromages distincts en quartiers, miel en touches délicates, noix concassées, roquette.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Base crème ou huile d'olive, fromages de textures variées, cuisson surveillée pour éviter brûlure.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🧀</span>
+                <span class="detail-text">Fromages : Mozzarella, gorgonzola, parmesan, chèvre ou ricotta selon disponibilité, équilibre des saveurs.</span>
+              </div>
+            </div>
+            <div id="pizza-4formaggi-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, lait</span>
+              </div>
+            </div>
+            <div id="pizza-4formaggi-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=pizza+4+fromages+présentation+restaurant&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desserts -->
+        <div class="section">
+          <h3>🍰 Desserts</h3>
+          
+          <div class="dish-item">
+            <div class="dish-name">Café affogatto amaretti</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('cafe-affogato', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('cafe-affogato', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('cafe-affogato', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="cafe-affogato-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Verre ou tasse transparente, boule de glace vanille, espresso chaud versé devant le client, amaretti émiettés.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Glace vanille de qualité, espresso serré et chaud, service immédiat, amaretti en accompagnement.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">☕</span>
+                <span class="detail-text">Service : Présentation théâtrale, verser l'espresso devant le client, déguster immédiatement.</span>
+              </div>
+            </div>
+            <div id="cafe-affogato-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait, œuf, fruits à coque (amande, selon amaretti)</span>
+              </div>
+            </div>
+            <div id="cafe-affogato-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=affogato+café+amaretti+présentation+restaurant&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Salade de fruits</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('salade-fruits', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('salade-fruits', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('salade-fruits', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="salade-fruits-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Fruits de saison colorés, découpe harmonieuse, présentation en verrines ou assiettes, menthe fraîche.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Découpe juste avant service, fruits à maturité optimale, sirop léger au citron vert et miel.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">❄️</span>
+                <span class="detail-text">Conservation : Service frais, éviter oxydation, présentation colorée et appétissante.</span>
+              </div>
+            </div>
+            <div id="salade-fruits-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Possible traces de sulfites selon marinade</span>
+              </div>
+            </div>
+            <div id="salade-fruits-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=salade+fruits+présentation+restaurant+gastronomique&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Tiramisu</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('tiramisu', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('tiramisu', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('tiramisu', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="tiramisu-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Portion individuelle en verrine ou assiette, couches visibles, poudrage cacao, décoration café en grains.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Mascarpone onctueux, café serré refroidi, biscuits imbibés, montage en couches, repos 4h minimum.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">❄️</span>
+                <span class="detail-text">Service : Température fraîche, sortir 10 min avant service, poudrage cacao au dernier moment.</span>
+              </div>
+            </div>
+            <div id="tiramisu-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait, œuf, gluten</span>
+              </div>
+            </div>
+            <div id="tiramisu-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=tiramisu+présentation+restaurant+italien&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Panna cotta aux fruits et miel</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('panna-cotta', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('panna-cotta', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+              <button class="dish-btn photo-btn" onclick="toggleDetails('panna-cotta', 'photo')">
+                📸 Photo
+              </button>
+            </div>
+            <div id="panna-cotta-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Démoulage parfait, fruits rouges frais, coulis de fruits, miel en filet doré, menthe fraîche.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Texture soyeuse, gélatine dosée précisément, démoulage délicat, fruits de saison en garniture.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">🍯</span>
+                <span class="detail-text">Finition : Miel d'acacia ou de fleurs, fruits colorés, présentation élégante et raffinée.</span>
+              </div>
+            </div>
+            <div id="panna-cotta-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait</span>
+              </div>
+            </div>
+            <div id="panna-cotta-photo" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">📸</span>
+                <span class="detail-text">Référence visuelle : <a href="https://www.google.com/search?q=panna+cotta+fruits+miel+présentation+gastronomique&tbm=isch" target="_blank" class="photo-link">Voir exemples de présentation</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boissons chaudes -->
+        <div class="section">
+          <h3>☕ Boissons chaudes</h3>
+          
+          <div class="dish-item">
+            <div class="dish-name">Café expresso</div>
+            <div class="dish-description">Lungo, déca</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('cafe-expresso', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('cafe-expresso', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="cafe-expresso-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">☕</span>
+                <span class="detail-text">Service : Tasse préchauffée, crema dorée, service immédiat, sucre et édulcorant en accompagnement.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Mouture fine, extraction 25-30 secondes, température 90-95°C, pression optimale.</span>
+              </div>
+            </div>
+            <div id="cafe-expresso-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Aucun</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Double expresso</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('double-expresso', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('double-expresso', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="double-expresso-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">☕</span>
+                <span class="detail-text">Service : Tasse plus grande, double dose de café, crema épaisse, intensité renforcée.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Double mouture, extraction prolongée, maintenir la qualité de la crema.</span>
+              </div>
+            </div>
+            <div id="double-expresso-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Aucun</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Latte Macchiato</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('latte-macchiato', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('latte-macchiato', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="latte-macchiato-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">☕</span>
+                <span class="detail-text">Présentation : Verre transparent, couches visibles (lait, café, mousse), présentation esthétique.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Lait chaud moussé, café versé délicatement, création des couches distinctes.</span>
+              </div>
+            </div>
+            <div id="latte-macchiato-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Cappuccino</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('cappuccino', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('cappuccino', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="cappuccino-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">☕</span>
+                <span class="detail-text">Présentation : Tasse préchauffée, mousse de lait onctueuse, poudrage cacao optionnel, art latte si possible.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : 1/3 espresso, 1/3 lait chaud, 1/3 mousse de lait, température 65-70°C.</span>
+              </div>
+            </div>
+            <div id="cappuccino-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Iced Macchiato</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('iced-macchiato', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('iced-macchiato', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="iced-macchiato-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🧊</span>
+                <span class="detail-text">Présentation : Verre haut avec glace, couches visibles, paille, présentation rafraîchissante.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Café refroidi, lait froid, glace pilée, sirop vanille optionnel, service immédiat.</span>
+              </div>
+            </div>
+            <div id="iced-macchiato-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Boisson chocolatée</div>
+            <div class="dish-description">Bio Commerce & équitable</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('boisson-chocolat', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('boisson-chocolat', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="boisson-chocolat-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🍫</span>
+                <span class="detail-text">Présentation : Tasse ou mug, chantilly optionnelle, poudre de cacao, marshmallows pour enfants.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Chocolat de qualité bio, lait chaud, fouettage pour onctuosité, température 70°C.</span>
+              </div>
+            </div>
+            <div id="boisson-chocolat-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait, possible traces de soja</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Thé & infusion Palais des Thés</div>
+            <div class="dish-description">Demandez nous notre sélection</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('the-infusion', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('the-infusion', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="the-infusion-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🍵</span>
+                <span class="detail-text">Service : Théière individuelle, tasse préchauffée, sablier pour infusion, présentation de la sélection.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Eau à température adaptée (70-95°C selon thé), temps d'infusion respecté, service élégant.</span>
+              </div>
+            </div>
+            <div id="the-infusion-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Aucun</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu enfant -->
+        <div class="section">
+          <h3>👶 Menu enfant</h3>
+          
+          <div class="dish-item">
+            <div class="dish-name">Coquillettes, jambon rostello</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('coquillettes-enfant', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('coquillettes-enfant', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="coquillettes-enfant-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Assiette colorée adaptée enfant, portion réduite, jambon en petits dés, fromage râpé.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Cuisson al dente, jambon de qualité en petits morceaux, assaisonnement léger.</span>
+              </div>
+              <div class="chef-warning">
+                👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat (jambon)
+              </div>
+            </div>
+            <div id="coquillettes-enfant-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, lait, possible traces d'œuf</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Escalope milanaise et pappardelles</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('escalope-enfant', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('escalope-enfant', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="escalope-enfant-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🎨</span>
+                <span class="detail-text">Présentation : Portion enfant, escalope découpée, pâtes en accompagnement, présentation ludique.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Technique : Escalope tendre, panure légère, cuisson adaptée, pâtes al dente en petite portion.</span>
+              </div>
+              <div class="chef-warning">
+                👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat
+              </div>
+            </div>
+            <div id="escalope-enfant-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Gluten, œuf, lait, possible traces de soja</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Glaces</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('glaces-enfant', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('glaces-enfant', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="glaces-enfant-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🍦</span>
+                <span class="detail-text">Présentation : Coupe colorée, boules de glace variées, garnitures ludiques (chantilly, vermicelles).</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Service : Température optimale, présentation attractive pour enfants, choix de parfums.</span>
+              </div>
+            </div>
+            <div id="glaces-enfant-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait, œuf (selon parfum)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dish-item">
+            <div class="dish-name">Yaourt gourmand</div>
+            <div class="dish-buttons">
+              <button class="dish-btn suggestion-btn" onclick="toggleDetails('yaourt-enfant', 'suggestion')">
+                💡 Suggestion
+              </button>
+              <button class="dish-btn allergen-btn" onclick="toggleDetails('yaourt-enfant', 'allergen')">
+                ⚠️ Allergènes
+              </button>
+            </div>
+            <div id="yaourt-enfant-suggestion" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">🥛</span>
+                <span class="detail-text">Présentation : Pot coloré, garnitures variées (fruits, miel, granola), présentation ludique.</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-icon">👨‍🍳</span>
+                <span class="detail-text">Service : Yaourt de qualité, garnitures fraîches, adaptation selon goûts enfant.</span>
+              </div>
+            </div>
+            <div id="yaourt-enfant-allergen" class="dish-details">
+              <div class="detail-item">
+                <span class="detail-icon">⚠️</span>
+                <span class="detail-text">Allergènes présents : Lait</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -521,7 +1723,7 @@
   </footer>
 
   <script>
-    // Données des menus
+    // Données des menus Jolaine (conservées pour compatibilité)
     const menus = {
       lundi: {
         entrees: ["Color bowl", "Pâtes pesto", "Concombre cornichon"],
@@ -558,429 +1760,12 @@
       vendredi: "🎉 Dernier jour ! Donnons le meilleur pour finir en beauté !"
     };
 
-    // Suggestions complètes avec liens vidéos spécifiques
-    const suggestions = {
-      // LUNDI
-      "Color bowl": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Mélange de légumes colorés (poivrons, tomates cerises, concombre, radis), vinaigrette légère à l'huile d'olive et citron.",
-        rational: "Pas de cuisson, préparation froide, assaisonnement juste avant service pour fraîcheur.",
-        video: "https://www.youtube.com/watch?v=GIU6wT3meHI"
-      },
-      "Pâtes pesto": {
-        quantite: "800g de pâtes + 300g de pesto pour 10 personnes",
-        preparation: "Cuisson al dente, mélange avec pesto basilic maison, parmesan râpé, pignons de pin.",
-        rational: "Cuisson vapeur 100°C, 12 minutes pour pâtes parfaites. Mélange à chaud.",
-        video: "https://www.youtube.com/watch?v=IPIizAbp9ZM"
-      },
-      "Concombre cornichon": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Concombre émincé finement, cornichons hachés, vinaigrette à l'aneth et yaourt grec.",
-        rational: "Pas de cuisson, préparation froide, assaisonnement 30 min avant service pour macération.",
-        video: "https://www.youtube.com/watch?v=L7BL--wrGOE"
-      },
-      "Sauté d'agneau": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Morceaux d'agneau sautés avec oignons, ail, herbes de Provence, jus de cuisson réduit.",
-        rational: "Mode combiné 180°C, humidité 60%, 45 minutes. Saisir d'abord 5 min à 200°C.",
-        video: "https://www.youtube.com/watch?v=Ebo8O88Fgbw"
-      },
-      "Pavé de merlu": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Pavés de merlu, cuisson douce, beurre citronné, persil frais, fleur de sel.",
-        rational: "Mode vapeur 85°C, 15 minutes pour poisson moelleux. Finition beurre à 60°C.",
-        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
-      },
-      "Riz": {
-        quantite: "600g pour 10 personnes",
-        preparation: "Riz pilaf, bouillon de légumes, safran, beurre, cuisson parfaite grain par grain.",
-        rational: "Mode vapeur 100°C, 18 minutes, repos 5 minutes. Ratio 1:1.5 riz/bouillon.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
-      },
-      "Tajine de légume": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Légumes mijotés (courgettes, aubergines, tomates), épices orientales, coriandre fraîche, olives.",
-        rational: "Mode combiné 160°C, humidité 80%, 35 minutes. Cuisson douce pour fondant.",
-        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
-      },
-      "Haricots verts": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Haricots verts frais équeutés, cuisson al dente, beurre persillé, amandes effilées.",
-        rational: "Mode vapeur 100°C, 12 minutes pour croquant parfait. Finition beurre 2 min.",
-        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
-      },
-      "Spanakopita épinard": {
-        quantite: "10 portions individuelles",
-        preparation: "Feuilletés aux épinards frais, feta émiettée, pâte phyllo croustillante, œuf battu pour dorure.",
-        rational: "Mode chaleur sèche 180°C, 25 minutes pour dorure parfaite. Préchauffage obligatoire.",
-        video: "https://www.youtube.com/watch?v=XKrJ4Iy3XZE"
-      },
-      "Salade de fruits": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Fruits de saison frais, découpe harmonieuse, présentation colorée en verrines individuelles.",
-        rational: "Découpe juste avant service, conservation au frais, éviter oxydation avec citron.",
-        video: "https://www.youtube.com/watch?v=1XsgHhUhcAU"
-      },
-      "Tarte chocolat": {
-        quantite: "2 tartes surgelées pour 10 personnes",
-        preparation: "Tarte surgelée, décongélation contrôlée, présentation avec chantilly, copeaux chocolat, coulis.",
-        rational: "Décongélation 2h à température ambiante, présentation soignée avec garnitures fraîches.",
-        video: "https://www.youtube.com/watch?v=8ClRUtRVgqc"
-      },
-      "Tarte poires": {
-        quantite: "2 tartes surgelées pour 10 personnes",
-        preparation: "Tarte surgelée, décongélation, présentation avec crème anglaise, cannelle, menthe fraîche.",
-        rational: "Décongélation progressive, réchauffage léger 5 min à 160°C si souhaité tiède.",
-        video: "https://www.youtube.com/watch?v=Q0xBwDNyaNY"
-      },
-      "Fromage blanc framboises": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Fromage blanc 20%, framboises fraîches, coulis de framboises, présentation en verrines.",
-        rational: "Assemblage à froid, présentation individuelle, garniture juste avant service.",
-        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
-      },
-
-      // MARDI
-      "Piémontaise": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Pommes de terre cuites, jambon blanc dés, œufs durs, mayonnaise maison, cornichons, persil.",
-        rational: "Cuisson vapeur pommes de terre 100°C, 20 minutes. Œufs durs 10 min à 100°C.",
-        video: "https://www.youtube.com/watch?v=IPIizAbp9ZM"
-      },
-      "Coleslaw": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Chou blanc râpé fin, carotte râpée, sauce crémeuse (mayonnaise, yaourt, vinaigre de cidre).",
-        rational: "Pas de cuisson, mélange 1h avant service pour ramollissement et saveurs.",
-        video: "https://www.youtube.com/watch?v=L7BL--wrGOE"
-      },
-      "Betterave": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Betteraves cuites, vinaigrette balsamique, herbes fraîches (ciboulette, persil), noix concassées.",
-        rational: "Mode vapeur 100°C, 45 minutes pour betteraves tendres. Test à la pointe de couteau.",
-        video: "https://www.youtube.com/watch?v=GIU6wT3meHI"
-      },
-      "Dinde": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Escalopes de dinde, sauce champignons de Paris, herbes de Provence, crème fraîche.",
-        rational: "Mode combiné 170°C, humidité 70%, 30 minutes. Saisir d'abord 3 min à 200°C.",
-        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
-      },
-      "Maquereau": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Filets de maquereau, cuisson douce, citron vert et thym frais, huile d'olive.",
-        rational: "Mode vapeur 80°C, 12 minutes pour poisson fondant. Finition citron à froid.",
-        video: "https://www.youtube.com/watch?v=IuuQsuhhPqA"
-      },
-      "Purée": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Purée de pommes de terre, beurre doux, lait chaud, muscade râpée, sel fin.",
-        rational: "Cuisson vapeur 100°C, 25 minutes, mixage à chaud avec lait à 60°C.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
-      },
-      "Légumes farcis": {
-        quantite: "10 pièces",
-        preparation: "Tomates et courgettes évidées, farce (viande hachée, riz, oignons, herbes), chapelure.",
-        rational: "Mode combiné 160°C, humidité 60%, 40 minutes. Précuisson légumes 10 min.",
-        video: "https://www.youtube.com/watch?v=XKrJ4Iy3XZE"
-      },
-      "Carotte": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Carottes tournées, glacées au beurre et miel, persil frais haché, poivre blanc.",
-        rational: "Mode vapeur 100°C, 15 minutes, glaçage 5 minutes à 160°C.",
-        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
-      },
-      "Poêlée méridionale": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Légumes du soleil (aubergines, courgettes, tomates, poivrons), basilic, ail, huile d'olive.",
-        rational: "Mode combiné 160°C, humidité 50%, 25 minutes. Cuisson séparée par légume.",
-        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
-      },
-      "Tarte citron": {
-        quantite: "2 tartes surgelées pour 10 personnes",
-        preparation: "Tarte surgelée, décongélation, présentation avec meringue, zestes citron confits.",
-        rational: "Décongélation 2h, présentation soignée, garnitures fraîches pour effet visuel.",
-        video: "https://www.youtube.com/watch?v=Q0xBwDNyaNY"
-      },
-      "Verrine chocolat": {
-        quantite: "10 verrines individuelles",
-        preparation: "Mousse chocolat maison, biscuit sablé émietté, chantilly vanille, copeaux chocolat.",
-        rational: "Mousse : tempérer chocolat à 35°C, incorporer blancs montés délicatement.",
-        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
-      },
-
-      // MERCREDI
-      "Taboulé": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Semoule fine, tomates dés, persil plat haché, menthe fraîche, citron, huile d'olive.",
-        rational: "Semoule gonflée à l'eau bouillante, repos 30 min, assaisonnement à froid.",
-        video: "https://www.youtube.com/watch?v=IPIizAbp9ZM"
-      },
-      "Tomates pesto": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Tomates grappe tranchées, pesto basilic, mozzarella di bufala, roquette, huile d'olive.",
-        rational: "Pas de cuisson, assemblage à froid, service immédiat pour fraîcheur.",
-        video: "https://www.youtube.com/watch?v=L7BL--wrGOE"
-      },
-      "Concombre color bowl": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Concombre en rubans, radis colorés, vinaigrette au yaourt grec et aneth.",
-        rational: "Préparation froide, égouttage concombre 15 min avec sel, rinçage.",
-        video: "https://www.youtube.com/watch?v=GIU6wT3meHI"
-      },
-      "Poulet": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Suprêmes de poulet, sauce estragon, échalotes confites, fond de volaille réduit.",
-        rational: "Mode combiné 165°C, humidité 75%, 25 minutes. Température à cœur 75°C.",
-        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
-      },
-      "Cabillaud": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Dos de cabillaud, beurre blanc, échalotes, vin blanc sec, crème fraîche.",
-        rational: "Mode vapeur 82°C, 14 minutes. Beurre blanc monté à 60°C hors feu.",
-        video: "https://www.youtube.com/watch?v=-h0AOn_Ath4"
-      },
-      "Gnocchi": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Gnocchis de pommes de terre, sauce tomate basilic, parmesan râpé, huile d'olive.",
-        rational: "Cuisson eau bouillante salée, remontée à la surface = cuit. Sauce à part.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
-      },
-      "Gratin de légume": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Courgettes, aubergines en tranches, sauce béchamel, gruyère râpé, chapelure.",
-        rational: "Mode combiné 180°C, humidité 40%, 35 minutes. Gratinage final 3 min.",
-        video: "https://www.youtube.com/watch?v=XKrJ4Iy3XZE"
-      },
-      "Poêlée légumes du soleil": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Courgettes, tomates cerises, poivrons, aubergines, thym, romarin, ail.",
-        rational: "Mode combiné 170°C, humidité 45%, 20 minutes. Cuisson échelonnée.",
-        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
-      },
-      "Riz camarguais": {
-        quantite: "600g pour 10 personnes",
-        preparation: "Riz rouge de Camargue, bouillon de légumes, safran, petits légumes dés.",
-        rational: "Mode vapeur 100°C, 22 minutes (riz complet). Repos 5 minutes.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
-      },
-      "Tartes pommes": {
-        quantite: "2 tartes surgelées pour 10 personnes",
-        preparation: "Tarte surgelée, décongélation, présentation avec cannelle, crème anglaise, pommes fraîches.",
-        rational: "Décongélation 2h, réchauffage léger optionnel, garnitures fraîches pour présentation.",
-        video: "https://www.youtube.com/watch?v=8ClRUtRVgqc"
-      },
-      "Fromage blanc crème vanillée": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Fromage blanc 20%, crème fouettée vanillée, présentation en verrines avec fruits rouges.",
-        rational: "Assemblage à froid, incorporation délicate pour texture aérée, présentation soignée.",
-        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
-      },
-
-      // JEUDI
-      "Concombre aneth": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Concombre émincé, aneth frais, yaourt grec, citron, huile d'olive, sel de mer.",
-        rational: "Égouttage concombre 20 min, assaisonnement juste avant service.",
-        video: "https://www.youtube.com/watch?v=L7BL--wrGOE"
-      },
-      "Émincé de bœuf": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Lamelles de bœuf sautées, oignons, champignons, sauce au poivre vert, crème.",
-        rational: "Saisir viande 2 min à 220°C, puis mijoter 15 min à 160°C, humidité 60%.",
-        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
-      },
-      "Saumon": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Pavés de saumon, sauce hollandaise, aneth frais, citron, beurre clarifié.",
-        rational: "Mode vapeur 78°C, 16 minutes. Hollandaise montée à 65°C au bain-marie.",
-        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
-      },
-      "Pâtes": {
-        quantite: "800g pour 10 personnes",
-        preparation: "Pâtes fraîches, sauce carbonara, lardons, parmesan, œufs, crème fraîche.",
-        rational: "Cuisson pâtes al dente, sauce montée hors feu pour éviter coagulation.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
-      },
-      "Poêlée espana": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Poivrons rouges et verts, oignons, tomates, chorizo, paprika, huile d'olive.",
-        rational: "Mode combiné 170°C, humidité 50%, 25 minutes. Chorizo doré d'abord.",
-        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
-      },
-      "Courgettes sautées": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Courgettes en rondelles, ail, persil, huile d'olive, fleur de sel, poivre.",
-        rational: "Sauté rapide 5 min à 180°C pour garder croquant et couleur.",
-        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
-      },
-      "Brandade de morue": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Morue dessalée, pommes de terre, ail, huile d'olive, lait chaud, persil.",
-        rational: "Cuisson morue 15 min à 80°C, montage à chaud avec huile tiède.",
-        video: "https://www.youtube.com/watch?v=IuuQsuhhPqA"
-      },
-      "Fruits": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Fruits frais de saison variés, découpe harmonieuse, présentation colorée en plateaux.",
-        rational: "Pas de cuisson, découpe juste avant service, conservation au frais.",
-        video: "https://www.youtube.com/watch?v=1XsgHhUhcAU"
-      },
-      "Cassate abricot": {
-        quantite: "10 portions individuelles",
-        preparation: "Dessert glacé maison, biscuit génoise, mousse abricot, présentation avec fruits frais.",
-        rational: "Assemblage en portions individuelles, présentation soignée avec garnitures fraîches.",
-        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
-      },
-      "Tarte coco": {
-        quantite: "2 tartes surgelées pour 10 personnes",
-        preparation: "Tarte surgelée, décongélation, présentation avec noix de coco fraîche, coulis mangue.",
-        rational: "Décongélation progressive, présentation tropicale avec garnitures exotiques.",
-        video: "https://www.youtube.com/watch?v=Q0xBwDNyaNY"
-      },
-      "Fromage blanc fruit passion": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Fromage blanc, pulpe de fruit de la passion, présentation en verrines avec menthe.",
-        rational: "Mélange délicat à froid, service immédiat pour acidité optimale, présentation exotique.",
-        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
-      },
-
-      // VENDREDI
-      "Classica": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Salade composée classique : laitue, tomates, concombre, œufs durs, vinaigrette.",
-        rational: "Assemblage à froid, assaisonnement au dernier moment pour croquant.",
-        video: "https://www.youtube.com/watch?v=IPIizAbp9ZM"
-      },
-      "Betterave aneth": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Betteraves cuites, aneth frais, vinaigrette à l'huile de colza, échalotes.",
-        rational: "Cuisson vapeur 45 min à 100°C, assaisonnement tiède pour absorption.",
-        video: "https://www.youtube.com/watch?v=GIU6wT3meHI"
-      },
-      "Couscous": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Agneau, merguez, légumes (courgettes, navets, carottes), bouillon épicé, semoule.",
-        rational: "Mijoté 1h30 à 160°C, humidité 80%. Semoule gonflée vapeur 15 min.",
-        video: "https://www.youtube.com/watch?v=f4srjQyGPOw"
-      },
-      "Fish and chips": {
-        quantite: "1.2 kg poisson + 1 kg pommes pour 10 personnes",
-        preparation: "Filets de cabillaud panés, frites maison, sauce tartare, citron, persil.",
-        rational: "Friture 180°C pour poisson, frites 160°C puis 180°C (double cuisson).",
-        video: "https://www.youtube.com/watch?v=IuuQsuhhPqA"
-      },
-      "Semoule": {
-        quantite: "600g pour 10 personnes",
-        preparation: "Semoule fine, bouillon de légumes, beurre, raisins secs, amandes effilées.",
-        rational: "Gonflage vapeur 15 minutes, brassage délicat, repos 5 minutes.",
-        video: "https://www.youtube.com/watch?v=_ayqNIb6DQE"
-      },
-      "Moussaka végé": {
-        quantite: "1.5 kg pour 10 personnes",
-        preparation: "Aubergines, lentilles, sauce tomate, béchamel végétale, fromage végétal.",
-        rational: "Cuisson étagée : aubergines grillées, assemblage, four 180°C 40 min.",
-        video: "https://www.youtube.com/watch?v=XKrJ4Iy3XZE"
-      },
-      "Brocolis": {
-        quantite: "1 kg pour 10 personnes",
-        preparation: "Bouquets de brocolis, cuisson vapeur, beurre à l'ail, amandes grillées.",
-        rational: "Mode vapeur 100°C, 8 minutes pour couleur vive et croquant.",
-        video: "https://www.youtube.com/watch?v=wm5cKSsjv1I"
-      },
-      "Légumes couscous": {
-        quantite: "1.2 kg pour 10 personnes",
-        preparation: "Courgettes, navets, carottes, pois chiches, bouillon épicé (cumin, coriandre).",
-        rational: "Cuisson échelonnée selon dureté, mijoté 45 min à 160°C, humidité 70%.",
-        video: "https://www.youtube.com/watch?v=aYTjxnebjn4"
-      },
-      "Tarte aux poires": {
-        quantite: "2 tartes surgelées pour 10 personnes",
-        preparation: "Tarte surgelée, décongélation, présentation avec cannelle, crème anglaise, poires fraîches.",
-        rational: "Décongélation progressive, présentation soignée avec garnitures fraîches pour effet visuel.",
-        video: "https://www.youtube.com/watch?v=8ClRUtRVgqc"
-      },
-      "Mini tiramisu": {
-        quantite: "10 portions individuelles",
-        preparation: "Tiramisu maison SANS ŒUFS, mascarpone, café serré, cacao amer, biscuits à la cuillère.",
-        rational: "Assemblage à froid, repos 4h minimum au frais pour imprégnation, sans œufs pour sécurité.",
-        video: "https://www.youtube.com/watch?v=VLIHB8gAv5w"
-      }
-    };
-
-    // Allergènes avec demande d'informations pour plats de viande
-    const allergenes = {
-      // LUNDI
-      "Color bowl": "Aucun allergène majeur",
-      "Pâtes pesto": "Gluten, Lait, Fruits à coque (pignons de pin)",
-      "Concombre cornichon": "Sulfites (cornichons)",
-      "Sauté d'agneau": "Aucun allergène majeur - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE",
-      "Pavé de merlu": "Poisson",
-      "Riz": "Aucun allergène majeur",
-      "Tajine de légume": "Aucun allergène majeur",
-      "Haricots verts": "Lait (beurre), Fruits à coque (amandes)",
-      "Spanakopita épinard": "Gluten, Lait, Œufs",
-      "Salade de fruits": "Aucun allergène majeur",
-      "Tarte chocolat": "Gluten, Lait, Œufs, Soja (lécithine) - PRODUIT SURGELÉ",
-      "Tarte poires": "Gluten, Lait, Œufs, Fruits à coque (amandes) - PRODUIT SURGELÉ",
-      "Fromage blanc framboises": "Lait",
-
-      // MARDI
-      "Piémontaise": "Œufs, Moutarde, Sulfites",
-      "Coleslaw": "Œufs (mayonnaise), Moutarde",
-      "Betterave": "Sulfites, Fruits à coque (noix)",
-      "Dinde": "Lait (crème fraîche) - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE",
-      "Maquereau": "Poisson",
-      "Purée": "Lait",
-      "Légumes farcis": "Gluten (chapelure), Œufs - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE (viande hachée)",
-      "Carotte": "Lait (beurre)",
-      "Poêlée méridionale": "Aucun allergène majeur",
-      "Tarte citron": "Gluten, Lait, Œufs - PRODUIT SURGELÉ",
-      "Verrine chocolat": "Gluten, Lait, Œufs, Soja",
-
-      // MERCREDI
-      "Taboulé": "Gluten (semoule de blé)",
-      "Tomates pesto": "Lait (mozzarella), Fruits à coque (pignons)",
-      "Concombre color bowl": "Lait (yaourt grec)",
-      "Poulet": "Lait (crème fraîche) - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE",
-      "Cabillaud": "Poisson, Lait (beurre, crème)",
-      "Gnocchi": "Gluten, Œufs, Lait",
-      "Gratin de légume": "Gluten, Lait",
-      "Poêlée légumes du soleil": "Aucun allergène majeur",
-      "Riz camarguais": "Aucun allergène majeur",
-      "Tartes pommes": "Gluten, Lait, Œufs - PRODUIT SURGELÉ",
-      "Fromage blanc crème vanillée": "Lait",
-
-      // JEUDI
-      "Concombre aneth": "Lait (yaourt grec)",
-      "Émincé de bœuf": "Lait (crème fraîche) - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE",
-      "Saumon": "Poisson, Œufs (hollandaise), Lait",
-      "Pâtes": "Gluten, Œufs, Lait",
-      "Poêlée espana": "Aucun allergène majeur",
-      "Courgettes sautées": "Aucun allergène majeur",
-      "Brandade de morue": "Poisson, Lait",
-      "Fruits": "Aucun allergène majeur",
-      "Cassate abricot": "Gluten, Œufs, Lait, Fruits à coque",
-      "Tarte coco": "Gluten, Œufs, Lait, Fruits à coque (coco) - PRODUIT SURGELÉ",
-      "Fromage blanc fruit passion": "Lait",
-
-      // VENDREDI
-      "Classica": "Œufs",
-      "Betterave aneth": "Sulfites",
-      "Couscous": "Gluten (semoule) - DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE (agneau, merguez)",
-      "Fish and chips": "Poisson, Gluten, Œufs (sauce tartare)",
-      "Semoule": "Gluten, Lait (beurre), Fruits à coque (amandes)",
-      "Moussaka végé": "Gluten, Soja (fromage végétal)",
-      "Brocolis": "Lait (beurre), Fruits à coque (amandes)",
-      "Légumes couscous": "Aucun allergène majeur",
-      "Tarte aux poires": "Gluten, Lait, Œufs, Fruits à coque - PRODUIT SURGELÉ",
-      "Mini tiramisu": "Gluten, Lait - SANS ŒUFS (recette maison)"
-    };
-
     // Initialisation
     document.addEventListener('DOMContentLoaded', function() {
       setCurrentDate();
       setCurrentDay();
-      generateMenu();
+      // Démarrer sur Pia par défaut
+      selectRestaurant('pia');
     });
 
     function setCurrentDate() {
@@ -991,7 +1776,10 @@
         month: 'long', 
         day: 'numeric' 
       };
-      document.getElementById('current-date').textContent = now.toLocaleDateString('fr-FR', options);
+      const dateElement = document.getElementById('current-date');
+      if (dateElement) {
+        dateElement.textContent = now.toLocaleDateString('fr-FR', options);
+      }
     }
 
     function setCurrentDay() {
@@ -1000,10 +1788,13 @@
       const days = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
       const currentDay = days[dayOfWeek];
       
-      if (dayOfWeek >= 1 && dayOfWeek <= 5) {
-        document.getElementById('day-selector').value = currentDay;
-      } else {
-        document.getElementById('day-selector').value = 'lundi';
+      const daySelector = document.getElementById('day-selector');
+      if (daySelector) {
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+          daySelector.value = currentDay;
+        } else {
+          daySelector.value = 'lundi';
+        }
       }
     }
 
@@ -1016,9 +1807,11 @@
       if (restaurant === 'jolaine') {
         document.getElementById('jolaine-content').style.display = 'block';
         document.getElementById('pia-content').style.display = 'none';
+        generateMenu(); // Générer le menu Jolaine
       } else {
         document.getElementById('jolaine-content').style.display = 'none';
         document.getElementById('pia-content').style.display = 'block';
+        // Le menu Pia est déjà en HTML statique
       }
     }
 
@@ -1046,35 +1839,42 @@
       const menu = menus[selectedDay];
       const message = motivationMessages[selectedDay];
       
-      document.getElementById('motivation-message').innerHTML = `💬 ${message}`;
+      const motivationElement = document.getElementById('motivation-message');
+      const menuContentElement = document.getElementById('menu-content');
       
-      let html = '';
+      if (motivationElement) {
+        motivationElement.innerHTML = `💬 ${message}`;
+      }
       
-      // Entrées
-      html += '<div class="section">';
-      html += '<h3>🥗 Entrées du jour</h3>';
-      menu.entrees.forEach(entree => {
-        html += generateDishItem(entree, 'entree');
-      });
-      html += '</div>';
-      
-      // Plats chauds
-      html += '<div class="section">';
-      html += '<h3>🍲 Plats chauds du jour</h3>';
-      menu.plats.forEach(plat => {
-        html += generateDishItem(plat, 'plat');
-      });
-      html += '</div>';
-      
-      // Desserts
-      html += '<div class="section">';
-      html += '<h3>🍰 Desserts du jour</h3>';
-      menu.desserts.forEach(dessert => {
-        html += generateDishItem(dessert, 'dessert');
-      });
-      html += '</div>';
-      
-      document.getElementById('menu-content').innerHTML = html;
+      if (menuContentElement && menu) {
+        let html = '';
+        
+        // Entrées
+        html += '<div class="section">';
+        html += '<h3>🥗 Entrées du jour</h3>';
+        menu.entrees.forEach(entree => {
+          html += generateDishItem(entree, 'entree');
+        });
+        html += '</div>';
+        
+        // Plats chauds
+        html += '<div class="section">';
+        html += '<h3>🍲 Plats chauds du jour</h3>';
+        menu.plats.forEach(plat => {
+          html += generateDishItem(plat, 'plat');
+        });
+        html += '</div>';
+        
+        // Desserts
+        html += '<div class="section">';
+        html += '<h3>🍰 Desserts du jour</h3>';
+        menu.desserts.forEach(dessert => {
+          html += generateDishItem(dessert, 'dessert');
+        });
+        html += '</div>';
+        
+        menuContentElement.innerHTML = html;
+      }
     }
 
     function generateDishItem(dishName, category) {
@@ -1091,94 +1891,47 @@
             </button>
           </div>
           <div id="${dishId}-suggestion" class="dish-details">
-            ${generateSuggestionContent(dishName)}
+            <div class="detail-item">
+              <span class="detail-icon">📏</span>
+              <span class="detail-text">Quantité : Information en cours d'ajout</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon">👨‍🍳</span>
+              <span class="detail-text">Préparation : Détails à venir</span>
+            </div>
           </div>
           <div id="${dishId}-allergen" class="dish-details">
-            ${generateAllergenContent(dishName)}
+            <div class="detail-item">
+              <span class="detail-icon">⚠️</span>
+              <span class="detail-text">Allergènes présents : Information en cours d'ajout</span>
+            </div>
           </div>
         </div>
       `;
-    }
-
-    function generateSuggestionContent(dishName) {
-      const suggestion = suggestions[dishName];
-      if (!suggestion) {
-        return `
-          <div class="detail-item">
-            <span class="detail-icon">📏</span>
-            <span class="detail-text">Quantité : Information en cours d'ajout</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-icon">👨‍🍳</span>
-            <span class="detail-text">Préparation : Détails à venir</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-icon">🔥</span>
-            <span class="detail-text">Rational AG : Paramètres en cours de définition</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-icon">🎥</span>
-            <span class="detail-text">Formation : <a href="https://www.youtube.com/watch?v=_ayqNIb6DQE" target="_blank" class="video-link">Voir la technique culinaire</a></span>
-          </div>
-        `;
-      }
-      
-      return `
-        <div class="detail-item">
-          <span class="detail-icon">📏</span>
-          <span class="detail-text">Quantité : ${suggestion.quantite}</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-icon">👨‍🍳</span>
-          <span class="detail-text">Préparation : ${suggestion.preparation}</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-icon">🔥</span>
-          <span class="detail-text">Rational AG : ${suggestion.rational}</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-icon">🎥</span>
-          <span class="detail-text">Formation : <a href="${suggestion.video}" target="_blank" class="video-link">Voir la technique culinaire</a></span>
-        </div>
-      `;
-    }
-
-    function generateAllergenContent(dishName) {
-      const allergen = allergenes[dishName] || "Information en cours d'ajout";
-      const hasChefWarning = allergen.includes("DEMANDE D'INFORMATIONS AU CUISINIER OBLIGATOIRE");
-      
-      let content = `
-        <div class="detail-item">
-          <span class="detail-icon">⚠️</span>
-          <span class="detail-text">Allergènes présents : ${allergen}</span>
-        </div>
-      `;
-      
-      if (hasChefWarning) {
-        content += `
-          <div class="chef-warning">
-            👨‍🍳 ATTENTION : Demande d'informations au cuisinier obligatoire pour ce plat
-          </div>
-        `;
-      }
-      
-      return content;
     }
 
     function toggleDetails(dishId, type) {
       const suggestionElement = document.getElementById(`${dishId}-suggestion`);
       const allergenElement = document.getElementById(`${dishId}-allergen`);
+      const photoElement = document.getElementById(`${dishId}-photo`);
       const targetElement = document.getElementById(`${dishId}-${type}`);
       
-      // Fermer l'autre section
+      // Fermer les autres sections
       if (type === 'suggestion') {
-        allergenElement.classList.remove('active');
-      } else {
-        suggestionElement.classList.remove('active');
+        if (allergenElement) allergenElement.classList.remove('active');
+        if (photoElement) photoElement.classList.remove('active');
+      } else if (type === 'allergen') {
+        if (suggestionElement) suggestionElement.classList.remove('active');
+        if (photoElement) photoElement.classList.remove('active');
+      } else if (type === 'photo') {
+        if (suggestionElement) suggestionElement.classList.remove('active');
+        if (allergenElement) allergenElement.classList.remove('active');
       }
       
       // Toggle la section demandée
-      targetElement.classList.toggle('active');
+      if (targetElement) {
+        targetElement.classList.toggle('active');
+      }
     }
   </script>
 </body>
